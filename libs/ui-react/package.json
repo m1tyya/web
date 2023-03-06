@@ -1,0 +1,19 @@
+{
+	"devDependencies": {
+		"@types/react": "^18.0.22",
+		"@web/eslint-config-based": "workspace:^",
+		"@web/tsconfig": "workspace:^",
+		"clsx": "latest",
+		"eslint": "latest",
+		"react": "^18.2.0",
+		"typescript": "latest"
+	},
+	"license": "MIT",
+	"main": "./index.ts",
+	"name": "@web/ui-react",
+	"scripts": {
+		"lint": "eslint \"**/*.ts*\""
+	},
+	"types": "./index.ts",
+	"version": "0.1.0"
+}

@@ -1,0 +1,5 @@
+{
+	"exclude": ["build", "dist", "node_modules"],
+	"extends": "tsconfig/base",
+	"include": ["./src"]
+}

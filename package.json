@@ -1,24 +1,29 @@
 {
-  "name": "turbo-2",
-  "version": "0.0.0",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
-  },
-  "devDependencies": {
-    "eslint-config-custom": "*",
-    "prettier": "latest",
-    "turbo": "latest"
-  },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "packageManager": "yarn@3.4.1"
+	"devDependencies": {
+		"@web/eslint-config-based": "workspace:^",
+		"@web/tsconfig": "workspace:^",
+		"eslint-define-config": "latest",
+		"prettier": "latest",
+		"turbo": "latest",
+		"typescript": "latest"
+	},
+	"engines": {
+		"node": ">=14.0.0"
+	},
+	"name": "@web/monorepo",
+	"packageManager": "yarn@3.4.1",
+	"private": true,
+	"scripts": {
+		"build": "turbo run build",
+		"dev": "turbo run dev",
+		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
+		"lint": "turbo run lint"
+	},
+	"type": "module",
+	"version": "0.1.0",
+	"workspaces": [
+		"./",
+		"apps/*",
+		"libs/*"
+	]
 }
