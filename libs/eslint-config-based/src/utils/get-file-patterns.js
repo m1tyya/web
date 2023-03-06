@@ -49,6 +49,8 @@ function extensionsSvelte() {
 
 function patternsJavascript() {
 	return [
+		...matchAll(extensionsModule({ isEsm: true, isTyped: false })),
+		...matchAll(extensionsModule({ isEsm: false, isTyped: false })),
 		...matchAll(extensionsReact({ isTyped: false })),
 		...matchAll(extensionsStorybook({ isTyped: false })),
 		...matchAll(extensionsUnitTests({ isTyped: false })),

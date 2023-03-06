@@ -1,9 +1,16 @@
 {
+	"dependencies": {
+		"@web/eslint-config-based": "workspace:*"
+	},
+	"devDependencies": {
+		"eslint": "latest",
+		"eslint-define-config": "latest"
+	},
 	"files": [
 		"base.json",
+		"eslint.json",
 		"nextjs.json",
-		"react-library.json",
-		"eslint.json"
+		"react-library.json"
 	],
 	"name": "@web/tsconfig",
 	"private": true,

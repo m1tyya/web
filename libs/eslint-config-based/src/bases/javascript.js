@@ -6,6 +6,7 @@ module.exports = defineConfig({
 	overrides: [
 		{
 			files: patternsJavascript(),
+			parser: 'esprima',
 			plugins: [
 				`autofix`,
 				`canonical`,
@@ -118,6 +119,5 @@ module.exports = defineConfig({
 			},
 		},
 	],
-	parser: 'esprima',
 });
 2;

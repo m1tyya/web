@@ -1,6 +1,9 @@
 const { defineConfig } = require('eslint-define-config');
 
 module.exports = defineConfig({
+	env: {
+		commonjs: true,
+	},
 	extends: [
 		'./bases/async',
 		'./bases/functional',

@@ -1,5 +1,6 @@
 {
+	"$schema": "https://json.schemastore.org/tsconfig",
 	"exclude": ["build", "dist", "node_modules"],
-	"extends": "tsconfig/base",
+	"extends": "@web/tsconfig/base",
 	"include": ["./src"]
 }
