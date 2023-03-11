@@ -1,4 +1,4 @@
-const { patternsJavascript } = require('../utils/get-file-patterns');
+const { patternsJavascript } = require(`../utils/get-file-patterns`);
 
 const { defineConfig } = require(`eslint-define-config`);
 

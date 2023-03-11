@@ -1,23 +1,18 @@
-const { extensionsReact, matchAll } = require('../utils/get-file-patterns');
+const { extensionsReact, matchAll } = require(`../utils/get-file-patterns`);
 
 const { defineConfig } = require(`eslint-define-config`);
 
 module.exports = defineConfig({
-	env: {
-		browser: true,
-		es2021: true,
-		node: true,
-	},
 	overrides: [
 		{
-			files: matchAll(extensionsReact({ isTyped: false })),
-			parser: '@typescript-eslint/parser',
+			files: matchAll(extensionsReact()),
+			parser: `@typescript-eslint/parser`,
 			parserOptions: {
 				ecmaFeatures: {
 					jsx: true,
 				},
 			},
-			plugins: [`react-hooks`, `react`, `sort-react-dependency-arrays`, `jsx-a11y`],
+			plugins: [`react-hooks`, `react`, `sort-react-dependency-arrays`, `jsx-a11y`, `react-perf`],
 			rules: {
 				'react/boolean-prop-naming': [
 					`warn`,
@@ -27,6 +22,7 @@ module.exports = defineConfig({
 						validateNested: true,
 					},
 				],
+				'react/button-has-type': `warn`,
 				'react/destructuring-assignment': [`warn`, `always`],
 				'react/function-component-definition': [
 					`warn`,
@@ -37,7 +33,10 @@ module.exports = defineConfig({
 				'react/hook-use-state': `warn`,
 				'react/jsx-boolean-value': [`warn`, `always`],
 				'react/jsx-fragments': [`warn`, `syntax`],
+				'react/jsx-handler-names': `warn`,
 				'react/jsx-key': `warn`,
+				'react/jsx-max-depth': [`warn`, { max: 5 }],
+				'react/jsx-no-target-blank': `warn`,
 				'react/jsx-pascal-case': `warn`,
 				'react/jsx-sort-props': [
 					`warn`,
@@ -47,14 +46,20 @@ module.exports = defineConfig({
 				],
 				'react/no-array-index-key': `warn`,
 				'react/no-children-prop': `error`,
-				'react-hooks/exhaustive-deps': `off`,
+				'react/no-multi-comp': `warn`,
+				'react-hooks/exhaustive-deps': `warn`,
+				'react-hooks/rules-of-hooks': `error`,
+				'react-perf/jsx-no-jsx-as-prop': `warn`,
+				'react-perf/jsx-no-new-array-as-prop': `warn`,
+				'react-perf/jsx-no-new-function-as-prop': `warn`,
+				'react-perf/jsx-no-new-object-as-prop': `warn`,
 				'sort-react-dependency-arrays/sort': `warn`,
 			},
 		},
 	],
 	settings: {
 		react: {
-			version: 'detect',
+			version: `detect`,
 		},
 	},
 });

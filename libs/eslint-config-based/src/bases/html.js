@@ -1,4 +1,4 @@
-const { extensionsHtml, matchAll } = require('../utils/get-file-patterns');
+const { extensionsHtml, matchAll } = require(`../utils/get-file-patterns`);
 
 const { defineConfig } = require(`eslint-define-config`);
 

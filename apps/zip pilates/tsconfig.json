@@ -1,5 +1,13 @@
 {
 	"exclude": ["node_modules"],
 	"extends": "@web/tsconfig/base",
-	"include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "reset.d.ts"]
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"~": ["src"],
+			"~/*": ["src/*"],
+			"public/*": ["public/*"]
+		}
+	},
+	"include": ["src", "next-env.d.ts", "reset.d.ts"]
 }

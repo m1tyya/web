@@ -1,6 +1,8 @@
-const { defineConfig } = require('eslint-define-config');
+const { defineConfig } = require(`eslint-define-config`);
 
 module.exports = defineConfig({
-	extends: ['./src/index.js'].map((element) => require.resolve(element)),
+	extends: [`./src/bases/javascript.js`, `./src/bases/typescript.js`, `./src/bases/json.js`].map(
+		(element) => require.resolve(element),
+	),
 	root: true,
 });

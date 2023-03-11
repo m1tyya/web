@@ -1,5 +1,5 @@
-const { extensionsJson, matchAll } = require('../utils/get-file-patterns');
-const prettierConfig = require('../prettier.config');
+const { extensionsJson, matchAll } = require(`../utils/get-file-patterns`);
+const prettierConfig = require(`../prettier.config`);
 
 const { defineConfig } = require(`eslint-define-config`);
 

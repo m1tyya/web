@@ -3,7 +3,7 @@ module.exports = {
 	bracketSameLine: true,
 	endOfLine: `lf`,
 	jsxSingleQuote: true,
-	plugins: [],
+	plugins: [`@svgr/plugin-prettier`],
 	printWidth: 100,
 	singleQuote: true,
 	trailingComma: `all`,

@@ -6,11 +6,11 @@ import localFont from 'next/font/local';
 import config from '../../twind.config';
 
 export const adeDisplay = localFont({
-	src: `../../public/fonts/ade-display.woff2`,
-	variable: `--font-ade-display`,
+	src: '../../public/fonts/ade-display.woff2',
+	variable: '--font-ade-display',
 });
 
-export const syne = Syne({ variable: `--font-syne` });
+export const syne = Syne({ variable: '--font-syne' });
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 	return <Component {...pageProps} />;

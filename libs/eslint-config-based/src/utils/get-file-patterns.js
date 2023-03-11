@@ -3,15 +3,17 @@ function matchAll(extensions) {
 	for (const extension of extensions) {
 		res.push(`*.${extension}`);
 	}
+
 	return res;
 }
 
-function extensionsReact({ isTyped }) {
+function extensionsReact(isTyped = false) {
 	return isTyped ? [`tsx`] : [`jsx`, `tsx`];
 }
 
-function extensionsModule({ isEsm, isTyped }) {
+function extensionsModule(isEsm, isTyped = false) {
 	const prefix = isEsm ? `m` : `c`;
+
 	return isTyped ? [`${prefix}ts`] : [`${prefix}js`, `${prefix}ts`];
 }
 
@@ -19,15 +21,15 @@ function extensionsJson() {
 	return [`json`, `jsonc`, `json5`];
 }
 
-function extensionsStorybook({ isTyped }) {
+function extensionsStorybook(isTyped = false) {
 	return isTyped ? [`stories.ts`] : [`stories.js`, `stories.ts`];
 }
 
-function extensionsUnitTests({ isTyped }) {
+function extensionsUnitTests(isTyped = false) {
 	return isTyped ? [`test.ts`] : [`test.js`, `test.ts`];
 }
 
-function extensionsE2ETests({ isTyped }) {
+function extensionsE2ETests(isTyped = false) {
 	return isTyped ? [`test.ts`] : [`test.js`, `test.ts`];
 }
 
@@ -49,24 +51,26 @@ function extensionsSvelte() {
 
 function patternsJavascript() {
 	return [
-		...matchAll(extensionsModule({ isEsm: true, isTyped: false })),
-		...matchAll(extensionsModule({ isEsm: false, isTyped: false })),
-		...matchAll(extensionsReact({ isTyped: false })),
-		...matchAll(extensionsStorybook({ isTyped: false })),
-		...matchAll(extensionsUnitTests({ isTyped: false })),
-		...matchAll(extensionsE2ETests({ isTyped: false })),
+		...matchAll(extensionsModule(true)),
+		...matchAll(extensionsModule(false)),
+		...matchAll(extensionsReact()),
+		...matchAll(extensionsStorybook()),
+		...matchAll(extensionsUnitTests()),
+		...matchAll(extensionsE2ETests()),
 		...matchAll(extensionsJavascript()),
 		...matchAll(extensionsSvelte()),
 		...matchAll(extensionsTypescript()),
 	];
 }
 
-function patternsTypescript() {
+function patternsTypescriptOnly() {
 	return [
-		...matchAll(extensionsReact({ isTyped: true })),
-		...matchAll(extensionsStorybook({ isTyped: true })),
-		...matchAll(extensionsUnitTests({ isTyped: true })),
-		...matchAll(extensionsE2ETests({ isTyped: true })),
+		...matchAll(extensionsModule(true, true)),
+		...matchAll(extensionsModule(false, true)),
+		...matchAll(extensionsReact(true)),
+		...matchAll(extensionsStorybook(true)),
+		...matchAll(extensionsUnitTests(true)),
+		...matchAll(extensionsE2ETests(true)),
 		...matchAll(extensionsSvelte()),
 		...matchAll(extensionsTypescript()),
 	];
@@ -76,7 +80,7 @@ function patternsTailwind() {
 	return [
 		...matchAll(extensionsJavascript()),
 		...matchAll(extensionsTypescript()),
-		...matchAll(extensionsReact({ isTyped: false })),
+		...matchAll(extensionsReact()),
 	];
 }
 
@@ -91,5 +95,5 @@ module.exports = {
 	matchAll,
 	patternsJavascript,
 	patternsTailwind,
-	patternsTypescript,
+	patternsTypescriptOnly,
 };

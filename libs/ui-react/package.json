@@ -1,17 +1,22 @@
 {
 	"devDependencies": {
 		"@types/react": "^18.0.22",
+		"@vitejs/plugin-react-swc": "latest",
 		"@web/eslint-config-based": "workspace:^",
 		"@web/tsconfig": "workspace:^",
 		"clsx": "latest",
 		"eslint": "latest",
+		"framer-motion": "latest",
 		"react": "^18.2.0",
-		"typescript": "latest"
+		"typescript": "latest",
+		"vite": "latest",
+		"vite-plugin-svgr": "latest"
 	},
 	"license": "MIT",
 	"main": "./index.ts",
 	"name": "@web/ui-react",
 	"scripts": {
+		"dev": "vite",
 		"lint": "eslint \"**/*.ts*\""
 	},
 	"types": "./index.ts",

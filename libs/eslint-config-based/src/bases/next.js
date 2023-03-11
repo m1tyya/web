@@ -9,6 +9,12 @@ const next = defineConfig({
 				'import/no-default-export': `off`,
 			},
 		},
+		{
+			files: [`_app.tsx`, `_app.jsx`],
+			rules: {
+				'@typescript-eslint/quotes': [`warn`, `single`],
+			},
+		},
 	],
 });
 

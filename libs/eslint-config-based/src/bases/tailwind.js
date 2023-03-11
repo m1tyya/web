@@ -1,4 +1,4 @@
-const { patternsTailwind } = require('../utils/get-file-patterns');
+const { patternsTailwind } = require(`../utils/get-file-patterns`);
 
 const { defineConfig } = require(`eslint-define-config`);
 
@@ -11,7 +11,7 @@ const tailwind = defineConfig({
 				'tailwindcss/classnames-order': `warn`,
 				'tailwindcss/enforces-negative-arbitrary-values': `warn`,
 				'tailwindcss/enforces-shorthand': `warn`,
-				'tailwindcss/no-custom-classname': `warn`,
+				// 'tailwindcss/no-custom-classname': `warn`,
 			},
 		},
 	],

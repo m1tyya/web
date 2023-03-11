@@ -3,5 +3,5 @@
 	"compilerOptions": {
 		"noEmit": true
 	},
-	"include": ["*.json", ".eslintrc.cjs", "*.ts", "*.js"]
+	"include": ["*.json", ".eslintrc.cjs", "*.ts", "*.js", "src", "index.html"]
 }
