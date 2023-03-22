@@ -1,7 +1,6 @@
 const { defineConfig } = require(`eslint-define-config`);
-const { extensionsJson, matchAll } = require(`../utils/get-file-patterns`);
 
-const functional = defineConfig({
+module.exports = defineConfig({
 	overrides: [
 		{
 			files: [`package.json`],
@@ -13,5 +12,3 @@ const functional = defineConfig({
 		},
 	],
 });
-
-module.exports = functional;

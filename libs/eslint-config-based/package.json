@@ -57,6 +57,7 @@
 		"./next": "./src/bases/next.js",
 		"./package-json": "./src/bases/package-json.js",
 		"./playwright": "./src/bases/playwright.js",
+		"./project": "./src/bases/project.js",
 		"./react": "./src/bases/react.js",
 		"./regex": "./src/bases/regex.js",
 		"./storybook": "./src/bases/storybook.js",

@@ -1,12 +1,14 @@
-const { extensionsHtml, matchAll } = require(`../utils/get-file-patterns`);
+const { extensionsHtml, matchAll } = require(`../utils/get-file-patterns`),
+	{ defineConfig } = require(`eslint-define-config`);
 
-const { defineConfig } = require(`eslint-define-config`);
-
-const html = defineConfig({
+module.exports = defineConfig({
 	overrides: [
 		{
 			files: matchAll(extensionsHtml()),
 			parser: `@html-eslint/parser`,
+			parserOptions: {
+				extraFileExtensions: [`.svg`],
+			},
 			plugins: [`@html-eslint`],
 			rules: {
 				'@html-eslint/id-naming-convention': [`warn`, `kebab-case`],
@@ -18,5 +20,3 @@ const html = defineConfig({
 		},
 	],
 });
-
-module.exports = html;

@@ -1,6 +1,6 @@
 const { defineConfig } = require(`eslint-define-config`);
 
-const next = defineConfig({
+module.exports = defineConfig({
 	overrides: [
 		{
 			files: [`./src/pages/*`],
@@ -10,12 +10,11 @@ const next = defineConfig({
 			},
 		},
 		{
-			files: [`_app.tsx`, `_app.jsx`],
+			files: [`_app.tsx`, `_app.jsx`, `_document.tsx`, `_document.jsx`],
 			rules: {
 				'@typescript-eslint/quotes': [`warn`, `single`],
+				'one-var': `off`,
 			},
 		},
 	],
 });
-
-module.exports = next;

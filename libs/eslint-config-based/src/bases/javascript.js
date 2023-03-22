@@ -22,7 +22,7 @@ module.exports = defineConfig({
 			rules: {
 				'arrow-body-style': [`warn`, `as-needed`],
 				'autofix/eqeqeq': [`warn`, `smart`],
-				'autofix/no-confusing-arrow': `warn`,
+				// 'autofix/no-confusing-arrow': `warn`,
 				'autofix/prefer-destructuring': [
 					`warn`,
 					{
@@ -52,7 +52,8 @@ module.exports = defineConfig({
 				'no-useless-escape': `warn`,
 				'no-var': `warn`,
 				'object-shorthand': `warn`,
-				'one-var': `warn`,
+				'one-var': [`warn`, `consecutive`],
+				'one-var-declaration-per-line': [`warn`, `always`],
 				'prefer-arrow-callback': `warn`,
 				'prefer-const': `warn`,
 				'prefer-exponentiation-operator': `warn`,
@@ -81,7 +82,6 @@ module.exports = defineConfig({
 						markers: [`/`],
 					},
 				],
-				'unicorn/consistent-destructuring': `warn`,
 				'unicorn/consistent-function-scoping': `warn`,
 				'unicorn/custom-error-definition': `warn`,
 				'unicorn/error-message': `warn`,

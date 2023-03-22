@@ -14,7 +14,6 @@ const { defineConfig } = require(`eslint-define-config`),
 							default: `generic`,
 						},
 					],
-
 					'@typescript-eslint/ban-ts-comment': `warn`,
 					'@typescript-eslint/ban-types': `warn`,
 					'@typescript-eslint/class-literal-property-style': `warn`,
@@ -40,6 +39,49 @@ const { defineConfig } = require(`eslint-define-config`),
 					],
 					'@typescript-eslint/explicit-member-accessibility': `warn`,
 					'@typescript-eslint/method-signature-style': [`warn`, `property`],
+					'@typescript-eslint/naming-convention': [
+						`warn`,
+						{
+							format: [`snake_case`],
+							selector: [`default`],
+						},
+						{
+							format: [`snake_case`],
+							selector: `objectLiteralMethod`,
+						},
+						{
+							format: [`snake_case`],
+							prefix: [`is_`, `has_`, `can_`],
+							selector: [`variableLike`],
+							types: [`boolean`],
+						},
+						{
+							format: [`UPPER_CASE`, `snake_case`],
+							modifiers: [`const`],
+							selector: `variable`,
+						},
+						{
+							format: [`StrictPascalCase`],
+							selector: `typeLike`,
+						},
+						{
+							format: [`StrictPascalCase`, `snake_case`],
+							selector: [`function`],
+						},
+						{
+							format: null,
+							selector: `objectLiteralProperty`,
+						},
+						{
+							format: [`UPPER_CASE`],
+							selector: [`enum`],
+						},
+						{
+							format: [`snake_case`],
+							modifiers: [`destructured`],
+							selector: [`default`],
+						},
+					],
 					'@typescript-eslint/no-base-to-string': `warn`,
 					'@typescript-eslint/no-confusing-non-null-assertion': `warn`,
 					'@typescript-eslint/no-confusing-void-expression': `warn`,

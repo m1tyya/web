@@ -14,16 +14,7 @@ module.exports = defineConfig({
 			},
 			plugins: [`react-hooks`, `react`, `sort-react-dependency-arrays`, `jsx-a11y`, `react-perf`],
 			rules: {
-				'react/boolean-prop-naming': [
-					`warn`,
-					{
-						message: `Use 'has' or 'is' before boolean prop name.`,
-						propTypeNames: [`boolean`],
-						validateNested: true,
-					},
-				],
 				'react/button-has-type': `warn`,
-				'react/destructuring-assignment': [`warn`, `always`],
 				'react/function-component-definition': [
 					`warn`,
 					{
@@ -31,7 +22,7 @@ module.exports = defineConfig({
 					},
 				],
 				'react/hook-use-state': `warn`,
-				'react/jsx-boolean-value': [`warn`, `always`],
+				'react/jsx-boolean-value': [`warn`, `never`],
 				'react/jsx-fragments': [`warn`, `syntax`],
 				'react/jsx-handler-names': `warn`,
 				'react/jsx-key': `warn`,
