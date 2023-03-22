@@ -2,12 +2,11 @@ import clsx from 'clsx';
 import { type PropsWithChildren } from 'react';
 
 type PageProps = PropsWithChildren & {
-	bgColor?: string;
-	isModalOpen: boolean;
+	background_color?: string;
 };
 
-export function Page({ bgColor = `transparent`, children, isModalOpen }: PageProps): JSX.Element {
-	const pageStyles = clsx(`bg-[${bgColor}] relative min-h-screen`);
+export function Page({ background_color = `transparent`, children }: PageProps): JSX.Element {
+	const page_styles = clsx(`bg-${background_color} relative min-h-screen`);
 
-	return <div className={clsx(pageStyles)}>{children}</div>;
+	return <div className={clsx(page_styles)}>{children}</div>;
 }

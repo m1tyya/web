@@ -1,11 +1,18 @@
-import NextLink from 'next/link';
-import { PropsWithChildren } from 'react';
-import { type URL } from 'url';
+import { type URL } from 'node:url';
 
-type Props = PropsWithChildren & {
-	url: URL;
+import { type PropsWithChildren } from 'react';
+
+export type LinkProps = PropsWithChildren & {
+	styles?: string;
+	url: URL | string;
 };
 
-export function Link({ children, url }: Props) {
-	return <NextLink href={url.href}>{children}</NextLink>;
+export function Link({ children, styles, url }: LinkProps): JSX.Element {
+	const href = typeof url === `string` ? url : url.href;
+
+	return (
+		<a className={styles} href={href}>
+			{children}
+		</a>
+	);
 }

@@ -1,24 +1,37 @@
 {
 	"devDependencies": {
+		"@types/eslint": "latest",
+		"@types/node": "^18.15.5",
 		"@types/react": "^18.0.22",
+		"@types/react-dom": "latest",
 		"@vitejs/plugin-react-swc": "latest",
 		"@web/eslint-config-based": "workspace:^",
 		"@web/tsconfig": "workspace:^",
 		"clsx": "latest",
 		"eslint": "latest",
 		"framer-motion": "latest",
-		"react": "^18.2.0",
 		"typescript": "latest",
 		"vite": "latest",
-		"vite-plugin-svgr": "latest"
+		"vite-plugin-dts": "latest",
+		"vite-plugin-svgr": "latest",
+		"vite-tsconfig-paths": "latest"
 	},
+	"peerDependencies": {
+		"react": "*",
+		"react-dom": "*"
+	},
+	"files": [
+		"dist"
+	],
 	"license": "MIT",
-	"main": "./index.ts",
+	"main": "./dist/index.es.js",
 	"name": "@web/ui-react",
 	"scripts": {
+		"build:ui-react": "tsc && vite build",
 		"dev": "vite",
 		"lint": "eslint \"**/*.ts*\""
 	},
-	"types": "./index.ts",
+	"type": "module",
+	"types": "./dist/index.d.ts",
 	"version": "0.1.0"
 }

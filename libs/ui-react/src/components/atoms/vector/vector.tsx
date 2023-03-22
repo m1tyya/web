@@ -1,44 +1,58 @@
 import clsx from 'clsx';
 import { motion, type MotionProps } from 'framer-motion';
-import React from 'react';
+import React, { memo } from 'react';
 
-type SVGRProps = {
+import { type Dimension } from '~';
+
+type SvgrProps = {
 	desc?: string;
 	title?: string;
 };
 
-type VectorProps = SVGRProps & {
+export type VectorProps = SvgrProps & {
 	animation?: MotionProps;
-	onClick?: () => void;
+	dimension: Dimension;
+	dimension_value: string;
+	on_click?: () => void;
+	position?: string;
 	props?: React.SVGProps<SVGSVGElement>;
-	Svg: React.FC<React.SVGProps<SVGSVGElement> & SVGRProps>;
-	width: number;
-	zIndex?: number;
+	Svg: React.FC<React.SVGProps<SVGSVGElement> & SvgrProps>;
+	z_index?: number;
 };
 
-export function Vector({
-	animation,
-	desc,
-	onClick,
-	props,
-	Svg,
-	title,
-	width,
-	zIndex,
-}: VectorProps): JSX.Element {
-	return (
-		<motion.div
-			onClick={onClick}
-			{...animation}
-			className={clsx(`z-[${zIndex ?? `auto`}] w-[${width}px] duration-1000 hover:scale-105`)}>
-			<Svg
-				desc={desc}
-				fontSize={width}
-				role='img'
-				title={title}
-				{...props}
-				preserveAspectRatio='xMidYMid meet'
-			/>
-		</motion.div>
-	);
-}
+export const Vector = memo(
+	({
+		animation,
+		desc,
+		dimension,
+		dimension_value,
+		on_click,
+		position,
+		props,
+		Svg,
+		title,
+		z_index,
+	}: VectorProps): JSX.Element => {
+		const vector_styles = clsx(
+			position,
+			`z-${z_index === undefined ? `` : z_index}
+			w-${dimension === `width` ? dimension_value : `auto`}
+			h-${dimension === `height` ? dimension_value : `auto`}`,
+		);
+
+		return (
+			<motion.div onClick={on_click} {...animation} className={vector_styles}>
+				<Svg
+					desc={desc}
+					fontSize={dimension_value}
+					height={dimension === `height` ? dimension_value : `auto`}
+					role='img'
+					title={title}
+					width={dimension === `width` ? dimension_value : `auto`}
+					{...props}
+					preserveAspectRatio='xMidYMid meet'
+				/>
+			</motion.div>
+		);
+	},
+);

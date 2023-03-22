@@ -1,24 +1,75 @@
 import { clsx } from 'clsx';
+import { motion, type MotionProps } from 'framer-motion';
+import { memo, type PropsWithChildren } from 'react';
 
-type ContainerProps = {
-	children: React.ReactNode;
-	paddingX: 'lg' | 'md' | 'sm';
-	paddingY?: 'lg' | 'md' | 'sm';
-};
+import { type BlockElement, type Display, type Padding, type Position } from '~';
 
-export function Container({ children, paddingX, paddingY }: ContainerProps): JSX.Element {
-	const containerStyles = clsx(
-		{
-			'px-3': paddingX === `sm`,
-			'px-6': paddingX === `md`,
-			'px-9': paddingX === `lg`,
-		},
-		{
-			'py-3': paddingY === `sm`,
-			'py-6': paddingY === `md`,
-			'py-9': paddingY === `lg`,
-		},
-	);
+type ContainerProps = Padding &
+	PropsWithChildren & {
+		animation?: MotionProps;
+		background_color?: string;
+		display?: Display;
+		layout?: string;
+		position?: Position;
+		tag: BlockElement;
+		z_index?: string;
+	};
 
-	return <div className={clsx(containerStyles)}>{children}</div>;
-}
+export const Container = memo(
+	({
+		animation,
+		background_color,
+		children,
+		display,
+		layout,
+		padding,
+		padding_bottom,
+		padding_left,
+		padding_right,
+		padding_top,
+		padding_x,
+		padding_y,
+		position,
+		tag = `div`,
+		z_index,
+	}: ContainerProps): JSX.Element => {
+		const CONTAINER_STYLES = clsx(
+			((): string | undefined => {
+				if (padding_x !== undefined) {
+					return `px-${padding_x}`;
+				} else if (padding_y !== undefined) {
+					return `py-${padding_y}`;
+				} else if (padding_top !== undefined) {
+					return `pb-${padding_bottom} pt-${padding_top} pl-${padding_left} pr-${padding_right}`;
+				} else if (padding === undefined) {
+					return undefined;
+				} else if (typeof padding === `string`) {
+					return `p-${padding}`;
+				} else {
+					switch (padding.length) {
+						case 2: {
+							return `py-${padding[0]} px-${padding[1]}`;
+						}
+						case 3: {
+							return `pt-${padding[0]} px-${padding[1]} pb-${padding[2]}`;
+						}
+						case 4: {
+							return `pt-${padding[0]} pr-${padding[1]} pb-${padding[2]} pl-${padding[3]}`;
+						}
+					}
+				}
+			})(),
+			background_color === undefined ? undefined : `bg-${background_color}`,
+			position === undefined ? undefined : `${position}`,
+			layout === undefined ? undefined : `${layout}`,
+			display === undefined ? undefined : `${display}`,
+			z_index === undefined ? undefined : `z-${z_index}`,
+		);
+
+		return (
+			<motion.div {...animation} className={CONTAINER_STYLES}>
+				{children}
+			</motion.div>
+		);
+	},
+);

@@ -1,6 +1,17 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"exclude": ["build", "dist", "node_modules"],
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@web/ui-react": ["src/index.ts"],
+			"~": ["src"],
+			"~/*": ["src/*"]
+		},
+		"jsx": "react-jsx",
+		"noEmit": true,
+		"typeRoots": ["node_modules/@types", "src/index.d.ts"]
+	},
 	"extends": "@web/tsconfig/base",
-	"include": ["./src"]
+	"include": ["src"]
 }
