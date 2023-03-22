@@ -2,10 +2,12 @@ import install from '@twind/with-next/document';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
-	override render(): JSX.Element {
+	public override render(): JSX.Element {
 		return (
 			<Html>
-				<Head />
+				<Head>
+					<link href='/favicon.svg' rel='icon' type='image/svg+xml' />
+				</Head>
 				<body>
 					<Main />
 					<NextScript />

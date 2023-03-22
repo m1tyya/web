@@ -9,6 +9,10 @@ export default {
 			},
 		],
 	},
+	i18n: {
+		defaultLocale: `pl`,
+		locales: [`pl`],
+	},
 	reactStrictMode: true,
 	swcMinify: true,
 	transpilePackages: [`@web/eslint-config-based`, `@web/ui-react`, `@web/tsconfig`],
