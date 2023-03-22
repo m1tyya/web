@@ -1,11 +1,11 @@
 import install from '@twind/with-next/app';
-import type { AppProps } from 'next/app';
+import { type AppProps } from 'next/app';
 import { Syne } from 'next/font/google';
 import localFont from 'next/font/local';
 
 import config from '../../twind.config';
 
-export const adeDisplay = localFont({
+export const ade_display = localFont({
 	src: '../../public/fonts/ade-display.woff2',
 	variable: '--font-ade-display',
 });

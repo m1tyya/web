@@ -14,6 +14,7 @@
 		"@testing-library/svelte": "latest",
 		"@tsconfig/svelte": "latest",
 		"@types/color": "^3.0.3",
+		"@web/tsconfig": "workspace:^",
 		"autoprefixer": "^10.4.13",
 		"color": "^4.2.3",
 		"eslint-plugin-svelte": "^2.19.1",

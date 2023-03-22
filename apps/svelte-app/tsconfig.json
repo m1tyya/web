@@ -3,6 +3,6 @@
 		"outDir": "./dist/"
 	},
 	"exclude": ["./dist/"],
-	"extends": "../../tsconfig.json",
+	"extends": "@web/tsconfig/base",
 	"include": [".storybook/*", "src/*"]
 }
