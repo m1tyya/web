@@ -1,5 +1,0 @@
-{
-	"extends": "@web/tsconfig/eslint",
-	"include": ["*.json", "*.ts", "*.js", ".eslintrc.cjs"],
-	"exclude": ["apps", "libs"]
-}

@@ -1,11 +1,11 @@
-const {defineConfig} = require('eslint-define-config');
+const { defineConfig } = require(`eslint-define-config`);
 
 module.exports = defineConfig({
-	extends: ['@web/eslint-config-based'],
-	ignorePatterns: ['apps', 'libs'],
-	parserOptions: {   
+	extends: [`@web/eslint-config-based`],
+	ignorePatterns: [`apps`, `libs`],
+	parserOptions: {
+		project: [`tsconfig.eslint.json`],
 		tsconfigRootDir: __dirname,
-		project: ['tsconfig.eslint.json'],
 	},
 	root: true,
 });

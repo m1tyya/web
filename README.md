@@ -1,6 +1,6 @@
 # Monorepo for web projects
 
-Monorepo build with Yarn Workspaces and Turbo
+Monorepo build with PNPM Workspaces and Turbo
 
 ## What's inside
 

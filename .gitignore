@@ -7,11 +7,6 @@ coverage
 **/build
 **/dist
 
-.yarn/install-state.gz
-**/.yarn/install-state.gz
-.yarn/**
-**/.yarn/**
-
 **/.svelte-kit/
 
 # misc
@@ -20,8 +15,6 @@ coverage
 
 # debug
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
@@ -32,4 +25,5 @@ yarn-error.log*
 
 # turbo
 .turbo
-.yarn/install-state.gz
+
+/apps/playground/
