@@ -1,8 +1,0 @@
-{
-	"compilerOptions": {
-		"outDir": "./dist/"
-	},
-	"exclude": ["./dist/"],
-	"extends": "@web/tsconfig/base",
-	"include": [".storybook/*", "src/*"]
-}
