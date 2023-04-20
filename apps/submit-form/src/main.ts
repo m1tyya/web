@@ -2,7 +2,9 @@ import './styles.css';
 
 const form = document.getElementById(`sign_up`) as HTMLFormElement,
 	f_name = document.getElementById(`f_name`) as HTMLInputElement,
-	birth_date_picker = document.getElementById(`birth_date`) as HTMLInputElement,
+	l_name = document.getElementById(`l_name`) as HTMLInputElement,
+	birth_date = document.getElementById(`birth_date`) as HTMLInputElement,
+	email = document.getElementById(`email`) as HTMLInputElement,
 	password = document.getElementById(`password`) as HTMLInputElement,
 	password_visibility_toggle = document.getElementById(`password_toggle`) as HTMLImageElement,
 	password_confirmation = document.getElementById(`password_confirmation`) as HTMLInputElement,
@@ -11,9 +13,25 @@ const form = document.getElementById(`sign_up`) as HTMLFormElement,
 	) as HTMLImageElement,
 	submit_btn = document.getElementById(`submit_btn`) as HTMLButtonElement;
 
+f_name.addEventListener(`input`, () => {
+	remove_input_error(`f_name`);
+});
+
+l_name.addEventListener(`input`, () => {
+	remove_input_error(`l_name`);
+});
+
+birth_date.addEventListener(`input`, () => {
+	remove_input_error(`birth_date`);
+});
+
+email.addEventListener(`input`, () => {
+	remove_input_error(`email`);
+});
+
 const password_patterns = new Set<RegExp>();
 
-birth_date_picker.max = new Date().toLocaleDateString(`fr-ca`);
+birth_date.max = new Date().toLocaleDateString(`fr-ca`);
 
 password_patterns.add(/^.{8,}$/);
 password_patterns.add(/(?=.*[A-Z])/);
@@ -61,28 +79,27 @@ password_confirmation_visibility_toggle.addEventListener(`click`, () => {
 	toggle_password(`password_confirmation`);
 });
 
-submit_btn.addEventListener(`submit`, () => {
+submit_btn.addEventListener(`click`, () => {
 	validate_input_text(`f_name`, `Fill in first name`);
-});
-
-f_name.minLength = 2;
-f_name.maxLength = 25;
-f_name.required = true;
-
-f_name.addEventListener(`input`, (e) => {
-	console.log(f_name.validationMessage);
+	validate_input_text(`l_name`, `Fill in last name`);
+	validate_input_date();
+	validate_email();
 });
 
 function verify_same_passwords(): void {
-	const current_input_password = document.getElementById(`password`) as HTMLInputElement;
-	const current_input_password_confirmation = document.getElementById(
-		`password_confirmation`,
-	) as HTMLInputElement;
+	const current_input_password = document.getElementById(`password`) as HTMLInputElement,
+		current_input_password_confirmation = document.getElementById(
+			`password_confirmation`,
+		) as HTMLInputElement,
+		input_password_confirmation_error = document.getElementById(
+			`password_confirmation_error`,
+		) as HTMLParagraphElement;
 
 	const is_same_password =
 		current_input_password.value == current_input_password_confirmation.value;
 
-	password_confirmation.setCustomValidity(is_same_password ? `` : `Password is not the same.`);
+	password_confirmation.setCustomValidity(is_same_password ? `` : `Passwords do not match`);
+	input_password_confirmation_error.innerText = password_confirmation.validationMessage;
 }
 
 function handle_submit(event: Event): void {
@@ -123,6 +140,43 @@ function validate_input_text(id: string, message_empty: string): void {
 	const error = document.getElementById(`${id}_error`) as HTMLParagraphElement;
 
 	error.innerText = input.validationMessage;
+}
+
+function validate_input_date(): void {
+	const input = document.getElementById(`birth_date`) as HTMLInputElement;
+
+	if (input.validity.rangeOverflow) {
+		input.setCustomValidity(`No time machine!`);
+	} else if (input.validity.valueMissing) {
+		input.setCustomValidity(`Fill in your birth date`);
+	} else {
+		input.setCustomValidity(``);
+	}
+
+	const error = document.getElementById(`birth_date_error`) as HTMLParagraphElement;
+
+	error.innerText = input.validationMessage;
+}
+
+function validate_email(): void {
+	const input = document.getElementById(`email`) as HTMLInputElement;
+
+	if (input.validity.typeMismatch) {
+		input.setCustomValidity(`Enter email in a correct format`);
+	} else if (input.validity.valueMissing) {
+		input.setCustomValidity(`Fill in your email`);
+	} else {
+		input.setCustomValidity(``);
+	}
+
+	const error = document.getElementById(`email_error`) as HTMLParagraphElement;
+
+	error.innerText = input.validationMessage;
+}
+
+function remove_input_error(id: string): void {
+	const error = document.getElementById(`${id}_error`) as HTMLButtonElement;
+	error.innerText = ``;
 }
 
 function toggle_password(element_id: string): void {

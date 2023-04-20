@@ -29,6 +29,9 @@
 								class='input_wrapper'
 								id='f_name'
 								type='text'
+								required
+								minlength='2'
+								maxlength='25'
 							/>
 						</div>
 						<p class='error mt-[0.1rem]' id='f_name_error'></p>
@@ -129,6 +132,7 @@
 							/>
 							<img id='password_confirmation_toggle' src='/icons/password_show.svg' class='icon h-[80%] mt-[3px] cursor-pointer' />
 						</div>
+						<p class='error' id='password_confirmation_error'></p>
 					</div>
 				</div>
 				<button class='btn' id='submit_btn' type='submit'>Sign up</button>
