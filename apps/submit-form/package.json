@@ -9,8 +9,8 @@
 	},
 	"devDependencies": {
 		"@types/eslint": "latest",
-		"@web/eslint-config-based": "*",
-		"@web/tsconfig": "*",
+		"@web/eslint-config-based": "workspace:*",
+		"@web/tsconfig": "workspace:*",
 		"autoprefixer": "latest",
 		"eslint": "latest",
 		"eslint-define-config": "latest",
