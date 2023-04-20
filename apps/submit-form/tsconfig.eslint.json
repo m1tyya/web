@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": false,
+		"isolatedModules": true,
+		"noEmit": true
+	},
+	"extends": "@web/tsconfig/eslint",
+	"include": [
+		".eslintrc.cjs",
+		"index.html",
+		"package.json",
+		"postcss.config.cjs",
+		"src",
+		"tailwind.config.cjs",
+		"tsconfig.eslint.json",
+		"tsconfig.json",
+		"vite.config.ts"
+	]
+}

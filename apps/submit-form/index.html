@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+		<title>Submit Form</title>
+	</head>
+	<body>
+		<main
+			class='bg-[#f6f6f6] w-screen min-h-screen py-[10vh] md:justify-center flex flex-col items-center'
+		>
+			<form
+				class='flex flex-col gap-2 md:gap-4 [&>div]:gap-2 md:[&>div]:gap-4 [&>label]:text-xl w-[60%] max-w-[36rem]'
+				id='sign_up'
+			>
+				<div class='flex flex-col md:flex-row'>
+					<div class='w-full'>
+						<label for='f_name'
+						>First Name <span class='text-red-500'>*</span></label
+						>
+						<div class='input_wrapper'>
+							<img src='/icons/person.svg' class='icon' />
+							<input
+								class='input'
+								name='f_name'
+								placeholder='John'
+								aria-required='true'
+								class='input_wrapper'
+								id='f_name'
+								type='text'
+							/>
+						</div>
+						<p class='error mt-[0.1rem]' id='f_name_error'></p>
+					</div>
+					<div class='w-full'>
+						<label for='l_name'
+						>Family Name <span class='text-red-500'>*</span></label
+						>
+						<div class='input_wrapper'>
+							<img src='/icons/person.svg' class='icon' />
+							<input
+								class='input'
+								name='l_name'
+								placeholder='Doe'
+								aria-required='true'
+								id='l_name'
+								type='text'
+								required
+								minlength='2'
+								maxlength='25'
+							/>
+						</div>
+
+						<p class='error mt-[0.1rem]' id='l_name_error'></p>
+					</div>
+				</div>
+				<div class='flex flex-col md:flex-row'>
+					<div>
+						<label for='birth_date'
+						>Date of Birth <span class='text-red-500'>*</span></label
+						>
+						<input
+							name='birth_date'
+							aria-required='true'
+							class='input_wrapper w-min'
+							id='birth_date'
+							type='date'
+							required
+						/>
+						<p class='error' id='birth_date_error'></p>
+					</div>
+					<div class='w-full'>
+						<label for='email'>Email <span class='text-red-500'>*</span></label>
+						<div class='input_wrapper'>
+							<img src='/icons/email.svg' class='icon mt-[3px]' />
+							<input
+								name='email'
+								placeholder='john@example.com'
+								aria-required='true'
+								class='input'
+								id='email'
+								type='email'
+								required
+							/>
+						</div>
+						<p class='error' id='email_error'></p>
+					</div>
+				</div>
+				<div class='flex flex-col md:flex-row'>
+					<div class='w-full'>
+						<label for='password'
+						>Password <span class='text-red-500'>*</span></label
+						>
+						<div class='input_wrapper'>
+							<input
+								name='password'
+								aria-required='true'
+								class='input'
+								id='password'
+								type='password'
+								required
+							/>
+							<img id='password_toggle' src='/icons/password_show.svg' class='icon h-[80%] mt-[3px] cursor-pointer' />
+						</div>
+						<div class='mt-[0.1rem]'>
+							<p class='error' id='password_validation1'>
+								Minimum 8 characters
+							</p>
+							<p class='error' id='password_validation2'>Minimum 1 uppercase</p>
+							<p class='error' id='password_validation3'>Minimum 1 digit</p>
+							<p class='error' id='password_validation4'>
+								Minimum 1 special symbol (!@#$%)
+							</p>
+						</div>
+					</div>
+					<div class='w-full'>
+						<label for='password_confirmation'
+						>Confirm Password <span class='text-red-500'>*</span></label
+						>
+						<div class='input_wrapper'>
+							<input
+								name='password_confirmation'
+								aria-required='true'
+								class='input'
+								id='password_confirmation'
+								type='password'
+								required
+							/>
+							<img id='password_confirmation_toggle' src='/icons/password_show.svg' class='icon h-[80%] mt-[3px] cursor-pointer' />
+						</div>
+					</div>
+				</div>
+				<button class='btn' id='submit_btn' type='submit'>Sign up</button>
+			</form>
+		</main>
+		<script type='module' src='/src/main.ts'></script>
+	</body>
+</html>

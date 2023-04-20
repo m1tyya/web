@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": false,
+		"isolatedModules": true,
+		"noEmit": true
+	},
+	"extends": "@web/tsconfig/base",
+	"include": ["src"]
+}

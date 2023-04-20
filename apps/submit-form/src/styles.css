@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	input, label {
+		display: block;
+	}
+
+	*:focus {
+		outline: none;
+	}
+}
+
+@layer components {
+	  
+	  p * {
+		display: block;
+	  }
+
+	  input {
+		display: block;
+	  }
+	  
+	  /* This is our style for the invalid fields */
+	  
+	  input:invalid:focus {
+		outline: none;
+	  }
+
+	  .input_wrapper {
+		@apply h-10 flex items-center gap-2 w-full border-[#e3e3e3] border-2 rounded-lg px-3 invalid:focus:border-[#f96c74] py-[0.5rem] leading-none caret-gray-600 bg-white;
+	  }
+
+	  .icon {
+		@apply w-auto h-[70%];
+	  }
+
+	  .input {
+		@apply w-full;
+	  }
+
+	  .error {
+		@apply text-[.8rem] leading-snug text-red-500 pl-2;
+	  }
+
+	  .btn {
+		@apply rounded-xl w-full md:w-[70%] mx-auto mt-6 hover:text-white bg-white hover:bg-black border-black border-2 py-2 transition-all duration-300;
+	  }
+	  
+}
