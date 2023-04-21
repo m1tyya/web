@@ -11,10 +11,11 @@
 	</head>
 	<body>
 		<main
-			class='bg-[#f6f6f6] w-screen min-h-screen py-[10vh] md:justify-center flex flex-col items-center'
+			class='bg-light dark:bg-dark w-screen min-h-screen py-[10vh] md:justify-center flex flex-col items-center'
 		>
+			<button id='theme_btn'><input id='toggle' class='toggle' type='checkbox'></button>
 			<form
-				class='flex flex-col gap-2 md:gap-4 [&>div]:gap-2 md:[&>div]:gap-4 [&>label]:text-xl w-[60%] max-w-[36rem]'
+				class='flex flex-col gap-2 md:gap-4 [&>div]:gap-2 md:[&>div]:gap-4 [&>label]:text-xl w-[60%] sm:w-[50%] max-w-[36rem]'
 				id='sign_up'
 			>
 				<div class='flex flex-col md:flex-row'>
@@ -23,7 +24,11 @@
 						>First Name <span class='star'>*</span></label
 						>
 						<div class='input_wrapper'>
-							<img src='/icons/person.svg' class='icon' />
+							<svg class='icon' fill='currentColor' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' viewBox='0 0 512 512'>
+								<path
+									d='M255.4 246.6a119 119 0 0 0 87.1-36.1c24-24 36.2-53.3 36.2-87.2 0-33.9-12.2-63.2-36.2-87.2-24-24-53.3-36.1-87.1-36.1-34 0-63.3 12.2-87.2 36.1S132 89.4 132 123.3c0 33.9 12.2 63.2 36.2 87.2 24 24 53.3 36.1 87.2 36.1zm-66-189.3a89.1 89.1 0 0 1 66-27.3c26 0 47.5 9 66 27.3a89.2 89.2 0 0 1 27.3 66c0 26-9 47.6-27.4 66a89.1 89.1 0 0 1-66 27.3c-26 0-47.5-9-66-27.3a89.1 89.1 0 0 1-27.3-66c0-26 9-47.6 27.4-66zM471 393.7a304.6 304.6 0 0 0-12-64.9 160.6 160.6 0 0 0-13.5-30.3c-5.7-10.2-12.5-19-20.1-26.3a89 89 0 0 0-29-18.2 100.1 100.1 0 0 0-37-6.7c-5.2 0-10.2 2.2-20 8.5a2711 2711 0 0 1-20.9 13.5c-6.7 4.3-15.8 8.3-27 11.9a107.3 107.3 0 0 1-66 0 119.3 119.3 0 0 1-27-12l-21-13.4c-9.7-6.3-14.8-8.5-20-8.5a100 100 0 0 0-37 6.7 88.8 88.8 0 0 0-29 18.2 114.4 114.4 0 0 0-20.1 26.3A161 161 0 0 0 58 328.8a302.5 302.5 0 0 0-12 64.9c-.7 9.8-1 20-1 30.2 0 26.8 8.5 48.4 25.3 64.4 16.5 15.7 38.4 23.7 65 23.7h246.5c26.7 0 48.6-8 65.1-23.7 16.8-16 25.3-37.6 25.3-64.4a494 494 0 0 0-1-30.2zm-44.9 72.8c-11 10.4-25.4 15.5-44.4 15.5H135.3c-19 0-33.4-5-44.4-15.5C80.2 456.3 75 442.4 75 424c0-9.5.3-19 1-28.1A272.3 272.3 0 0 1 86.7 338a131 131 0 0 1 10.9-24.7 84.7 84.7 0 0 1 14.8-19.4 59 59 0 0 1 19.3-12 69 69 0 0 1 23.6-4.5c1 .5 3 1.6 6 3.6l21 13.6c9 5.6 20.4 10.7 34 15.1a137.3 137.3 0 0 0 84.5 0c13.7-4.4 25.1-9.5 34-15.1a2666.1 2666.1 0 0 0 27-17.2 69 69 0 0 1 23.7 4.5 59 59 0 0 1 19.2 12 84.6 84.6 0 0 1 14.9 19.4c4.5 8 8.2 16.3 10.9 24.7a275.2 275.2 0 0 1 10.8 57.8h-.1c.6 9 1 18.5 1 28.1 0 18.5-5.3 32.4-16 42.6zm0 0'
+									data-original='#000000' />
+							</svg>
 							<input
 								class='input'
 								name='f_name'
@@ -46,7 +51,11 @@
 						>Family Name <span class='star'>*</span></label
 						>
 						<div class='input_wrapper'>
-							<img src='/icons/person.svg' class='icon' />
+							<svg class='icon' fill='currentColor' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' viewBox='0 0 512 512'>
+								<path
+									d='M255.4 246.6a119 119 0 0 0 87.1-36.1c24-24 36.2-53.3 36.2-87.2 0-33.9-12.2-63.2-36.2-87.2-24-24-53.3-36.1-87.1-36.1-34 0-63.3 12.2-87.2 36.1S132 89.4 132 123.3c0 33.9 12.2 63.2 36.2 87.2 24 24 53.3 36.1 87.2 36.1zm-66-189.3a89.1 89.1 0 0 1 66-27.3c26 0 47.5 9 66 27.3a89.2 89.2 0 0 1 27.3 66c0 26-9 47.6-27.4 66a89.1 89.1 0 0 1-66 27.3c-26 0-47.5-9-66-27.3a89.1 89.1 0 0 1-27.3-66c0-26 9-47.6 27.4-66zM471 393.7a304.6 304.6 0 0 0-12-64.9 160.6 160.6 0 0 0-13.5-30.3c-5.7-10.2-12.5-19-20.1-26.3a89 89 0 0 0-29-18.2 100.1 100.1 0 0 0-37-6.7c-5.2 0-10.2 2.2-20 8.5a2711 2711 0 0 1-20.9 13.5c-6.7 4.3-15.8 8.3-27 11.9a107.3 107.3 0 0 1-66 0 119.3 119.3 0 0 1-27-12l-21-13.4c-9.7-6.3-14.8-8.5-20-8.5a100 100 0 0 0-37 6.7 88.8 88.8 0 0 0-29 18.2 114.4 114.4 0 0 0-20.1 26.3A161 161 0 0 0 58 328.8a302.5 302.5 0 0 0-12 64.9c-.7 9.8-1 20-1 30.2 0 26.8 8.5 48.4 25.3 64.4 16.5 15.7 38.4 23.7 65 23.7h246.5c26.7 0 48.6-8 65.1-23.7 16.8-16 25.3-37.6 25.3-64.4a494 494 0 0 0-1-30.2zm-44.9 72.8c-11 10.4-25.4 15.5-44.4 15.5H135.3c-19 0-33.4-5-44.4-15.5C80.2 456.3 75 442.4 75 424c0-9.5.3-19 1-28.1A272.3 272.3 0 0 1 86.7 338a131 131 0 0 1 10.9-24.7 84.7 84.7 0 0 1 14.8-19.4 59 59 0 0 1 19.3-12 69 69 0 0 1 23.6-4.5c1 .5 3 1.6 6 3.6l21 13.6c9 5.6 20.4 10.7 34 15.1a137.3 137.3 0 0 0 84.5 0c13.7-4.4 25.1-9.5 34-15.1a2666.1 2666.1 0 0 0 27-17.2 69 69 0 0 1 23.7 4.5 59 59 0 0 1 19.2 12 84.6 84.6 0 0 1 14.9 19.4c4.5 8 8.2 16.3 10.9 24.7a275.2 275.2 0 0 1 10.8 57.8h-.1c.6 9 1 18.5 1 28.1 0 18.5-5.3 32.4-16 42.6zm0 0'
+									data-original='#000000' />
+							</svg>
 							<input
 								class='input'
 								name='l_name'
@@ -67,16 +76,21 @@
 				<div class='flex flex-col md:flex-row'>
 					<div>
 						<label class='label' for='birth_date'
-						>Date of Birth <span class='star'>*</span></label
+						>Year of Birth <span class='star'>*</span></label
 						>
-						<input
-							name='birth_date'
-							aria-required='true'
-							class='input_wrapper w-min'
-							id='birth_date'
-							type='date'
-							required
-						/>
+						<div class='input_wrapper w-fit'>
+							<svg class='icon' fill='currentColor' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' viewBox='0 0 323 323'><path d='M49 323h225c24 0 43-19 43-43V67c0-24-19-43-43-43h-17V12c0-7-5-12-11-12s-12 5-12 12v12H90V12c0-7-6-12-12-12S66 5 66 12v12H49C25 24 6 43 6 67v213c0 24 19 43 43 43zM30 67c0-11 8-19 19-19h17v12c0 6 5 12 12 12s12-6 12-12V48h144v12c0 6 5 12 12 12s11-6 11-12V48h17c11 0 19 8 19 19v35H30zm0 59h263v154c0 11-8 19-19 19H49c-11 0-19-8-19-19z'/></svg>
+							<input
+								name='birth_date'
+								aria-required='true'
+								class='input w-[10ch]'
+								id='birth_date'
+								type='number'
+								min='1900'
+								required
+								value='2000'
+							/>
+						</div>
 						<div class='error_wrapper'>
 							<p class='error' id='birth_date_error'></p>
 						</div>
@@ -84,7 +98,11 @@
 					<div class='w-full'>
 						<label class='label' for='email'>Email <span class='star'>*</span></label>
 						<div class='input_wrapper'>
-							<img src='/icons/email.svg' class='icon mt-[3px]' />
+							<svg class='icon mt-[3px]' fill='currentColor' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' viewBox='0 0 512 512'>
+								<path
+									d='M467 76H45C20 76 0 96 0 121v270c0 25 20 45 45 45h422c25 0 45-20 45-45V121c0-25-20-45-45-45zm-6 30L288 278a45 45 0 0 1-64 0L51 106h410zM30 385V127l130 129L30 385zm21 21 130-129 22 22a75 75 0 0 0 106 0l22-22 130 129H51zm431-21L352 256l130-129v258z'
+									data-original='#000000' />
+							</svg>
 							<input
 								name='email'
 								placeholder='john@example.com'
@@ -114,7 +132,7 @@
 								type='password'
 								required
 							/>
-							<img id='password_toggle' src='/icons/password_show.svg' class='icon h-[80%] mt-[3px] cursor-pointer' />
+							<div id='password_toggle' class='icon_wrapper'></div>
 						</div>
 						<div class='error_wrapper mt-[0.1rem] h-auto' >
 							<p class='error opacity-100' id='password_validation1'>
@@ -140,7 +158,7 @@
 								type='password'
 								required
 							/>
-							<img id='password_confirmation_toggle' src='/icons/password_show.svg' class='icon h-[80%] mt-[3px] cursor-pointer' />
+							<div id='password_confirmation_toggle' class='icon_wrapper'></div>
 						</div>
 						<div class='error_wrapper'>
 							<p class='error opacity-100' id='password_confirmation_error'></p>

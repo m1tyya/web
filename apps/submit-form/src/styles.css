@@ -10,11 +10,50 @@
 	*:focus {
 		outline: none;
 	}
+
+	input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.toggle {
+	--size: 1.5rem;
+	appearance: none;
+	z-index: 1;
+	outline: none;
+	cursor: pointer;
+	pointer-events: none;
+	width: var(--size);
+	height: var(--size);
+	max-height: 60%;
+	max-width: 60%;
+	box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
+	border-radius: 999px;
+	color: #e6e6ff;
+	transition: all 500ms;
+}
+.toggle:checked {
+	--ray-size: calc(var(--size) * -0.4);
+	--offset-orthogonal: calc(var(--size) * 0.65);
+	--offset-diagonal: calc(var(--size) * 0.45);
+	transform: scale(0.75);
+	color: #fa0;
+	box-shadow: inset 0 0 0 var(--size), calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size), var(--offset-orthogonal) 0 0 var(--ray-size), 0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size), 0 var(--offset-orthogonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size), var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size), var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
+}
+
 }
 
 @layer components {
+	#theme_btn {
+		@apply  w-[calc(3rem+1vw)] h-[calc(3rem+1vw)] border-btn_light dark:border-btn_dark bg-btn_light dark:bg-btn_dark rounded-lg md:rounded-xl absolute end-4 top-4 flex justify-center items-center border-2 hover:border-primary dark:hover:border-primary_darker duration-300;
+	}
+
 	  .label {
-		@apply font-label text-[clamp(.9rem,1.6vw,1rem)] tracking-tight ml-1;
+		@apply font-label text-[clamp(.9rem,1.6vw,1rem)] tracking-tight ml-1 dark:text-dark;
 	  }
 
 	  .star {
@@ -22,15 +61,19 @@
 	  }
 
 	  .input_wrapper {
-		@apply h-10 flex items-center gap-2 w-full border-[#e3e3e3] focus:border-[#2A73A3] focus-within:border-[#2A73A3] border-2 rounded-lg px-3 py-[0.5rem] leading-none caret-gray-600 bg-white duration-[250ms];
+		@apply h-10 flex items-center gap-2 w-full border-light dark:border-dark focus-within:border-primary_darker dark:focus-within:border-primary border-2 rounded-lg px-3 py-[0.5rem] leading-none caret-gray-600 bg-white dark:bg-dark duration-[250ms];
+	  }
+
+	  .icon_wrapper {
+		@apply w-4 h-auto cursor-pointer;
 	  }
 
 	  .icon {
-		@apply w-auto h-[70%];
+		@apply w-auto h-[80%] dark:fill-white;
 	  }
 
 	  .input {
-		@apply w-full;
+		@apply w-full bg-inherit text-light dark:text-dark placeholder:text-placeholder_light dark:placeholder:text-placeholder_dark;
 	  }
 
 	  .error_wrapper {
@@ -42,7 +85,7 @@
 	  }
 
 	  .btn {
-		@apply rounded-xl w-full md:w-[70%] mx-auto mt-6 hover:text-white bg-white hover:bg-black border-black border-2 py-2 transition-all duration-300;
+		@apply rounded-xl w-full md:w-[70%] mx-auto mt-6 hover:text-white dark:text-dark bg-white hover:bg-black dark:bg-primary dark:hover:bg-primary_brighter border-black border-2 py-2 transition-all duration-300;
 	  }
 	  
 }

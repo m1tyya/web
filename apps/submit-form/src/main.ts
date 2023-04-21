@@ -2,12 +2,18 @@ import './styles.css';
 
 import colors from 'tailwindcss/colors';
 
-const form = document.getElementById(`sign_up`) as HTMLFormElement,
+const theme_toggle_btn = document.getElementById(`theme_btn`) as HTMLButtonElement,
+	theme_icon = document.getElementById(`toggle`) as HTMLInputElement,
+	form = document.getElementById(`sign_up`) as HTMLFormElement,
 	input_boxes = document.querySelectorAll(`.input_wrapper`),
 	f_name = document.getElementById(`f_name`) as HTMLInputElement,
 	l_name = document.getElementById(`l_name`) as HTMLInputElement,
 	birth_date = document.getElementById(`birth_date`) as HTMLInputElement,
 	email = document.getElementById(`email`) as HTMLInputElement,
+	password_icon = document.getElementById(`password_toggle`) as HTMLElement & SVGElement,
+	password_confirmation_icon = document.getElementById(
+		`password_confirmation_toggle`,
+	) as HTMLElement & SVGElement,
 	password = document.getElementById(`password`) as HTMLInputElement,
 	password_visibility_toggle = document.getElementById(`password_toggle`) as HTMLImageElement,
 	password_confirmation = document.getElementById(`password_confirmation`) as HTMLInputElement,
@@ -15,6 +21,11 @@ const form = document.getElementById(`sign_up`) as HTMLFormElement,
 		`password_confirmation_toggle`,
 	) as HTMLImageElement,
 	submit_btn = document.getElementById(`submit_btn`) as HTMLButtonElement;
+
+set_theme();
+theme_toggle_btn.addEventListener(`click`, () => {
+	set_theme(!is_theme_dark());
+});
 
 form.addEventListener(`submit`, handle_submit);
 
@@ -40,7 +51,7 @@ l_name.addEventListener(`invalid`, (e) => {
 	e.preventDefault();
 });
 
-birth_date.max = new Date().toLocaleDateString(`fr-ca`);
+birth_date.max = new Date().getFullYear().toString();
 birth_date.addEventListener(`input`, () => {
 	remove_input_error(`birth_date`);
 });
@@ -89,17 +100,27 @@ password.addEventListener(`invalid`, (e) => {
 	e.preventDefault();
 });
 
+const icon_show = `<svg class='icon' fill='currentColor' xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 128 128">
+<path
+	d="M64 104C22 104 1 67 1 66a4 4 0 0 1 0-4c0-1 21-38 63-38s63 37 63 38a4 4 0 0 1 0 4c0 1-21 38-63 38zM9 64c4 7 23 32 55 32s51-25 55-32c-4-7-23-32-55-32S13 57 9 64zm55 24a24 24 0 1 1 0-48 24 24 0 0 1 0 48zm0-40a16 16 0 1 0 0 32 16 16 0 0 0 0-32z"
+	data-original="#000000" />
+</svg>`,
+	icon_hide = `<svg class='icon' fill='currentColor' xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 128 128">
+	<path
+		d="m79.9 65 7.3-7.2a24 24 0 0 1-29.4 29.4l7.3-7.3A16 16 0 0 0 79.9 65zm47.6-3c-.5-.8-7.5-13-21.1-23.4l-5.8 5.8A80 80 0 0 1 119.3 64C114.6 71.2 96 96 64 96c-4.8 0-9.2-.6-13.4-1.6L44 101c6 1.8 12.7 3 20 3 41.9 0 62.6-36.5 63.5-38a4 4 0 0 0 0-4zm-16.7-39.2-88 88a4 4 0 0 1-5.6 0 4 4 0 0 1 0-5.6L28.4 94A84 84 0 0 1 .5 66a4 4 0 0 1 0-4c.9-1.5 21.6-38 63.5-38 10.8 0 20.2 2.5 28.2 6.1l13-13a4 4 0 1 1 5.6 5.7zM34.3 88l10.2-10a24 24 0 0 1 33.4-33.4l8.2-8.2A58.9 58.9 0 0 0 64 32C32 32 13.4 56.8 8.7 64c3 4.6 11.7 16.1 25.6 24zm16-16L72 50.4a15.8 15.8 0 0 0-8-2.4 16 16 0 0 0-16 16c0 3 .9 5.7 2.3 8z"
+		data-original="#000000" />
+</svg>`;
+password_icon.innerHTML = icon_show;
+password_confirmation_icon.innerHTML = icon_show;
 password_visibility_toggle.addEventListener(`click`, () => {
 	toggle_password(`password`);
 });
-
-password_confirmation.addEventListener(`input`, (e) => {
+password_confirmation.addEventListener(`input`, () => {
 	verify_same_passwords();
 });
 password_confirmation.addEventListener(`invalid`, (e) => {
 	e.preventDefault();
 });
-
 password_confirmation_visibility_toggle.addEventListener(`click`, () => {
 	toggle_password(`password_confirmation`);
 });
@@ -110,6 +131,43 @@ submit_btn.addEventListener(`click`, () => {
 	validate_input_date();
 	validate_email();
 });
+
+function set_theme(is_dark?: boolean): void {
+	if (is_dark != undefined) {
+		if (is_dark) {
+			switch_dark();
+		} else {
+			switch_light();
+		}
+
+		return;
+	}
+
+	if (is_theme_dark()) {
+		switch_dark();
+	} else {
+		switch_light();
+	}
+}
+
+function switch_dark(): void {
+	theme_icon.checked = false;
+	document.documentElement.classList.add(`dark`);
+	localStorage[`theme`] = `dark`;
+}
+
+function switch_light(): void {
+	theme_icon.checked = true;
+	document.documentElement.classList.remove(`dark`);
+	localStorage[`theme`] = `light`;
+}
+
+function is_theme_dark(): boolean {
+	return (
+		localStorage[`theme`] === `dark` ||
+		(!(`theme` in localStorage) && window.matchMedia(`(prefers-color-scheme: dark)`).matches)
+	);
+}
 
 function handle_submit(event: Event): void {
 	event.preventDefault();
@@ -157,6 +215,8 @@ function validate_input_date(): void {
 
 	if (input.validity.rangeOverflow) {
 		input.setCustomValidity(`No time machine!`);
+	} else if (input.validity.rangeUnderflow) {
+		input.setCustomValidity(`You're dead`);
 	} else if (input.validity.valueMissing) {
 		input.setCustomValidity(`Fill in your birth date`);
 	} else {
@@ -209,21 +269,20 @@ function verify_same_passwords(): void {
 
 function toggle_password(element_id: string): void {
 	const element = document.getElementById(element_id) as HTMLInputElement,
-		element_toggle = document.getElementById(`${element_id}_toggle`) as HTMLImageElement;
+		toggle_icon = document.getElementById(`${element_id}_toggle`) as HTMLElement & SVGElement;
 
 	const current_view = element.getAttribute(`type`) as string;
 	let updated_view;
-	let updated_icon_string;
+	let updated_icon;
 
 	if (current_view == `password`) {
 		updated_view = `text`;
-		updated_icon_string = `hide`;
+		updated_icon = icon_hide;
 	} else {
 		updated_view = `password`;
-		updated_icon_string = `show`;
+		updated_icon = icon_show;
 	}
 
 	element.setAttribute(`type`, updated_view);
-	const icon_path = `/icons/`;
-	element_toggle.setAttribute(`src`, `${icon_path}password_${updated_icon_string}.svg`);
+	toggle_icon.innerHTML = updated_icon;
 }
