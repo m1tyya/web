@@ -1,5 +1,7 @@
 import './styles.css';
 
+import colors from 'tailwindcss/colors';
+
 const form = document.getElementById(`sign_up`) as HTMLFormElement,
 	f_name = document.getElementById(`f_name`) as HTMLInputElement,
 	l_name = document.getElementById(`l_name`) as HTMLInputElement,
@@ -13,58 +15,69 @@ const form = document.getElementById(`sign_up`) as HTMLFormElement,
 	) as HTMLImageElement,
 	submit_btn = document.getElementById(`submit_btn`) as HTMLButtonElement;
 
+form.addEventListener(`submit`, handle_submit);
+
 f_name.addEventListener(`input`, () => {
 	remove_input_error(`f_name`);
+});
+f_name.addEventListener(`invalid`, (e) => {
+	e.preventDefault();
 });
 
 l_name.addEventListener(`input`, () => {
 	remove_input_error(`l_name`);
 });
+l_name.addEventListener(`invalid`, (e) => {
+	e.preventDefault();
+});
 
+birth_date.max = new Date().toLocaleDateString(`fr-ca`);
 birth_date.addEventListener(`input`, () => {
 	remove_input_error(`birth_date`);
+});
+birth_date.addEventListener(`invalid`, (e) => {
+	e.preventDefault();
 });
 
 email.addEventListener(`input`, () => {
 	remove_input_error(`email`);
 });
+email.addEventListener(`invalid`, (e) => {
+	e.preventDefault();
+});
 
 const password_patterns = new Set<RegExp>();
-
-birth_date.max = new Date().toLocaleDateString(`fr-ca`);
-
 password_patterns.add(/^.{8,}$/);
 password_patterns.add(/(?=.*[A-Z])/);
 password_patterns.add(/(?=.*\d)/);
 password_patterns.add(/(?=.*[!#$%@])/);
-
-form.addEventListener(`submit`, handle_submit);
-
-password.addEventListener(`input`, (event) => {
+password.addEventListener(`input`, () => {
 	verify_same_passwords();
 
 	let index = 1;
 	let is_password_valid = true;
 
 	for (const pattern of password_patterns) {
-		const password_validation_text = document.getElementById(`password_validation${index}`);
+		const password_validation = document.getElementById(`password_validation${index}`);
 
-		if (!password_validation_text) continue;
+		if (!password_validation) continue;
 
 		const is_pattern_valid = pattern.test(password.value);
 
 		if (is_pattern_valid) {
-			password_validation_text.style.color = `green`;
+			password_validation.style.color = colors.green[600];
 		} else {
-			password.setAttribute(`aria-invalid`, `true`);
 			is_password_valid = false;
-			password_validation_text.style.color = `red`;
+			password_validation.style.color = colors.red[500];
 		}
 
 		index++;
 	}
 
 	password.setCustomValidity(is_password_valid ? `` : `Invalid password.`);
+});
+password.addEventListener(`invalid`, (e) => {
+	e.preventDefault();
 });
 
 password_visibility_toggle.addEventListener(`click`, () => {
@@ -73,6 +86,9 @@ password_visibility_toggle.addEventListener(`click`, () => {
 
 password_confirmation.addEventListener(`input`, (e) => {
 	verify_same_passwords();
+});
+password_confirmation.addEventListener(`invalid`, (e) => {
+	e.preventDefault();
 });
 
 password_confirmation_visibility_toggle.addEventListener(`click`, () => {
@@ -85,22 +101,6 @@ submit_btn.addEventListener(`click`, () => {
 	validate_input_date();
 	validate_email();
 });
-
-function verify_same_passwords(): void {
-	const current_input_password = document.getElementById(`password`) as HTMLInputElement,
-		current_input_password_confirmation = document.getElementById(
-			`password_confirmation`,
-		) as HTMLInputElement,
-		input_password_confirmation_error = document.getElementById(
-			`password_confirmation_error`,
-		) as HTMLParagraphElement;
-
-	const is_same_password =
-		current_input_password.value == current_input_password_confirmation.value;
-
-	password_confirmation.setCustomValidity(is_same_password ? `` : `Passwords do not match`);
-	input_password_confirmation_error.innerText = password_confirmation.validationMessage;
-}
 
 function handle_submit(event: Event): void {
 	event.preventDefault();
@@ -140,6 +140,7 @@ function validate_input_text(id: string, message_empty: string): void {
 	const error = document.getElementById(`${id}_error`) as HTMLParagraphElement;
 
 	error.innerText = input.validationMessage;
+	error.style.opacity = error.innerText.length === 0 ? `0` : `1`;
 }
 
 function validate_input_date(): void {
@@ -156,6 +157,7 @@ function validate_input_date(): void {
 	const error = document.getElementById(`birth_date_error`) as HTMLParagraphElement;
 
 	error.innerText = input.validationMessage;
+	error.style.opacity = error.innerText.length === 0 ? `0` : `1`;
 }
 
 function validate_email(): void {
@@ -172,11 +174,28 @@ function validate_email(): void {
 	const error = document.getElementById(`email_error`) as HTMLParagraphElement;
 
 	error.innerText = input.validationMessage;
+	error.style.opacity = error.innerText.length === 0 ? `0` : `1`;
 }
 
 function remove_input_error(id: string): void {
-	const error = document.getElementById(`${id}_error`) as HTMLButtonElement;
-	error.innerText = ``;
+	const error = document.getElementById(`${id}_error`) as HTMLParagraphElement;
+	error.style.opacity = `0`;
+}
+
+function verify_same_passwords(): void {
+	const current_input_password = document.getElementById(`password`) as HTMLInputElement,
+		current_input_password_confirmation = document.getElementById(
+			`password_confirmation`,
+		) as HTMLInputElement,
+		input_password_confirmation_error = document.getElementById(
+			`password_confirmation_error`,
+		) as HTMLParagraphElement;
+
+	const is_same_password =
+		current_input_password.value == current_input_password_confirmation.value;
+
+	password_confirmation.setCustomValidity(is_same_password ? `` : `Passwords do not match`);
+	input_password_confirmation_error.innerText = password_confirmation.validationMessage;
 }
 
 function toggle_password(element_id: string): void {

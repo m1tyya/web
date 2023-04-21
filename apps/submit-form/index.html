@@ -34,7 +34,9 @@
 								maxlength='25'
 							/>
 						</div>
-						<p class='error mt-[0.1rem]' id='f_name_error'></p>
+						<div class='error_wrapper'>
+							<p class='error' id='f_name_error'></p>
+						</div>
 					</div>
 					<div class='w-full'>
 						<label for='l_name'
@@ -54,8 +56,9 @@
 								maxlength='25'
 							/>
 						</div>
-
-						<p class='error mt-[0.1rem]' id='l_name_error'></p>
+						<div class='error_wrapper'>
+							<p class='error' id='l_name_error'></p>
+						</div>
 					</div>
 				</div>
 				<div class='flex flex-col md:flex-row'>
@@ -71,7 +74,9 @@
 							type='date'
 							required
 						/>
-						<p class='error' id='birth_date_error'></p>
+						<div class='error_wrapper'>
+							<p class='error' id='birth_date_error'></p>
+						</div>
 					</div>
 					<div class='w-full'>
 						<label for='email'>Email <span class='text-red-500'>*</span></label>
@@ -87,7 +92,9 @@
 								required
 							/>
 						</div>
-						<p class='error' id='email_error'></p>
+						<div class='error_wrapper'>
+							<p class='error' id='email_error'></p>
+						</div>
 					</div>
 				</div>
 				<div class='flex flex-col md:flex-row'>
@@ -106,13 +113,13 @@
 							/>
 							<img id='password_toggle' src='/icons/password_show.svg' class='icon h-[80%] mt-[3px] cursor-pointer' />
 						</div>
-						<div class='mt-[0.1rem]'>
-							<p class='error' id='password_validation1'>
+						<div class='error_wrapper mt-[0.1rem] h-auto' >
+							<p class='error opacity-100' id='password_validation1'>
 								Minimum 8 characters
 							</p>
-							<p class='error' id='password_validation2'>Minimum 1 uppercase</p>
-							<p class='error' id='password_validation3'>Minimum 1 digit</p>
-							<p class='error' id='password_validation4'>
+							<p class='error opacity-100' id='password_validation2'>Minimum 1 uppercase</p>
+							<p class='error opacity-100' id='password_validation3'>Minimum 1 digit</p>
+							<p class='error opacity-100' id='password_validation4'>
 								Minimum 1 special symbol (!@#$%)
 							</p>
 						</div>
@@ -132,7 +139,9 @@
 							/>
 							<img id='password_confirmation_toggle' src='/icons/password_show.svg' class='icon h-[80%] mt-[3px] cursor-pointer' />
 						</div>
-						<p class='error' id='password_confirmation_error'></p>
+						<div class='error_wrapper'>
+							<p class='error opacity-100' id='password_confirmation_error'></p>
+						</div>
 					</div>
 				</div>
 				<button class='btn' id='submit_btn' type='submit'>Sign up</button>

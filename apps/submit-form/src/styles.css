@@ -40,8 +40,12 @@
 		@apply w-full;
 	  }
 
+	  .error_wrapper {
+		@apply h-[.8rem] ml-2 mt-[0.1rem];
+	  }
+
 	  .error {
-		@apply text-[.8rem] leading-snug text-red-500 pl-2 duration-300;
+		@apply text-[.8rem] leading-snug text-red-500 opacity-0 duration-[200ms];
 	  }
 
 	  .btn {
