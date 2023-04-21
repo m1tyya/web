@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-	input, label {
+	input {
 		display: block;
 	}
 
@@ -13,23 +13,16 @@
 }
 
 @layer components {
-	  
-	  p * {
-		display: block;
+	  .label {
+		@apply font-label text-[clamp(.9rem,1.6vw,1rem)] tracking-tight ml-1;
 	  }
 
-	  input {
-		display: block;
-	  }
-	  
-	  /* This is our style for the invalid fields */
-	  
-	  input:invalid:focus {
-		outline: none;
+	  .star {
+		@apply text-red-500 text-[.8rem];
 	  }
 
 	  .input_wrapper {
-		@apply h-10 flex items-center gap-2 w-full border-[#e3e3e3] focus-within:border-[#2A73A3] border-2 rounded-lg px-3 py-[0.5rem] leading-none caret-gray-600 bg-white duration-75;
+		@apply h-10 flex items-center gap-2 w-full border-[#e3e3e3] focus-within:border-[#2A73A3] border-2 rounded-lg px-3 py-[0.5rem] leading-none caret-gray-600 bg-white duration-[250ms];
 	  }
 
 	  .icon {

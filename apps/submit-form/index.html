@@ -3,6 +3,9 @@
 	<head>
 		<meta charset='UTF-8' />
 		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<link rel='preconnect' href='https://fonts.googleapis.com'>
+		<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+		<link href='https://fonts.googleapis.com/css2?family=Work+Sans:wght@400&display=swap' rel='stylesheet'>
 		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 		<title>Submit Form</title>
 	</head>
@@ -16,8 +19,8 @@
 			>
 				<div class='flex flex-col md:flex-row'>
 					<div class='w-full'>
-						<label for='f_name'
-						>First Name <span class='text-red-500'>*</span></label
+						<label class='label' for='f_name'
+						>First Name <span class='star'>*</span></label
 						>
 						<div class='input_wrapper'>
 							<img src='/icons/person.svg' class='icon' />
@@ -39,8 +42,8 @@
 						</div>
 					</div>
 					<div class='w-full'>
-						<label for='l_name'
-						>Family Name <span class='text-red-500'>*</span></label
+						<label class='label' for='l_name'
+						>Family Name <span class='star'>*</span></label
 						>
 						<div class='input_wrapper'>
 							<img src='/icons/person.svg' class='icon' />
@@ -63,8 +66,8 @@
 				</div>
 				<div class='flex flex-col md:flex-row'>
 					<div>
-						<label for='birth_date'
-						>Date of Birth <span class='text-red-500'>*</span></label
+						<label class='label' for='birth_date'
+						>Date of Birth <span class='star'>*</span></label
 						>
 						<input
 							name='birth_date'
@@ -79,7 +82,7 @@
 						</div>
 					</div>
 					<div class='w-full'>
-						<label for='email'>Email <span class='text-red-500'>*</span></label>
+						<label class='label' for='email'>Email <span class='star'>*</span></label>
 						<div class='input_wrapper'>
 							<img src='/icons/email.svg' class='icon mt-[3px]' />
 							<input
@@ -99,8 +102,8 @@
 				</div>
 				<div class='flex flex-col md:flex-row'>
 					<div class='w-full'>
-						<label for='password'
-						>Password <span class='text-red-500'>*</span></label
+						<label class='label' for='password'
+						>Password <span class='star'>*</span></label
 						>
 						<div class='input_wrapper'>
 							<input
@@ -125,8 +128,8 @@
 						</div>
 					</div>
 					<div class='w-full'>
-						<label for='password_confirmation'
-						>Confirm Password <span class='text-red-500'>*</span></label
+						<label class='label' for='password_confirmation'
+						>Confirm Password <span class='star'>*</span></label
 						>
 						<div class='input_wrapper'>
 							<input
