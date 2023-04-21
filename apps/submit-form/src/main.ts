@@ -3,6 +3,7 @@ import './styles.css';
 import colors from 'tailwindcss/colors';
 
 const form = document.getElementById(`sign_up`) as HTMLFormElement,
+	input_boxes = document.querySelectorAll(`.input_wrapper`),
 	f_name = document.getElementById(`f_name`) as HTMLInputElement,
 	l_name = document.getElementById(`l_name`) as HTMLInputElement,
 	birth_date = document.getElementById(`birth_date`) as HTMLInputElement,
@@ -16,6 +17,14 @@ const form = document.getElementById(`sign_up`) as HTMLFormElement,
 	submit_btn = document.getElementById(`submit_btn`) as HTMLButtonElement;
 
 form.addEventListener(`submit`, handle_submit);
+
+for (const input_wrapper of input_boxes) {
+	const i = input_wrapper as HTMLInputElement;
+	i.addEventListener(`click`, () => {
+		const input = input_wrapper.querySelector(`input`);
+		input?.focus();
+	});
+}
 
 f_name.addEventListener(`input`, () => {
 	remove_input_error(`f_name`);

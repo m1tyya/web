@@ -22,7 +22,7 @@
 	  }
 
 	  .input_wrapper {
-		@apply h-10 flex items-center gap-2 w-full border-[#e3e3e3] focus-within:border-[#2A73A3] border-2 rounded-lg px-3 py-[0.5rem] leading-none caret-gray-600 bg-white duration-[250ms];
+		@apply h-10 flex items-center gap-2 w-full border-[#e3e3e3] focus:border-[#2A73A3] focus-within:border-[#2A73A3] border-2 rounded-lg px-3 py-[0.5rem] leading-none caret-gray-600 bg-white duration-[250ms];
 	  }
 
 	  .icon {
