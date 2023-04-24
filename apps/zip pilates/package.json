@@ -1,13 +1,13 @@
 {
 	"dependencies": {
 		"@next/bundle-analyzer": "^13.2.4",
-		"@web/eslint-config-based": "workspace:^",
-		"@web/ui-react": "workspace:^",
-		"next": "^13.1.1",
+		"next": "^13.2.4",
 		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"react-dom": "^18.2.0",
+		"react-hook-form": "^7.43.8"
 	},
 	"devDependencies": {
+		"@hookform/devtools": "latest",
 		"@babel/core": "^7.0.0",
 		"@svgr/webpack": "^6.5.1",
 		"@total-typescript/ts-reset": "^0.4.2",
@@ -18,11 +18,14 @@
 		"@types/node": "^17.0.12",
 		"@types/react": "^18.0.22",
 		"@types/react-dom": "^18.0.7",
-		"@web/tsconfig": "workspace:^",
+		"@m1tyya/eslint-config-strict": "workspace:^",
+		"@m1tyya/tsconfig": "workspace:^",
+		"@m1tyya/ui-react": "workspace:^",
 		"autoprefixer": "latest",
 		"clsx": "^1.2.1",
 		"eslint": "7.32.0",
 		"framer-motion": "^10.2.3",
+		"jotai": "latest",
 		"postcss": "latest",
 		"postcss-logical": "^6.1.0",
 		"postcss-preset-env": "latest",
@@ -32,7 +35,7 @@
 		"usehooks-ts": "latest",
 		"zustand": "latest"
 	},
-	"name": "@web/zip-pilates",
+	"name": "@m1tyya/zip-pilates",
 	"private": true,
 	"scripts": {
 		"build": "next build",

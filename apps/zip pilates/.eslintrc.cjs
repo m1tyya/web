@@ -1,7 +1,7 @@
 const { defineConfig } = require(`eslint-define-config`);
 
 module.exports = defineConfig({
-	extends: [`@web/eslint-config-based`],
+	extends: [`@m1tyya/eslint-config-strict`],
 	parser: `@typescript-eslint/parser`,
 	parserOptions: {
 		project: [`tsconfig.eslint.json`],

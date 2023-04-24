@@ -1,6 +1,6 @@
 {
 	"exclude": ["node_modules"],
-	"extends": "@web/tsconfig/base",
+	"extends": "@m1tyya/tsconfig/base",
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {

@@ -1,6 +1,6 @@
-import { Page } from '@web/ui-react';
+import { Page } from '@m1tyya/ui-react';
 
-import { Hero, Trener } from '~';
+import { Hero, Reviews, Trener } from '~';
 
 export function Home(): JSX.Element {
 	return (
@@ -8,6 +8,7 @@ export function Home(): JSX.Element {
 			<Page background_color='bg'>
 				<Hero />
 				<Trener />
+				<Reviews />
 			</Page>
 		</>
 	);

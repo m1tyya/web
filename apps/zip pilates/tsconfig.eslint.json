@@ -1,6 +1,6 @@
 {
 	"extends": "./tsconfig.json",
-	"exclude": ["node_modules"],
+	"exclude": ["node_modules", "dist", ".next", "public"],
 	"include": [
 		"src",
 		"*.json",
@@ -9,7 +9,6 @@
 		".eslintrc.cjs",
 		"*.tsx",
 		"postcss.config.cjs",
-		"./public/vectors/bg-pattern.svg",
-		"tailwind.config.cjs"
+		"tailwind.config.ts"
 	]
 }

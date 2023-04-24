@@ -1,6 +1,8 @@
-/** @type {import('next').NextConfig} */
+/* eslint-disable one-var */
+import withBundleAnalyzer from '@next/bundle-analyzer';
 
-export default {
+/** @type {import('next').NextConfig} */
+const config = {
 	experimental: {
 		fontLoaders: [
 			{
@@ -13,9 +15,17 @@ export default {
 		defaultLocale: `pl`,
 		locales: [`pl`],
 	},
+	images: {
+		remotePatterns: [
+			{
+				hostname: `*.googleusercontent.com`,
+				protocol: `https`,
+			},
+		],
+	},
 	reactStrictMode: true,
 	swcMinify: true,
-	transpilePackages: [`@web/eslint-config-based`, `@web/ui-react`, `@web/tsconfig`],
+	transpilePackages: [`@m1tyya/eslint-config-strict`, `@m1tyya/ui-react`, `@m1tyya/tsconfig`],
 	webpack: (config) => {
 		config.module.rules.push({
 			issuer: /\.[jt]sx?$/,
@@ -34,3 +44,9 @@ export default {
 		return config;
 	},
 };
+
+const bundle_analyzer = withBundleAnalyzer({
+	enabled: process.env.ANALYZE === `true`,
+});
+
+export default bundle_analyzer(config);

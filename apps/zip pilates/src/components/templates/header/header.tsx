@@ -1,5 +1,5 @@
 import { cx } from '@twind/core';
-import { Container, Link, Vector } from '@web/ui-react';
+import { Container, Link, Vector } from '@m1tyya/ui-react';
 import Logo from 'public/vectors/logo.svg';
 
 type HeaderProps = {

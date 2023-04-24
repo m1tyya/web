@@ -1,9 +1,31 @@
 import { type CSSBase, defineConfig } from '@twind/core';
 import presetTailwind from '@twind/preset-tailwind';
 
-import { fluid_type_scale, type FluidType, type FluidTypeScale } from '~';
+import { fluid_type_scale, type FluidType, type FluidTypeScale, weight_scale } from '~';
 
-const fluid_type_defaults: FluidType = {
+const font_weights_naming: Array<string> = [
+		`microline`,
+		`hairline`,
+		`thin`,
+		`ultralight`,
+		`extralight`,
+		`light`,
+		`semilight`,
+		`regular`,
+		`book`,
+		`medium`,
+		`550`,
+		`demibold`,
+		`semibold`,
+		`bold`,
+		`heavy`,
+		`extrabold`,
+		`ultrabold`,
+		`black`,
+		`extrablack`,
+		`ultrablack`,
+	],
+	fluid_type_defaults: FluidType = {
 		max_screen_width: 1400,
 		min_screen_width: 370,
 		precision: 2,
@@ -16,48 +38,107 @@ const fluid_type_defaults: FluidType = {
 		prefix: `fluid`,
 		scale_max: 1.25,
 		scale_min: 1.15,
-		steps: [`xs`, `sm`, `base`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`] as const,
+		steps: [`xs`, `sm`, `base`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`] as const,
 	},
-	fluid_typography = fluid_type_scale(fluid_type_scale_defaults, fluid_type_defaults).reduce(
-		(prev, next) => ({ ...prev, ...next }),
-	);
+	fluid_typography = fluid_type_scale(fluid_type_scale_defaults, fluid_type_defaults);
 
 export const styles_reset: CSSBase = {
+	'*': {
+		'background-position': `center center`,
+		'background-repeat': `no-repeat`,
+		'border-color': `transparent`,
+		'border-style': `solid`,
+		'border-width': `0`,
+		'box-sizing': `border-box`,
+		position: `relative`,
+	},
+	a: {
+		color: `inherit`,
+		'text-decoration': `inherit`,
+	},
+	address: {
+		'font-style': `inherit`,
+	},
 	body: {
 		'font-size': `1.6rem`,
+		'line-height': `inherit`,
+		margin: `0`,
 	},
 	'body::-webkit-scrollbar': {
 		display: `none`,
 	},
+	"button,[type='button'],[type='reset'],[type='submit']": {
+		'-webkit-appearance': `none`,
+		appearance: `none`,
+		'background-color': `transparent`,
+		'background-image': `none`,
+		cursor: `pointer`,
+	},
+	'button,input,optgroup,select,textarea': {
+		color: `inherit`,
+		'font-family': `inherit`,
+		'font-size': `100%`,
+		'font-weight': `inherit`,
+		'line-height': `inherit`,
+		margin: `0`,
+		padding: `0`,
+	},
 	div: {
 		display: `flow-root`,
+	},
+	'h1,h2,h3,h4,h5,h6': {
+		'font-size': `inherit`,
+		'font-weight': `inherit`,
 	},
 	html: {
 		'-moz-text-size-adjust': `none`,
 		'-ms-overflow-style': `none`,
 		'-webkit-text-size-adjust': `none`,
 		'font-size': `62.5%`,
+		'line-height': `1.5`,
 		'scrollbar-width': `none`,
+		'tab-size': `4`,
 		'text-size-adjust': `none`,
 	},
-	img: {
-		'max-height': `100%`,
-		'max-width': `100%`,
+	'iframe:focus-visible': {
+		outline: `inherit`,
 	},
-	picture: {
+	img: {
+		'object-fit': `contain`,
+	},
+	'img,svg,video,canvas,audio,iframe,embed,object': {
 		display: `block`,
-		width: `max-content`,
+		'vertical-align': `middle`,
+	},
+	input: {
+		display: `block`,
+	},
+	'ol,ul,menu': {
+		'list-style': `none`,
+		margin: `0`,
+		padding: `0`,
 	},
 };
 
 export default defineConfig({
-	presets: [presetTailwind()],
-	rules: [],
+	presets: [presetTailwind({ disablePreflight: false })],
+	rules: [
+		[
+			`truncate-`,
+			({ $$ }): CSSBase => ({
+				'-webkit-box-orient': `vertical`,
+				'-webkit-line-clamp': $$,
+				display: `-webkit-box`,
+				overflow: `hidden`,
+				'text-overflow': `clip`,
+			}),
+		],
+	],
 	theme: {
 		extend: {
 			colors: {
 				bg: `#F0EDE4`,
-				light: `#fefae0`,
+				light2: `#fefae0`,
 				primary: `#606c38`,
 				'primary-2': `#283618`,
 				secondary: `#dda15e`,
@@ -67,6 +148,7 @@ export default defineConfig({
 				text_darker: `#49411D`,
 			},
 			fontFamily: {
+				domaine: `var(--font-domaine)`,
 				heading: `var(--font-ade-display)`,
 				merri: `var(--font-merri)`,
 				naibo: `var(--font-naibo)`,
@@ -74,6 +156,9 @@ export default defineConfig({
 			},
 			fontSize: {
 				...fluid_typography,
+			},
+			fontWeight: {
+				...weight_scale(),
 			},
 			padding: {
 				button_x: `5rem`,

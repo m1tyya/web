@@ -3,10 +3,11 @@ import install from '@twind/with-next/app';
 import { type AppProps } from 'next/app';
 import Head from 'next/head';
 
-import { Header, Menu, MENU_ANIMATION_DURATION, MenuIcon, type MenuLink } from '~';
+import { Footer, Header, Menu, MENU_ANIMATION_DURATION, MenuIcon, type MenuLink } from '~';
 import {
 	ade_display,
 	alegreya,
+	domaine_display,
 	doppelganger,
 	glamour,
 	lato,
@@ -32,7 +33,7 @@ const MENU_LINKS: Array<MenuLink> = [
 	},
 ];
 
-const font_variables = `${syne.variable} ${glamour.variable} ${merriweather.variable} ${doppelganger.variable} ${alegreya.variable} ${lato.variable} ${naibo.variable} ${ade_display.variable}`;
+const font_variables = `${syne.variable} ${glamour.variable} ${merriweather.variable} ${doppelganger.variable} ${alegreya.variable} ${lato.variable} ${naibo.variable} ${ade_display.variable} ${domaine_display.variable}`;
 const header_height = '40',
 	header_padding_x = '7',
 	header_padding_y = '6';
@@ -61,8 +62,13 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 					size={30}
 					weight='md'
 				/>
-				<Menu animation_duration={MENU_ANIMATION_DURATION} bg_color='#D5B99A' links={MENU_LINKS} />
+				<Menu
+					animation_duration={MENU_ANIMATION_DURATION}
+					bg_color='[#E5BF9F]'
+					links={MENU_LINKS}
+				/>
 				<Component {...pageProps} />
+				<Footer />
 			</main>
 		</>
 	);

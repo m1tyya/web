@@ -1,41 +1,35 @@
-import { Button, Container, type IconProps, Text, Vector } from '@web/ui-react';
+import { Button, Container, type IconProps, Text, Vector } from '@m1tyya/ui-react';
 import HeroShape from 'public/vectors/hero-shape.svg';
 import { HiArrowLongRight } from 'react-icons/hi2';
 
-const container_padding: [string, string] = [`page_vertical`, `page_horizontal`];
+export const container_padding: [string, string] = [`page_vertical`, `page_horizontal`];
 
 export function Hero(): JSX.Element {
-	const ICON_SIZE = 30,
-		icon_props: IconProps = {
-			icon: {
-				Svg: HiArrowLongRight,
-				dimension: `width`,
-				dimension_value: `[${ICON_SIZE}px]`,
-				position: `group~button-hover:translate-x-[.1rem] duration-[0.5s]`,
-			},
-			icon_side: `right`,
-		};
+	const icon_props: IconProps = {
+		icon: {
+			Svg: HiArrowLongRight,
+			dimension: `width`,
+			dimension_value: `[20px]`,
+			fill: `light2`,
+			layout: `group~button-hover:translate-x-[.5rem] group~button-active:translate-x-[.5rem] duration-[0.5s]`,
+		},
+		icon_side: `right`,
+	};
 
 	return (
 		<Container padding={container_padding}>
 			<Container layout='py-12' position='relative'>
 				<Text
-					font_family='heading'
+					font_family='domaine'
 					font_size='fluid-4xl'
 					font_weight='semibold'
 					max_width='[50%]'
-					position='absolute top-[0%]'
+					position='absolute top-[0%] z-10'
 					tag='h1'
-					text={`Zip Pilates Studio`.toUpperCase()}
+					text={`Zip Pilates Studio`}
 					text_color='text'
-					z_index='10'
 				/>
-				<Vector
-					dimension='width'
-					dimension_value='[80%]'
-					position='mx-auto mt-20'
-					Svg={HeroShape}
-				/>
+				<Vector dimension='width' dimension_value='[80%]' layout='mx-auto mt-20' Svg={HeroShape} />
 				<Text
 					font_family='text'
 					font_size='fluid-md'
@@ -65,14 +59,16 @@ export function Hero(): JSX.Element {
 					border_radius='[3rem]'
 					font_family='text'
 					font_size='fluid-md'
-					gap='20'
-					padding_x='button_x'
+					gap='10'
+					max_width='100%'
+					padding_x='8'
 					padding_y='button_y'
+					width='[80%]'
 					{...icon_props}
 					font_weight='medium'
-					position={`mr-8 hover:(border-black) border-2 border-neutral-60 duration-[.5s]`}
+					position={`justify-center mr-8 hover:(border-black) active:(border-black) border-2 border-neutral-60 duration-[.5s]`}
 					text='Dowiedz się więcej'
-					text_color='light'
+					text_color='light2'
 				/>
 			</Container>
 		</Container>

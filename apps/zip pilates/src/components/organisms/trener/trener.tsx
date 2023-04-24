@@ -1,64 +1,86 @@
-import { Button, Container, Image, Text, Wave } from '@web/ui-react';
-import clsx from 'clsx';
-import { BsArrowUpRight } from 'react-icons/bs';
+import { Button, Container, type IconProps, Image, Text, Vector } from '@m1tyya/ui-react';
+import Wave from 'public/vectors/wave.svg';
+import { HiArrowLongRight } from 'react-icons/hi2';
+
+import { container_padding } from '../hero';
 
 type TrenerProps = {};
 
-const BG = `#C8B794`;
-
 export function Trener({}: TrenerProps): JSX.Element {
+	const icon_props: IconProps = {
+		icon: {
+			Svg: HiArrowLongRight,
+			dimension: `width`,
+			dimension_value: `[20px]`,
+			fill: `light2`,
+			layout: `group~button-hover:translate-x-[.5rem] group~button-active:translate-x-[.5rem] duration-[0.5s]`,
+		},
+		icon_side: `right`,
+	};
+
 	return (
 		<>
-			<Wave background_color={BG} />
-			<Container layout={clsx(`bg-[${BG}] relative`)} padding_x='page_horizontal'>
+			<Vector dimension='width' dimension_value='[100%]' fill='secondary/10' Svg={Wave} />
+			<Container background_color='secondary/10' padding={container_padding} position='relative'>
 				<Text
-					font_family='text'
-					font_size='fluid-2xl'
-					position='mt-10'
+					font_family='domaine'
+					font_size='fluid-3xl'
+					font_weight='600'
 					tag='h2'
-					text='Trener'
+					text={`Trenerzy`}
 					text_align='center'
+					text_color='secondary-2'
 				/>
-				<div className='flex items-center gap-[10%]'>
-					<Image
-						dimension='height'
-						label='Trener'
-						loading='lazy'
-						position='ml-[10%] mt-4'
-						size_value={250}
-						src='/images/trainer.webp'
-					/>
+				<Container display='flex' layout='mt-10 items-end justify-around'>
 					<Text
-						font_family='naibo'
-						font_size='3xl'
+						font_family='domaine'
+						font_size='fluid-xl'
+						letter_spacing='[0.15rem]'
+						line_height='[2.5]'
+						max_width='[15ch]'
 						position='mt-8'
 						tag='h3'
-						text='Tetyana Kantor'
+						text={`Tetyana Kantor`}
+						text_color='primary-2'
 					/>
-				</div>
+					<Image
+						alt='Trener'
+						height={1024}
+						loading='lazy'
+						srcset={[{ descriptor: `768w`, src: `/images/trainer.webp` }]}
+						styles='w-[250px]'
+						width={768}
+					/>
+				</Container>
 				<Text
 					font_family='text'
-					font_size='fluid-base'
-					max_width='[40ch]'
-					position='mt-8 mx-4'
+					font_size='fluid-md'
+					line_height='[1.6]'
+					max_width='[90%]'
+					position='mt-10 mx-auto'
 					tag='p'
 					text='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget duis at tellus at urna condimentum mattis pellentesque. Sapien et ligula ullamcorper malesuada proin libero nunc. Nulla facilisi etiam dignissim diam. Eu lobortis elementum nibh tellus molestie nunc non. Risus sed vulputate odio ut enim blandit volutpat maecenas volutpat. Id aliquet risus feugiat in ante metus.'
 					text_align='justify'
-					text_color='test'
+					text_color='[#703806]'
 				/>
-				<Button
-					background_color='gray-400'
-					border_radius='sm'
-					font_family='text'
-					font_size='fluid-base'
-					gap='2'
-					icon={{ Svg: BsArrowUpRight, dimension: `width`, dimension_value: 10 }}
-					icon_side='right'
-					padding_x='4'
-					padding_y='2'
-					position='mt-4 ml-4'
-					text='Dowiedz się więcej'
-				/>
+				<Container display='flex' layout='justify-center mt-10'>
+					<Button
+						background_color='primary'
+						border_radius='[3rem]'
+						font_family='text'
+						font_size='fluid-md'
+						gap='10'
+						max_width='100%'
+						padding_x='8'
+						padding_y='button_y'
+						width='[80%]'
+						{...icon_props}
+						font_weight='medium'
+						position={`justify-center mr-8 hover:(border-black) active:(border-black) border-2 border-neutral-60 duration-[.5s]`}
+						text='Dowiedz się więcej'
+						text_color='light2'
+					/>
+				</Container>
 			</Container>
 		</>
 	);

@@ -29,3 +29,33 @@ export const glamour = localFont({
 	src: '../../public/fonts/glamour_absolute.woff2',
 	variable: '--font-glamour',
 });
+
+export const domaine_display = localFont({
+	src: [
+		{
+			path: '../../public/fonts/DomaineDispNar-Black.otf',
+			weight: '900',
+		},
+		{
+			path: '../../public/fonts/DomaineDispNar-Extrabold.otf',
+			weight: '800',
+		},
+		{
+			path: '../../public/fonts/DomaineDispNar-Bold.otf',
+			weight: '700',
+		},
+		{
+			path: '../../public/fonts/DomaineDispNar-Semibold.otf',
+			weight: '600',
+		},
+		{
+			path: '../../public/fonts/DomaineDispNar-Medium.otf',
+			weight: '500',
+		},
+		{
+			path: '../../public/fonts/DomaineDispNar-Regular.otf',
+			weight: '400',
+		},
+	],
+	variable: '--font-domaine',
+});

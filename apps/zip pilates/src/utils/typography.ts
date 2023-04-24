@@ -54,7 +54,7 @@ export function fluid_type_scale(
 		steps,
 	}: FluidTypeScale,
 	{ max_screen_width, min_screen_width, precision, rem_value }: FluidType,
-): Array<Record<string, string>> {
+): Record<string, string> {
 	const res: Array<Record<string, string>> = [];
 	for (const [index, step] of steps.entries()) {
 		const power = index - steps.indexOf(base_step),
@@ -73,9 +73,25 @@ export function fluid_type_scale(
 		});
 	}
 
-	return res;
+	return flat_object_array(res);
+}
+
+export function weight_scale(): Record<string, string> {
+	const res: Array<Record<string, string>> = [];
+
+	for (let i = 50; i <= 1000; i += 50) {
+		res.push({ [`${i}`]: `${i}` });
+	}
+
+	return flat_object_array(res);
 }
 
 export function round(num: number, precision: number): number {
 	return +num.toFixed(precision);
+}
+
+export function flat_object_array(
+	obj_array: Array<Record<string, string>>,
+): Record<string, string> {
+	return obj_array.reduce((prev, next) => ({ ...prev, ...next }));
 }
