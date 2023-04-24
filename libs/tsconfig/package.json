@@ -1,10 +1,13 @@
 {
-	"dependencies": {
-		"@m1tyya/eslint-config-strict": "workspace:*"
-	},
 	"devDependencies": {
 		"eslint": "latest",
-		"eslint-define-config": "latest"
+		"eslint-define-config": "latest",
+		"@web/eslint-config-based": "workspace:^"
+	},
+	"repository": {
+		"directory": "libs/tsconfig",
+		"type": "git",
+		"url": "https://github.com/m1tyya/web.git"
 	},
 	"files": [
 		"base.json",
@@ -13,6 +16,5 @@
 		"react-library.json"
 	],
 	"name": "@m1tyya/tsconfig",
-	"private": true,
-	"version": "0.0.0"
+	"version": "0.0.1"
 }
