@@ -1,4 +1,6 @@
 {
+	"author": "Mitya M",
+	"description": "Strict ESLint modular configurations for many scenarios.",
 	"devDependencies": {
 		"@html-eslint/eslint-plugin": "latest",
 		"@html-eslint/parser": "latest",
@@ -67,6 +69,11 @@
 	"main": "src/index.js",
 	"name": "@m1tyya/eslint-config-strict",
 	"private": false,
+	"repository": {
+		"directory": "libs/eslint-config-strict",
+		"type": "git",
+		"url": "https://github.com/m1tyya/web.git"
+	},
 	"scripts": {
 		"lint": "eslint"
 	},

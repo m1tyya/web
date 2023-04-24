@@ -4,14 +4,14 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"@web/ui-react": ["src/index.ts"],
-			"~": ["src"],
+			"@m1tyya/ui-react": ["src/index.ts"],
+			"~": ["src/index.ts"],
 			"~/*": ["src/*"]
 		},
 		"jsx": "react-jsx",
 		"noEmit": true,
-		"typeRoots": ["node_modules/@types", "src/index.d.ts"]
+		"typeRoots": ["node_modules/@types", "src/index.d.ts", "src/types/html.ts"]
 	},
-	"extends": "@web/tsconfig/base",
-	"include": ["src"]
+	"extends": "@m1tyya/tsconfig/base",
+	"include": ["src", "src/types/html.ts"]
 }

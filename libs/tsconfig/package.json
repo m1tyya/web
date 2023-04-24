@@ -1,6 +1,6 @@
 {
 	"dependencies": {
-		"@web/eslint-config-based": "workspace:*"
+		"@m1tyya/eslint-config-strict": "workspace:*"
 	},
 	"devDependencies": {
 		"eslint": "latest",
@@ -12,7 +12,7 @@
 		"nextjs.json",
 		"react-library.json"
 	],
-	"name": "@web/tsconfig",
+	"name": "@m1tyya/tsconfig",
 	"private": true,
 	"version": "0.0.0"
 }

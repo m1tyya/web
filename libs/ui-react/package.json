@@ -1,14 +1,15 @@
 {
 	"devDependencies": {
 		"@types/eslint": "latest",
-		"@types/node": "^18.15.5",
-		"@types/react": "^18.0.22",
+		"@types/node": "latest",
+		"@types/react": "latest",
 		"@types/react-dom": "latest",
 		"@vitejs/plugin-react-swc": "latest",
-		"@web/eslint-config-based": "workspace:^",
-		"@web/tsconfig": "workspace:^",
+		"@m1tyya/eslint-config-strict": "workspace:^",
+		"@m1tyya/tsconfig": "workspace:^",
 		"clsx": "latest",
 		"eslint": "latest",
+		"eslint-define-config": "latest",
 		"framer-motion": "latest",
 		"typescript": "latest",
 		"vite": "latest",
@@ -24,14 +25,14 @@
 		"dist"
 	],
 	"license": "MIT",
-	"main": "./dist/index.es.js",
-	"name": "@web/ui-react",
+	"main": "./src/index.ts",
+	"name": "@m1tyya/ui-react",
 	"scripts": {
-		"build:ui-react": "tsc && vite build",
+		"build": "tsc && vite build",
 		"dev": "vite",
 		"lint": "eslint \"**/*.ts*\""
 	},
 	"type": "module",
-	"types": "./dist/index.d.ts",
+	"types": "./src/index.ts",
 	"version": "0.1.0"
 }

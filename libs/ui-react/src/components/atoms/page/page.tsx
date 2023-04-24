@@ -3,10 +3,15 @@ import { type PropsWithChildren } from 'react';
 
 type PageProps = PropsWithChildren & {
 	background_color?: string;
+	layout?: string;
 };
 
-export function Page({ background_color = `transparent`, children }: PageProps): JSX.Element {
-	const page_styles = clsx(`bg-${background_color} relative min-h-screen`);
+export function Page({
+	background_color = `transparent`,
+	children,
+	layout,
+}: PageProps): JSX.Element {
+	const page_styles = clsx(layout, `bg-${background_color} relative min-h-screen`);
 
 	return <div className={clsx(page_styles)}>{children}</div>;
 }

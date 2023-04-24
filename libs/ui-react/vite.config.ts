@@ -11,7 +11,7 @@ export default defineConfig({
 	build: {
 		emptyOutDir: true,
 		lib: {
-			entry: resolve(__dirname, `index.ts`),
+			entry: resolve(__dirname, `src/index.ts`),
 			fileName: (format) => `index.${format}.js`,
 			formats: [`es`],
 			name: `ui-react`,

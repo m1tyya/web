@@ -23,10 +23,13 @@ type ButtonPropsGeneral = {
 	background_color?: string;
 	border_radius?: string;
 	gap?: string;
-	padding_x: string;
-	padding_y: string;
+	max_width?: string;
+	padding_x?: string;
+	padding_y?: string;
 	position?: string;
 	text: string | false;
+	type?: 'button' | 'reset' | 'submit';
+	width?: string;
 };
 
 type ButtonTextProps = Omit<TextProps, 'max_width' | 'position' | 'tag' | 'text_align' | 'text'>;
@@ -55,17 +58,21 @@ export function Button({
 	icon_side,
 	letter_spacing,
 	line_height,
+	max_width,
 	padding_x,
 	padding_y,
 	position,
 	text,
 	text_color = `black`,
+	type,
+	width,
+	z_index,
 }: ButtonProps): JSX.Element {
 	const border_styles = clsx(
 			((): string =>
 				border_width === undefined
 					? ``
-					: `border-[${border_color}] border-[${border_style}] border-[${border_width}`)(),
+					: `border-${border_color} border-${border_style} border-${border_width}`)(),
 		),
 		button_text_props: TextProps = {
 			font_family,
@@ -83,10 +90,10 @@ export function Button({
 			className={clsx(
 				position,
 				border_styles,
-				`items-${align_items} bg-${background_color} text-[${text_color}] rounded-${border_radius} group~button gap-${gap} py-${padding_y} px-${padding_x} flex`,
+				`items-${align_items} bg-${background_color} rounded-${border_radius} group~button gap-${gap} py-${padding_y} px-${padding_x} max-w-${max_width} w-${width} flex h-auto`,
 			)}
 			title={button_text_props.text}
-			type='button'>
+			type={type === undefined ? `button` : type}>
 			{icon_side === `left` && <Vector {...icon} />}
 			<Text {...button_text_props} />
 			{icon_side === `right` && <Vector {...icon} />}

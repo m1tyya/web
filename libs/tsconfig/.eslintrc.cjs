@@ -1,7 +1,7 @@
 const { defineConfig } = require('eslint-define-config');
 
 module.exports = defineConfig({
-	extends: ['@web/eslint-config-based/json', '@web/eslint-config-based/javascript'],
+	extends: ['@m1tyya/eslint-config-strict/json', '@m1tyya/eslint-config-strict/javascript'],
 	parserOptions: {
 		ecmaVersion: 'latest',
 		sourceType: 'script',
