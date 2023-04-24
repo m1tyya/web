@@ -5,7 +5,7 @@
 		"isolatedModules": true,
 		"noEmit": true
 	},
-	"extends": "@web/tsconfig/eslint",
+	"extends": "@m1tyya/tsconfig/eslint",
 	"include": [
 		".eslintrc.cjs",
 		"index.html",

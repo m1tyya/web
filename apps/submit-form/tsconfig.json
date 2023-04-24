@@ -5,6 +5,6 @@
 		"isolatedModules": true,
 		"noEmit": true
 	},
-	"extends": "@web/tsconfig/base",
+	"extends": "@m1tyya/tsconfig/base",
 	"include": ["src"]
 }
