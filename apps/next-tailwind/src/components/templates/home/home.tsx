@@ -1,4 +1,4 @@
-import { Container, Image } from '@web/ui-react';
+import { Container, Image } from '@m1tyya/ui-react';
 
 import { ade_display, syne } from '../../../pages/_app';
 
@@ -9,10 +9,10 @@ export function Home({}: HomeProps): JSX.Element {
 		<main>
 			<Container paddingX='lg'>
 				<Image
+					alt='Pilates'
 					height={300}
-					label='Hello'
 					loading='eager'
-					src='/images/equipment.webp'
+					srcset={[{ src: `/images/equipment.webp`, descriptor: '' }]}
 					width={500}
 				/>
 				<h1 className={`${ade_display.className} text-3xl font-semibold`}>

@@ -1,8 +1,8 @@
 {
 	"dependencies": {
-		"@web/eslint-config-based": "workspace:^",
-		"@web/ui-react": "*",
-		"next": "^13.1.1",
+		"@m1tyya/eslint-config-strict": "workspace:^",
+		"@m1tyya/ui-react": "*",
+		"next": "^13.2.4",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
 	},
@@ -16,12 +16,12 @@
 		"@types/node": "^17.0.12",
 		"@types/react": "^18.0.22",
 		"@types/react-dom": "^18.0.7",
-		"@web/tsconfig": "workspace:^",
+		"@m1tyya/tsconfig": "workspace:^",
 		"eslint": "7.32.0",
 		"eslint-plugin-prettier": "latest",
 		"typescript": "latest"
 	},
-	"name": "@web/next-tailwind",
+	"name": "@m1tyya/next-tailwind",
 	"private": true,
 	"scripts": {
 		"build": "next build",

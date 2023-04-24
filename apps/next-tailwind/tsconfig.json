@@ -1,5 +1,5 @@
 {
 	"exclude": ["node_modules"],
-	"extends": "@web/tsconfig/base",
+	"extends": "@m1tyya/tsconfig/base",
 	"include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "reset.d.ts"]
 }
