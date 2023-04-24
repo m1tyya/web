@@ -26,9 +26,7 @@ module.exports = defineConfig({
 		`./bases/vitest`,
 	].map((element) => require.resolve(element)),
 	ignorePatterns: [`./dist`, `./build`, `./node_modules`],
-	parser: `@typescript-eslint/parser`,
 	parserOptions: {
-		extraFileExtensions: ['.svg'],
 		ecmaVersion: `latest`,
 		sourceType: `module`,
 	},

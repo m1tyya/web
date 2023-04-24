@@ -1,5 +1,6 @@
 function matchAll(extensions) {
 	const res = [];
+
 	for (const extension of extensions) {
 		res.push(`*.${extension}`);
 	}

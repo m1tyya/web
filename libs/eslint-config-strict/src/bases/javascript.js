@@ -1,6 +1,6 @@
-const { defineConfig } = require(`eslint-define-config`);
-const { patternsJavascript } = require(`../utils/get-file-patterns`);
-const prettierConfig = require(`../prettier.config`);
+const { defineConfig } = require(`eslint-define-config`),
+	{ patternsJavascript } = require(`../utils/get-file-patterns`),
+	prettierConfig = require(`../prettier.config`);
 
 module.exports = defineConfig({
 	overrides: [
@@ -30,15 +30,19 @@ module.exports = defineConfig({
 						object: true,
 					},
 				],
+
 				'autofix/yoda': `warn`,
-				curly: [`warn`, `all`],
-				'etc/prefer-less-than': `warn`,
+				'consistent-return': `warn`,
+				curly: [`warn`, `multi-line`],
+				'default-case': `warn`,
+				'default-case-last': `warn`,
 				'linebreak-style': [`warn`, `unix`],
 				'no-case-declarations': `warn`,
 				'no-dupe-class-members': `warn`,
 				'no-dupe-keys': `warn`,
 				'no-eval': `warn`,
 				'no-extra-boolean-cast': [`warn`, { enforceForLogicalOperands: true }],
+				'no-fallthrough': `warn`,
 				'no-irregular-whitespace': `warn`,
 				'no-iterator': `warn`,
 				'no-lonely-if': `warn`,
@@ -52,10 +56,8 @@ module.exports = defineConfig({
 				'no-useless-escape': `warn`,
 				'no-var': `warn`,
 				'object-shorthand': `warn`,
-				'one-var': [`warn`, `consecutive`],
-				'one-var-declaration-per-line': [`warn`, `always`],
 				'prefer-arrow-callback': `warn`,
-				'prefer-const': `warn`,
+				'prefer-const': [`warn`, { ignoreReadBeforeAssign: true }],
 				'prefer-exponentiation-operator': `warn`,
 				'prefer-object-spread': `warn`,
 				'prefer-rest-params': `warn`,

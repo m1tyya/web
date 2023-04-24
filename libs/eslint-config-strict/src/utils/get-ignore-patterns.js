@@ -3,7 +3,6 @@ function getIgnorePatternsDefault() {
 		`**/.cache`,
 		`**/.next`,
 		`**/.svelte-kit`,
-		`**/.yarn`,
 		`**/${`node`}_modules`,
 		`**/build`,
 		`**/dist`,

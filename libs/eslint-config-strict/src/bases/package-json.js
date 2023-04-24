@@ -7,7 +7,7 @@ module.exports = defineConfig({
 			parser: `eslint-plugin-package-json-dependencies`,
 			plugins: [`package-json-dependencies`],
 			rules: {
-				'package-json-dependencies/no-missing-types': [`warn`, { excludePatterns: [`@web/*`] }],
+				'package-json-dependencies/no-missing-types': [`warn`, { excludePatterns: [`@m1tyya/*`] }],
 			},
 		},
 	],

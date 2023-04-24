@@ -21,7 +21,6 @@ module.exports = defineConfig({
 						namedComponents: `function-declaration`,
 					},
 				],
-				'react/hook-use-state': `warn`,
 				'react/jsx-boolean-value': [`warn`, `never`],
 				'react/jsx-fragments': [`warn`, `syntax`],
 				'react/jsx-handler-names': `warn`,

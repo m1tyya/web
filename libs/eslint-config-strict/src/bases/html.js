@@ -7,11 +7,11 @@ module.exports = defineConfig({
 			files: matchAll(extensionsHtml()),
 			parser: `@html-eslint/parser`,
 			parserOptions: {
-				extraFileExtensions: [`.svg`],
+				extraFileExtensions: [`.svg`, `.html`],
 			},
 			plugins: [`@html-eslint`],
 			rules: {
-				'@html-eslint/id-naming-convention': [`warn`, `kebab-case`],
+				'@html-eslint/id-naming-convention': `warn`,
 				'@html-eslint/indent': [`warn`, `tab`],
 				'@html-eslint/no-multiple-empty-lines': [`warn`, { max: 1 }],
 				'@html-eslint/quotes': [`warn`, `single`],

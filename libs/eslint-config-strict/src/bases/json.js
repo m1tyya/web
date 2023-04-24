@@ -8,6 +8,9 @@ const json = defineConfig({
 		{
 			files: matchAll(extensionsJson()),
 			parser: `jsonc-eslint-parser`,
+			parserOptions: {
+				extraFileExtensions: [`.json`],
+			},
 			plugins: [`jsonc`, `prettier`],
 			rules: {
 				'jsonc/sort-array-values': [`warn`, { order: { type: `asc` }, pathPattern: `.*` }],
