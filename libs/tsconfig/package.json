@@ -2,7 +2,7 @@
 	"devDependencies": {
 		"eslint": "latest",
 		"eslint-define-config": "latest",
-		"@web/eslint-config-based": "workspace:^"
+		"@m1tyya/eslint-config-strict": "workspace:^"
 	},
 	"repository": {
 		"directory": "libs/tsconfig",

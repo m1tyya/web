@@ -12,7 +12,7 @@ App directory with projects.
 
 Shared libraries used by applications.
 
-- `eslint-config-based`: [ESLint](https://eslint.org/) modular configurations with strong opinions
+- `eslint-config-strict`: [ESLint](https://eslint.org/) modular configurations with strong opinions
 - `tsconfig`: common `tsconfig` configurations
 - `ui-react`: shared react components
 
