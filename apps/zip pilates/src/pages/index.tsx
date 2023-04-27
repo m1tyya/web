@@ -1,6 +1,6 @@
 import { Home } from '../components/templates/home/home';
 
-export default function Index(): JSX.Element {
+export default function HomePage(): JSX.Element {
 	return (
 		<>
 			<Home />

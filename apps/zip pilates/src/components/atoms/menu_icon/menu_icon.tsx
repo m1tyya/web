@@ -1,7 +1,6 @@
 import { Container } from '@m1tyya/ui-react';
 import clsx from 'clsx';
 import { AnimatePresence, motion, type MotionProps } from 'framer-motion';
-import { useEffect } from 'react';
 
 import { MENU_STATES, type MenuStates, use_app_store } from '~';
 

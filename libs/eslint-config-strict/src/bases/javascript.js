@@ -21,7 +21,7 @@ module.exports = defineConfig({
 			],
 			rules: {
 				'arrow-body-style': [`warn`, `as-needed`],
-				'autofix/eqeqeq': [`warn`, `smart`],
+				// 'autofix/eqeqeq': [`warn`, `smart`],
 				// 'autofix/no-confusing-arrow': `warn`,
 				'autofix/prefer-destructuring': [
 					`warn`,

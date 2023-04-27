@@ -1,5 +1,6 @@
 {
 	"devDependencies": {
+		"dotenv-cli": "latest",
 		"@m1tyya/eslint-config-strict": "workspace:*",
 		"eslint-define-config": "latest",
 		"turbo": "latest"

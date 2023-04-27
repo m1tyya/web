@@ -61,7 +61,7 @@ const { defineConfig } = require(`eslint-define-config`),
 							selector: `variable`,
 						},
 						{
-							format: [`StrictPascalCase`],
+							format: [`PascalCase`],
 							selector: `typeLike`,
 						},
 						{

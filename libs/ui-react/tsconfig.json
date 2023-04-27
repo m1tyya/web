@@ -1,17 +1,16 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"exclude": ["build", "dist", "node_modules"],
 	"compilerOptions": {
 		"baseUrl": ".",
+		"jsx": "react-jsx",
+		"noEmit": true,
 		"paths": {
-			"@m1tyya/ui-react": ["src/index.ts"],
 			"~": ["src/index.ts"],
 			"~/*": ["src/*"]
 		},
-		"jsx": "react-jsx",
-		"noEmit": true,
 		"typeRoots": ["node_modules/@types", "src/index.d.ts", "src/types/html.ts"]
 	},
+	"exclude": ["build", "dist", "node_modules"],
 	"extends": "@m1tyya/tsconfig/base",
 	"include": ["src", "src/types/html.ts"]
 }

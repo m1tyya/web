@@ -1,5 +1,6 @@
 export * from './button';
 export * from './container';
+export * from './form_input';
 export * from './image';
 export * from './input';
 export * from './link';

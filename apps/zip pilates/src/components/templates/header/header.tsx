@@ -1,5 +1,5 @@
-import { cx } from '@twind/core';
 import { Container, Link, Vector } from '@m1tyya/ui-react';
+import { cx } from '@twind/core';
 import Logo from 'public/vectors/logo.svg';
 
 type HeaderProps = {
@@ -33,8 +33,9 @@ export function Header({
 					desc='Some description'
 					dimension='width'
 					dimension_value='[50px]'
+					layout='hover:(scale-[120%] -rotate-[15deg]) duration-[250ms]'
 					Svg={Logo}
-					title='Website logo'
+					title='Home page'
 				/>
 			</Link>
 		</Container>

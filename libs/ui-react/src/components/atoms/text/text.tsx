@@ -1,11 +1,16 @@
 import clsx from 'clsx';
-import { forwardRef, type Ref } from 'react';
 
-import { type FontWeight, type TextAlign, type TextElement } from '~';
+import {
+	type FontWeight,
+	type Position,
+	type PseudoClasses,
+	type TextAlign,
+	type TextElement,
+} from '~';
 
 type TextPropsGeneral = {
-	font_family: string;
-	font_size: string;
+	font_family?: string;
+	font_size?: string;
 	font_weight?: FontWeight;
 	height?: string;
 	id?: string;
@@ -14,7 +19,7 @@ type TextPropsGeneral = {
 	max_height?: string;
 	max_width?: string;
 	opacity?: string;
-	position?: string;
+	position?: Position;
 	text: string;
 	text_align?: TextAlign;
 	text_color?: string;
@@ -24,34 +29,65 @@ type TextPropsGeneral = {
 export type TextProps = TextPropsGeneral &
 	({ bind: string; tag: 'label' } | { bind?: never; tag: TextElement });
 
-export const Text = forwardRef(
-	(
-		{
-			bind,
-			font_family,
-			font_size,
-			font_weight,
-			height,
-			id,
-			letter_spacing,
-			line_height,
-			max_height,
-			max_width,
-			opacity,
-			position,
-			tag: Tag,
-			text,
-			text_align,
-			text_color,
-			z_index,
-		}: TextProps,
-		ref: Ref<any>,
-	): JSX.Element => (
+function resolve_pseudo_classes(
+	template: string,
+	{ active, focus, focus_within, hover, target, visited }: Partial<PseudoClasses<string>>,
+): string {
+	const res = ``;
+
+	if (active != undefined) {
+		res.concat(`active:${template}${active}`);
+	}
+
+	if (focus != undefined) {
+		res.concat(`focus:${template}${focus}`);
+	}
+
+	if (focus_within != undefined) {
+		res.concat(`focus-within:${template}${focus_within}`);
+	}
+
+	if (hover != undefined) {
+		res.concat(`hover:${template}${hover}`);
+	}
+
+	if (target != undefined) {
+		res.concat(`target:${template}${target}`);
+	}
+
+	if (visited != undefined) {
+		res.concat(`visited:${template}${visited}`);
+	}
+
+	return res;
+}
+
+export function Text({
+	bind,
+	font_family,
+	font_size,
+	font_weight,
+	height,
+	id,
+	letter_spacing,
+	line_height,
+	max_height,
+	max_width,
+	opacity,
+	position,
+	tag: Tag,
+	text,
+	text_align,
+	text_color,
+	z_index,
+}: TextProps): JSX.Element {
+	return (
 		<Tag
 			className={clsx(
 				position,
 				`font-${font_family}`,
 				`text-${font_size}`,
+				// resolve_pseudo_classes(`text-`, font_size[1]),
 				opacity === undefined ? undefined : `opacity-${opacity}`,
 				font_weight === undefined ? undefined : `font-${font_weight}`,
 				letter_spacing === undefined ? undefined : `tracking-${letter_spacing}`,
@@ -65,9 +101,8 @@ export const Text = forwardRef(
 				`whitespace-pre-line`,
 			)}
 			htmlFor={bind}
-			id={id}
-			ref={ref}>
+			id={id}>
 			{text}
 		</Tag>
-	),
-);
+	);
+}

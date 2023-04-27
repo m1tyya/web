@@ -18,7 +18,9 @@ type OmitTransformNever<Obj extends object, ObjKeys extends keyof Obj> = OmitTra
 export type PseudoClasses<T> = {
 	active: T;
 	focus: T;
+	focus_within: T;
 	hover: T;
+	target: T;
 	visited: T;
 };
 export type MediaType = 'all' | 'print' | 'screen';
@@ -134,3 +136,24 @@ export type ArbitraryValuePercentage = ArbitraryValue<`${number}${Extract<Length
 export type ArbitraryValueNumber = ArbitraryValue<`${number}`>;
 export type ArbitraryValueLength = ArbitraryValue<`${number}${LengthUnits}`>;
 export type BorderStyle = 'dashed' | 'dotted' | 'double' | 'solid';
+export type Styles = {
+	border_color: string;
+	border_radius: string;
+	border_style: BorderStyle;
+	border_width: string;
+	display: Display;
+	font_family: string;
+	font_size: string;
+	font_weight: FontWeight;
+	height: string;
+	letter_spacing: string;
+	line_height: string;
+	max_height: string;
+	max_width: string;
+	opacity: string;
+	position: Position;
+	text_align: TextAlign;
+	text_color: string;
+	width: string;
+	z_index: string;
+};

@@ -7,12 +7,14 @@ import { Footer, Header, Menu, MENU_ANIMATION_DURATION, MenuIcon, type MenuLink 
 import {
 	ade_display,
 	alegreya,
+	brunizer,
 	domaine_display,
 	doppelganger,
 	glamour,
 	lato,
 	merriweather,
 	naibo,
+	playfair,
 	syne,
 } from '~/constants';
 
@@ -33,10 +35,20 @@ const MENU_LINKS: Array<MenuLink> = [
 	},
 ];
 
-const font_variables = `${syne.variable} ${glamour.variable} ${merriweather.variable} ${doppelganger.variable} ${alegreya.variable} ${lato.variable} ${naibo.variable} ${ade_display.variable} ${domaine_display.variable}`;
+const font_variables = `${syne.variable} ${glamour.variable} ${merriweather.variable} ${doppelganger.variable} ${alegreya.variable} ${lato.variable} ${naibo.variable} ${ade_display.variable} ${domaine_display.variable} ${playfair.variable} ${brunizer.variable}`;
 const header_height = '40',
 	header_padding_x = '7',
 	header_padding_y = '6';
+
+const no_overlay_workaround_script = `
+  window.addEventListener('error', event => {
+    event.stopImmediatePropagation()
+  })
+
+  window.addEventListener('unhandledrejection', event => {
+    event.stopImmediatePropagation()
+  })
+`;
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 	injectGlobal(styles_reset);
@@ -44,6 +56,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 	return (
 		<>
 			<Head>
+				{process.env.NODE_ENV !== 'production' && (
+					<script dangerouslySetInnerHTML={{ __html: no_overlay_workaround_script }} />
+				)}
 				<title>Zip Pilates Studio | Gdynia</title>
 			</Head>
 			<main className={font_variables}>

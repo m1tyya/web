@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/quotes */
-import { Alegreya, Lato, Merriweather, Syne } from 'next/font/google';
+import { Alegreya, Lato, Merriweather, Playfair_Display, Syne } from 'next/font/google';
 import localFont from 'next/font/local';
 
 export const naibo = localFont({
@@ -10,6 +10,13 @@ export const naibo = localFont({
 export const ade_display = localFont({
 	src: '../../public/fonts/ade-display.woff2',
 	variable: '--font-ade-display',
+});
+
+export const playfair = Playfair_Display({ variable: '--font-playfair' });
+
+export const brunizer = localFont({
+	src: '../../public/fonts/brunizer.ttf',
+	variable: '--font-brunizer',
 });
 
 export const lato = Lato({ variable: '--font-lato', weight: ['400', '700', '300'] });

@@ -15,7 +15,7 @@ type BorderProps = {
 
 export type IconProps = {
 	icon: Omit<VectorProps, 'desc' | 'title'>;
-	icon_side: 'left' | 'right';
+	icon_side: 'bottom' | 'left' | 'right' | 'top';
 };
 
 type ButtonPropsGeneral = {
@@ -23,7 +23,11 @@ type ButtonPropsGeneral = {
 	background_color?: string;
 	border_radius?: string;
 	gap?: string;
+	id?: string;
+	justify_content?: 'center' | 'end' | 'start';
 	max_width?: string;
+	on_change?: React.FormEventHandler<HTMLButtonElement> | undefined;
+	on_click?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 	padding_x?: string;
 	padding_y?: string;
 	position?: string;
@@ -32,11 +36,11 @@ type ButtonPropsGeneral = {
 	width?: string;
 };
 
-type ButtonTextProps = Omit<TextProps, 'max_width' | 'position' | 'tag' | 'text_align' | 'text'>;
+export type ButtonTextProps = Omit<TextProps, 'max_width' | 'tag' | 'text_align' | 'text'>;
 
-type ButtonProps = ButtonPropsGeneral &
-	ButtonTextProps &
-	(
+export type ButtonProps = ButtonPropsGeneral & {
+	btn_text: ButtonTextProps;
+} & (
 		| (BorderProps & IconProps)
 		| (BorderProps & Partial<Undefined<IconProps>>)
 		| (IconProps & Partial<Undefined<BorderProps>>)
@@ -44,45 +48,38 @@ type ButtonProps = ButtonPropsGeneral &
 	);
 
 export function Button({
-	align_items = `center`,
-	background_color = `transparent`,
-	border_color = `unset`,
-	border_radius = `0`,
-	border_style = `solid`,
+	align_items,
+	background_color,
+	border_color,
+	border_radius,
+	border_style,
 	border_width,
-	font_family,
-	font_size,
-	font_weight,
-	gap = `0`,
+	btn_text,
+	gap,
 	icon,
 	icon_side,
-	letter_spacing,
-	line_height,
+	id,
+	justify_content,
 	max_width,
+	on_change,
+	on_click,
 	padding_x,
 	padding_y,
 	position,
 	text,
-	text_color = `black`,
 	type,
 	width,
-	z_index,
 }: ButtonProps): JSX.Element {
 	const border_styles = clsx(
-			((): string =>
-				border_width === undefined
-					? ``
-					: `border-${border_color} border-${border_style} border-${border_width}`)(),
+			border_width == undefined ? `` : ` border-${border_width}`,
+			border_color == undefined ? `` : `border-${border_color}`,
+			border_style == undefined ? `` : `border-${border_style}`,
 		),
 		button_text_props: TextProps = {
-			font_family,
-			font_size,
-			font_weight,
-			letter_spacing,
-			line_height,
+			...btn_text,
+			bind: undefined,
 			tag: `span`,
 			text: text === false ? `` : text,
-			text_color,
 		};
 
 	return (
@@ -90,13 +87,26 @@ export function Button({
 			className={clsx(
 				position,
 				border_styles,
-				`items-${align_items} bg-${background_color} rounded-${border_radius} group~button gap-${gap} py-${padding_y} px-${padding_x} max-w-${max_width} w-${width} flex h-auto`,
+				max_width == undefined ? `` : `max-w-${max_width}`,
+				width == undefined ? `` : `w-${width}`,
+				padding_y == undefined ? `` : `py-${padding_y}`,
+				padding_x == undefined ? `` : `px-${padding_x}`,
+				align_items == undefined ? `` : `items-${align_items}`,
+				justify_content == undefined ? `` : `justify-${justify_content}`,
+				gap == undefined ? `` : `gap-${gap}`,
+				background_color == undefined ? `` : `bg-${background_color}`,
+				border_radius == undefined ? `` : `rounded-${border_radius}`,
+				icon_side == `top` || icon_side == `bottom` ? `flex-col` : ``,
+				`group~button flex`,
 			)}
+			id={id}
+			onChange={on_change}
+			onClick={on_click}
 			title={button_text_props.text}
 			type={type === undefined ? `button` : type}>
-			{icon_side === `left` && <Vector {...icon} />}
-			<Text {...button_text_props} />
-			{icon_side === `right` && <Vector {...icon} />}
+			{(icon_side == `left` || icon_side == `top`) && <Vector {...icon} />}
+			{text != false && <Text {...button_text_props} />}
+			{(icon_side == `right` || icon_side == `bottom`) && <Vector {...icon} />}
 		</button>
 	);
 }

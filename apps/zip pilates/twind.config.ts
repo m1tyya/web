@@ -83,6 +83,9 @@ export const styles_reset: CSSBase = {
 		margin: `0`,
 		padding: `0`,
 	},
+	'button:focus': {
+		outline: `none`,
+	},
 	div: {
 		display: `flow-root`,
 	},
@@ -133,6 +136,18 @@ export default defineConfig({
 				'text-overflow': `clip`,
 			}),
 		],
+		[
+			`text_stroke`,
+			{
+				'-webkit-text-stroke': `3px #4E4132`,
+			},
+		],
+		[
+			`rotate`,
+			{
+				'writing-mode': `vertical-lr`,
+			},
+		],
 	],
 	theme: {
 		extend: {
@@ -143,13 +158,20 @@ export default defineConfig({
 				'primary-2': `#283618`,
 				secondary: `#dda15e`,
 				'secondary-2': `#bc6c25`,
+				selected: `#655049`,
+				silver: `#E0DED6`,
 				test: `oklch(70% 0.144 152.47)`,
 				text: `#766C3E`,
 				text_darker: `#49411D`,
 			},
+			content: {
+				divider: `url('/vectors/divider.svg')`,
+			},
 			fontFamily: {
 				domaine: `var(--font-domaine)`,
+				elegant: `var(--font-brunizer)`,
 				heading: `var(--font-ade-display)`,
+				heading2: `var(--font-playfair)`,
 				merri: `var(--font-merri)`,
 				naibo: `var(--font-naibo)`,
 				text: `var(--font-syne)`,

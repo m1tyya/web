@@ -4,12 +4,12 @@ import { container_padding } from '../hero';
 
 type FooterProps = {};
 
-export function Footer({}: FooterProps): JSX.Element {
-	const line_height = `[2]`,
-		address_color = `[#A28C77]`,
-		address_hover_color = `black`,
-		address_hover_duration = `[0.4s]`;
+const line_height = `[2]`,
+	address_color = `[#A28C77]`,
+	address_hover_color = `black`,
+	address_hover_duration = `[0.4s]`;
 
+export function Footer({}: FooterProps): JSX.Element {
 	return (
 		<Container
 			background_color='secondary/20'
