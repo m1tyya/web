@@ -2,9 +2,9 @@ import { clsx } from 'clsx';
 import { type AnimationProps, motion } from 'framer-motion';
 import { type HTMLAttributes, type PropsWithChildren, useRef } from 'react';
 
-import { type BlockElement, type Display, type Padding, type Position } from '~';
+import { type BlockElement, type Display, type Padding, type Position } from '../../../index';
 
-type ContainerProps = Padding &
+type ContainerProps = Partial<Padding> &
 	PropsWithChildren & {
 		animation?: AnimationProps;
 		background_color?: string;
@@ -57,6 +57,9 @@ export function Container({
 						}
 						case 4: {
 							return `pt-${padding[0]} pr-${padding[1]} pb-${padding[2]} pl-${padding[3]}`;
+						}
+						default: {
+							return undefined;
 						}
 					}
 				}

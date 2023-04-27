@@ -1,7 +1,5 @@
 {
 	"dependencies": {
-		"@m1tyya/eslint-config-strict": "workspace:^",
-		"@m1tyya/ui-react": "*",
 		"next": "^13.2.4",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
@@ -17,8 +15,9 @@
 		"@types/react": "^18.0.22",
 		"@types/react-dom": "^18.0.7",
 		"@m1tyya/tsconfig": "workspace:^",
+		"@m1tyya/eslint-config-strict": "workspace:^",
+		"@m1tyya/ui-react": "workspace:^",
 		"eslint": "7.32.0",
-		"eslint-plugin-prettier": "latest",
 		"typescript": "latest"
 	},
 	"name": "@m1tyya/next-tailwind",

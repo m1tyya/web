@@ -140,7 +140,7 @@ function ContactPage(): JSX.Element {
 
 	return (
 		<>
-			<Container display='flex justify-center' layout='flex-row mt-10' tag='div'>
+			<Container display='flex' layout='justify-center flex-row mt-10' tag='div'>
 				<form
 					className='relative  flex w-1/2 flex-col gap-4'
 					noValidate

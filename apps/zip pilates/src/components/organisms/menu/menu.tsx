@@ -70,15 +70,15 @@ export function Menu({ animation_duration, bg_color, links }: MenuProps): JSX.El
 				className={cx(
 					`flex flex-col justify-between pt-60 pb-10 flex flex-col h-screen w-full items-center gap-20 text-center`,
 				)}>
-				<Container display='flex' position='flex-col gap-14'>
+				<Container display='flex' layout='flex-col gap-14' tag='div'>
 					{links.map(({ text, url }) => (
 						<motion.li {...links_animation} key={url.toString()}>
 							<Link url={url}>
 								<Text
 									font_family='heading'
 									font_size='fluid-2xl'
-									font_weight='600'
-									position='tracking-[0.2rem] font-heading hover:(text-gray-500 scale-[105%] -rotate-3) duration-[.2s]'
+									font_weight='semibold'
+									styles='tracking-[0.2rem] font-heading hover:(text-gray-500 scale-[105%] -rotate-3) duration-[.2s]'
 									tag='p'
 									text={text.toUpperCase()}
 								/>
@@ -86,7 +86,7 @@ export function Menu({ animation_duration, bg_color, links }: MenuProps): JSX.El
 						</motion.li>
 					))}
 				</Container>
-				<Container display='flex' position='flex-col gap-6'>
+				<Container display='flex' layout='flex-col gap-6' tag='div'>
 					<Link url='/contact'>
 						<Button
 							align_items='center'
@@ -94,17 +94,19 @@ export function Menu({ animation_duration, bg_color, links }: MenuProps): JSX.El
 							border_radius='full'
 							border_style='solid'
 							border_width={2}
-							font_family='merri'
-							font_size='fluid-md'
-							letter_spacing='[0.1rem]'
+							btn_text={{
+								font_family: `merri`,
+								font_size: `fluid-md`,
+								letter_spacing: `[0.1rem]`,
+								text_color: `primary-2`,
+							}}
 							padding_x='20'
 							padding_y='5'
 							position={`mt-20 mx-auto hover:scale-${button_scale} duration-[.3s]`}
 							text='Zarezerwuj zajęcia'
-							text_color='primary-2'
 						/>
 					</Link>
-					<Container display='flex' layout='w-full flex-row justify-center gap-[2vw]'>
+					<Container display='flex' layout='w-full flex-row justify-center gap-[2vw]' tag='div'>
 						<Link url='https://www.instagram.com/zip.pilates.studio/'>
 							<Vector
 								dimension='width'

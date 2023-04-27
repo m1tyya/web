@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { motion, type MotionProps } from 'framer-motion';
 import React, { memo } from 'react';
 
-import { type Dimension, type Position } from '~';
+import { type Dimension, type Position } from '../../../index';
 
 type SvgrProps = {
 	desc?: string;

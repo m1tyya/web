@@ -6,7 +6,7 @@ import {
 	type PseudoClasses,
 	type TextAlign,
 	type TextElement,
-} from '~';
+} from '../../../index';
 
 type TextPropsGeneral = {
 	font_family?: string;
@@ -20,6 +20,7 @@ type TextPropsGeneral = {
 	max_width?: string;
 	opacity?: string;
 	position?: Position;
+	styles?: string;
 	text: string;
 	text_align?: TextAlign;
 	text_color?: string;
@@ -75,6 +76,7 @@ export function Text({
 	max_width,
 	opacity,
 	position,
+	styles,
 	tag: Tag,
 	text,
 	text_align,
@@ -85,8 +87,8 @@ export function Text({
 		<Tag
 			className={clsx(
 				position,
-				`font-${font_family}`,
-				`text-${font_size}`,
+				font_family == undefined ? undefined : `font-${font_family}`,
+				font_size == undefined ? undefined : `text-${font_size}`,
 				// resolve_pseudo_classes(`text-`, font_size[1]),
 				opacity === undefined ? undefined : `opacity-${opacity}`,
 				font_weight === undefined ? undefined : `font-${font_weight}`,
@@ -99,6 +101,7 @@ export function Text({
 				height === undefined ? undefined : `h-${height}`,
 				z_index === undefined ? undefined : `z-${z_index}`,
 				`whitespace-pre-line`,
+				styles,
 			)}
 			htmlFor={bind}
 			id={id}>

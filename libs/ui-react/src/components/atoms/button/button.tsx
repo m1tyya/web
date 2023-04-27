@@ -38,14 +38,11 @@ type ButtonPropsGeneral = {
 
 export type ButtonTextProps = Omit<TextProps, 'max_width' | 'tag' | 'text_align' | 'text'>;
 
-export type ButtonProps = ButtonPropsGeneral & {
-	btn_text: ButtonTextProps;
-} & (
-		| (BorderProps & IconProps)
-		| (BorderProps & Partial<Undefined<IconProps>>)
-		| (IconProps & Partial<Undefined<BorderProps>>)
-		| (Partial<Undefined<BorderProps>> & Partial<Undefined<IconProps>>)
-	);
+export type ButtonProps = ButtonPropsGeneral &
+	Partial<BorderProps> &
+	Partial<IconProps> & {
+		btn_text: ButtonTextProps;
+	};
 
 export function Button({
 	align_items,
@@ -104,9 +101,9 @@ export function Button({
 			onClick={on_click}
 			title={button_text_props.text}
 			type={type === undefined ? `button` : type}>
-			{(icon_side == `left` || icon_side == `top`) && <Vector {...icon} />}
+			{(icon_side == `left` || icon_side == `top`) && icon && <Vector {...icon} />}
 			{text != false && <Text {...button_text_props} />}
-			{(icon_side == `right` || icon_side == `bottom`) && <Vector {...icon} />}
+			{(icon_side == `right` || icon_side == `bottom`) && icon && <Vector {...icon} />}
 		</button>
 	);
 }

@@ -23,7 +23,7 @@ type BtnProps = Pick<
 	| 'width'
 >;
 
-const btn_props: BtnProps = {
+const btn_props: Partial<BtnProps> = {
 	border_color: `[#c5b69a]`,
 	border_radius: `xl`,
 	border_style: `solid`,
@@ -31,7 +31,7 @@ const btn_props: BtnProps = {
 	btn_text: {
 		font_family: `merri`,
 		font_size: `fluid-xs`,
-		font_weight: `500`,
+		font_weight: `light`,
 		letter_spacing: `wider`,
 	},
 	position: `md:border-[3px] items-center justify-center py-[2vw] px-[4vw] md:(py-[1vw] px-[2vw]) gap-[3vw] shadow-[#402d27] text-[#402d27] shadow-[0_0_10px_-5px_#585149] hover:shadow-[0_0_20px_0px_#585149] duration-300 stroke-[#655049] fill-[#655049] hover:border-[#4E4132] hover:scale-[102%]`,
@@ -41,7 +41,7 @@ const btn_training_props: BtnProps = {
 	...btn_props,
 	btn_text: {
 		...btn_props.btn_text,
-		position: `min-[500px]:text-fluid-base md:text-fluid-sm xl:text-fluid-base`,
+		styles: `min-[500px]:text-fluid-base md:text-fluid-sm xl:text-fluid-base`,
 	},
 };
 
@@ -176,26 +176,27 @@ function Price(): JSX.Element {
 	}
 
 	return (
-		<Container background_color='bg' padding={[`16`, `8`]}>
+		<Container background_color='bg' padding={[`16`, `8`]} tag='main'>
 			<Text
 				font_family='heading2'
 				font_size='fluid-3xl'
 				font_weight='semibold'
 				letter_spacing='[0.15rem]'
-				position='md:max-w-full col-span-3'
+				styles='md:max-w-full col-span-3'
 				tag='h2'
 				text='Wybierz klasę i liczbę zajęć'
 				text_color='[#7B654C]'
 			/>
 			<Container
 				display='grid'
-				layout='mt-[min(10vw,_7rem)] items-center md:grid-cols-[3fr_2fr] lg:grid-cols-[5fr_2fr_3fr]'>
+				layout='mt-[min(10vw,_7rem)] items-center md:grid-cols-[3fr_2fr] lg:grid-cols-[5fr_2fr_3fr]'
+				tag='div'>
 				<Container
 					display='grid'
-					layout={`gap-x-[2vw] gap-y-[6vw] lg:gap-y-[3vw] grid-rows-2 grid-cols-3`}>
+					layout={`gap-x-[2vw] gap-y-[6vw] lg:gap-y-[3vw] grid-rows-2 grid-cols-3`}
+					tag='div'>
 					{btns_training.map(({ svg, text }) => (
 						<Button
-							border_width={20}
 							icon={{ ...icon, Svg: svg }}
 							icon_side={icon_side}
 							id={text}
@@ -207,7 +208,6 @@ function Price(): JSX.Element {
 					))}
 					{btns_quantity.map((num) => (
 						<Button
-							border_width={20}
 							on_click={handle_quantity_selection}
 							{...btn_quantity_props}
 							id={num.toString()}
@@ -223,11 +223,11 @@ function Price(): JSX.Element {
 					layout='hidden lg:block justify-self-center w-fit'
 					Svg={Divider}
 				/>
-				<Container layout='font-merri text-center text-[#7B654C]'>
-					<Text font_size='fluid-md' position='mt-20' tag='h3' text='Cena za zajęcia' />
+				<Container layout='font-merri text-center text-[#7B654C]' tag='div'>
+					<Text font_size='fluid-md' styles='mt-20' tag='h3' text='Cena za zajęcia' />
 					<Text
 						font_size='fluid-5xl'
-						position={`after:(content-['.'] invisible)`}
+						styles={`after:(content-['.'] invisible)`}
 						tag='h3'
 						text={resolve_price() == 0 ? `` : `${resolve_price()} zł`}
 						text_color='[#A58C70]'

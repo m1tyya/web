@@ -17,14 +17,14 @@ export function Hero(): JSX.Element {
 	};
 
 	return (
-		<Container padding={container_padding}>
-			<Container layout='py-12' position='relative'>
+		<Container padding={container_padding} tag='main'>
+			<Container layout='py-12' position='relative' tag='div'>
 				<Text
 					font_family='domaine'
 					font_size='fluid-4xl'
 					font_weight='semibold'
 					max_width='[50%]'
-					position='absolute top-[0%] z-10'
+					styles='absolute top-[0%] z-10'
 					tag='h1'
 					text={`Zip Pilates Studio`}
 					text_color='text'
@@ -36,7 +36,7 @@ export function Hero(): JSX.Element {
 					font_weight='medium'
 					letter_spacing='[-0.05rem]'
 					max_width='[30%]'
-					position='absolute bottom-[10%] right-0'
+					styles='absolute bottom-[10%] right-0'
 					tag='h2'
 					text='Niech twoje ciało będzie w harmonii z twoją duszą'
 					text_color='text_darker'
@@ -47,28 +47,30 @@ export function Hero(): JSX.Element {
 				font_size='fluid-md'
 				line_height='[1.6]'
 				max_width='[90%]'
-				position='mx-auto mt-10'
+				styles='mx-auto mt-10'
 				tag='p'
 				text='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 				text_align='justify'
 				text_color='text_darker'
 			/>
-			<Container display='flex' layout='justify-center mt-10'>
+			<Container display='flex' layout='justify-center mt-10' tag='div'>
 				<Button
 					background_color='secondary-2'
 					border_radius='[3rem]'
-					font_family='text'
-					font_size='fluid-md'
+					btn_text={{
+						font_family: `text`,
+						font_size: `fluid-md`,
+						font_weight: `medium`,
+						text_color: `light2`,
+					}}
 					gap='10'
 					max_width='100%'
 					padding_x='8'
 					padding_y='button_y'
 					width='[80%]'
 					{...icon_props}
-					font_weight='medium'
 					position={`justify-center mr-8 hover:(border-black) active:(border-black) border-2 border-neutral-60 duration-[.5s]`}
 					text='Dowiedz się więcej'
-					text_color='light2'
 				/>
 			</Container>
 		</Container>

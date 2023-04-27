@@ -19,12 +19,6 @@ importers:
 
   apps/next-tailwind:
     dependencies:
-      '@m1tyya/eslint-config-strict':
-        specifier: workspace:^
-        version: link:../../libs/eslint-config-strict
-      '@m1tyya/ui-react':
-        specifier: '*'
-        version: link:../../libs/ui-react
       next:
         specifier: ^13.2.4
         version: 13.2.4(@babel/core@7.0.0)(react-dom@18.2.0)(react@18.2.0)
@@ -38,9 +32,15 @@ importers:
       '@babel/core':
         specifier: ^7.0.0
         version: 7.0.0
+      '@m1tyya/eslint-config-strict':
+        specifier: workspace:^
+        version: link:../../libs/eslint-config-strict
       '@m1tyya/tsconfig':
         specifier: workspace:^
         version: link:../../libs/tsconfig
+      '@m1tyya/ui-react':
+        specifier: workspace:^
+        version: link:../../libs/ui-react
       '@total-typescript/ts-reset':
         specifier: latest
         version: 0.4.2
@@ -68,9 +68,6 @@ importers:
       eslint:
         specifier: 7.32.0
         version: 7.32.0
-      eslint-plugin-prettier:
-        specifier: latest
-        version: 4.2.1(eslint@7.32.0)(prettier@2.8.8)
       typescript:
         specifier: latest
         version: 5.0.4
@@ -4729,22 +4726,6 @@ packages:
         optional: true
     dependencies:
       eslint: 8.33.0
-    dev: true
-
-  /eslint-plugin-prettier@4.2.1(eslint@7.32.0)(prettier@2.8.8):
-    resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
-    engines: {node: '>=12.0.0'}
-    peerDependencies:
-      eslint: '>=7.28.0'
-      eslint-config-prettier: '*'
-      prettier: '>=2.0.0'
-    peerDependenciesMeta:
-      eslint-config-prettier:
-        optional: true
-    dependencies:
-      eslint: 7.32.0
-      prettier: 2.8.8
-      prettier-linter-helpers: 1.0.0
     dev: true
 
   /eslint-plugin-prettier@4.2.1(eslint@8.33.0)(prettier@2.8.8):

@@ -20,7 +20,7 @@ export function Footer({}: FooterProps): JSX.Element {
 				<Text
 					font_family='text'
 					font_size='fluid-md'
-					font_weight='600'
+					font_weight='semibold'
 					tag='h3'
 					text='Skontaktuj się z nami'
 				/>
@@ -28,7 +28,7 @@ export function Footer({}: FooterProps): JSX.Element {
 					<Text
 						font_family='text'
 						font_size='fluid-base'
-						position={`hover:text-${address_hover_color} duration-${address_hover_duration}`}
+						styles={`hover:text-${address_hover_color} duration-${address_hover_duration}`}
 						tag='p'
 						text='+48 732 901 415'
 						text_color={address_color}
@@ -38,7 +38,7 @@ export function Footer({}: FooterProps): JSX.Element {
 					<Text
 						font_family='text'
 						font_size='fluid-base'
-						position={`hover:text-${address_hover_color} duration-${address_hover_duration}`}
+						styles={`hover:text-${address_hover_color} duration-${address_hover_duration}`}
 						tag='p'
 						text='zip.pilates.studio@gmail.com'
 						text_color={address_color}
@@ -47,8 +47,8 @@ export function Footer({}: FooterProps): JSX.Element {
 				<Text
 					font_family='text'
 					font_size='fluid-md'
-					font_weight='600'
-					position='mt-5'
+					font_weight='semibold'
+					styles='mt-5'
 					tag='h3'
 					text='Nasz adres'
 				/>
@@ -56,7 +56,7 @@ export function Footer({}: FooterProps): JSX.Element {
 					<Text
 						font_family='text'
 						font_size='fluid-base'
-						position={`hover:text-${address_hover_color} duration-${address_hover_duration}`}
+						styles={`hover:text-${address_hover_color} duration-${address_hover_duration}`}
 						tag='h3'
 						text={`Zip Pilates Studio
 						Kazimierza Górskiego 1/1302
@@ -68,8 +68,8 @@ export function Footer({}: FooterProps): JSX.Element {
 			<Text
 				font_family='text'
 				font_size='fluid-sm'
-				font_weight='400'
-				position='mt-10'
+				font_weight='normal'
+				styles='mt-10'
 				tag='p'
 				text='© Zip Pilates Studio 2023. Wszelkie prawa zastrzeżone.'
 			/>

@@ -61,22 +61,23 @@ export function Reviews(): JSX.Element {
 				fill='primary/0'
 				Svg={Wave}
 			/>
-			<Container background_color='primary/10' padding={container_padding}>
+			<Container background_color='primary/10' padding={container_padding} tag='div'>
 				<Text
 					font_family='merri'
 					font_size='fluid-lg'
-					font_weight='500'
+					font_weight='medium'
 					letter_spacing='[0.1rem]'
 					tag='h2'
 					text='Nasi klienci są bardzo zadowoleni'
 					text_align='center'
 				/>
-				<Container display='flex' layout='items-center flex-col mt-20'>
+				<Container display='flex' layout='items-center flex-col mt-20' tag='div'>
 					<div>
 						<Container
 							display='flex'
 							layout='max-w-min top-[-3rem] left-[10%] gap-2'
-							position='absolute'>
+							position='absolute'
+							tag='div'>
 							<Vector dimension='width' dimension_value='[10vw]' fill='white' Svg={Quote} />
 							<Vector dimension='width' dimension_value='[10vw]' fill='white' Svg={Quote} />
 						</Container>
@@ -85,11 +86,11 @@ export function Reviews(): JSX.Element {
 							{...review_animation}
 							font_family='text'
 							font_size={`[${review_font_size}rem]`}
-							font_weight='600'
+							font_weight='semibold'
 							height={`[${review_line_height * review_font_size * review_lines}rem]`}
 							line_height={`[${review_line_height}]`}
 							max_width='[70%]'
-							position={`truncate-${review_lines} mx-auto`}
+							styles={`truncate-${review_lines} mx-auto`}
 							tag='p'
 							text={text}
 							text_align='center'
@@ -98,7 +99,8 @@ export function Reviews(): JSX.Element {
 						<Container
 							display='flex'
 							layout='bottom-[-3rem] right-[10%] gap-2 rotate-180'
-							position='absolute'>
+							position='absolute'
+							tag='div'>
 							<Vector dimension='width' dimension_value='[10vw]' fill='white' Svg={Quote} />
 							<Vector dimension='width' dimension_value='[10vw]' fill='white' Svg={Quote} />
 						</Container>
@@ -120,18 +122,18 @@ export function Reviews(): JSX.Element {
 						{...review_animation}
 						font_family='text'
 						font_size='fluid-base'
-						font_weight='600'
-						position='mt-5'
+						font_weight='semibold'
+						styles='mt-5'
 						tag='h3'
 						text={name}
 					/>
-					<Container display='flex' layout='items-center mt-10'>
+					<Container display='flex' layout='items-center mt-10' tag='div'>
 						<MotionText
 							key={active_testimonial_index}
 							{...review_animation}
 							font_family='text'
 							font_size='fluid-lg'
-							font_weight='600'
+							font_weight='semibold'
 							tag='span'
 							text={(active_testimonial_index + 1).toString().padStart(2, `0`)}
 						/>
@@ -139,7 +141,7 @@ export function Reviews(): JSX.Element {
 						<Text
 							font_family='text'
 							font_size='fluid-lg'
-							font_weight='600'
+							font_weight='semibold'
 							tag='span'
 							text={testimonials.length.toString().padStart(2, `0`)}
 						/>

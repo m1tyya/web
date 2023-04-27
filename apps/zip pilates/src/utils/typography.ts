@@ -22,6 +22,7 @@ export function fluid_type(
 	const MINIMUM_SCREEN_WIDTH = 300,
 		min_size_pixel = sizes_pixel[0],
 		max_size_pixel = sizes_pixel[1];
+
 	if (
 		min_size_pixel <= 0 &&
 		max_size_pixel <= 0 &&
@@ -31,9 +32,11 @@ export function fluid_type(
 	) {
 		throw new Error(`Provide positive values.`);
 	}
+
 	if (min_screen_width < MINIMUM_SCREEN_WIDTH) {
 		throw new Error(`Minimal screen width must be greater than ${MINIMUM_SCREEN_WIDTH} pixels`);
 	}
+
 	const font_slope = (max_size_pixel - min_size_pixel) / (max_screen_width - min_screen_width),
 		font_slope_percentage = round(font_slope * 100, precision),
 		intercepter = round((min_size_pixel - font_slope * min_screen_width) / rem_value, precision),
@@ -56,6 +59,7 @@ export function fluid_type_scale(
 	{ max_screen_width, min_screen_width, precision, rem_value }: FluidType,
 ): Record<string, string> {
 	const res: Array<Record<string, string>> = [];
+
 	for (const [index, step] of steps.entries()) {
 		const power = index - steps.indexOf(base_step),
 			min = base_value_min * scale_min ** power,
