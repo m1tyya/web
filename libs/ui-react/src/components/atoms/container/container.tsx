@@ -8,10 +8,10 @@ type ContainerProps = Partial<Padding> &
 	PropsWithChildren & {
 		animation?: AnimationProps;
 		background_color?: string;
-		display?: Display;
+		display?: string;
 		layout?: string;
 		line_height?: string;
-		position?: Position;
+		position?: string;
 		tag: BlockElement;
 		z_index?: string;
 	};

@@ -11,7 +11,7 @@ import {
 type TextPropsGeneral = {
 	font_family?: string;
 	font_size?: string;
-	font_weight?: FontWeight;
+	font_weight?: string;
 	height?: string;
 	id?: string;
 	letter_spacing?: string;
@@ -87,17 +87,16 @@ export function Text({
 		<Tag
 			className={clsx(
 				position,
-				font_family == undefined ? undefined : `font-${font_family}`,
-				font_size == undefined ? undefined : `text-${font_size}`,
-				// resolve_pseudo_classes(`text-`, font_size[1]),
+				font_family && `font-${font_family}`,
+				font_size == undefined ? undefined : `text-(${font_size})`,
 				opacity === undefined ? undefined : `opacity-${opacity}`,
-				font_weight === undefined ? undefined : `font-${font_weight}`,
+				font_weight === undefined ? undefined : `font-(${font_weight})`,
 				letter_spacing === undefined ? undefined : `tracking-${letter_spacing}`,
 				line_height === undefined ? undefined : `leading-${line_height}`,
 				text_color === undefined ? undefined : `text-${text_color}`,
 				text_align === undefined ? undefined : `text-${text_align}`,
-				max_width === undefined ? undefined : `max-w-${max_width}`,
-				max_height === undefined ? undefined : `max-h-${max_height}`,
+				max_width === undefined ? undefined : `max-w-(${max_width})`,
+				max_height === undefined ? undefined : `max-h-(${max_height})`,
 				height === undefined ? undefined : `h-${height}`,
 				z_index === undefined ? undefined : `z-${z_index}`,
 				`whitespace-pre-line`,

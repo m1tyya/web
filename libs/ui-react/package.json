@@ -10,6 +10,8 @@
 		"@vitejs/plugin-react-swc": "latest",
 		"@m1tyya/eslint-config-strict": "workspace:^",
 		"@m1tyya/tsconfig": "workspace:^",
+		"@twind/core": "latest",
+		"@twind/with-react": "latest",
 		"clsx": "latest",
 		"eslint": "latest",
 		"eslint-define-config": "latest",
@@ -28,7 +30,7 @@
 		"dist"
 	],
 	"license": "MIT",
-	"main": "./dist/index.es.js",
+	"main": "./src/index.ts",
 	"name": "@m1tyya/ui-react",
 	"scripts": {
 		"build": "tsc && vite build",
@@ -36,6 +38,6 @@
 		"lint": "eslint \"**/*.ts*\""
 	},
 	"type": "module",
-	"types": "./dist/index.d.ts",
+	"types": "./src/index.ts",
 	"version": "0.1.0"
 }

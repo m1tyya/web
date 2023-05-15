@@ -3,7 +3,7 @@ import install from '@twind/with-next/app';
 import { type AppProps } from 'next/app';
 import Head from 'next/head';
 
-import { Footer, Header, Menu, MENU_ANIMATION_DURATION, MenuIcon, type MenuLink } from '~';
+import { Footer, Header, MenuIcon } from '~';
 import {
 	ade_display,
 	alegreya,
@@ -19,21 +19,6 @@ import {
 } from '~/constants';
 
 import config, { styles_reset } from '../../twind.config';
-
-const MENU_LINKS: Array<MenuLink> = [
-	{
-		text: 'Cennik',
-		url: '/price',
-	},
-	{
-		text: 'O Nas',
-		url: '/about',
-	},
-	{
-		text: 'Kontakt',
-		url: '/contact',
-	},
-];
 
 const font_variables = `${syne.variable} ${glamour.variable} ${merriweather.variable} ${doppelganger.variable} ${alegreya.variable} ${lato.variable} ${naibo.variable} ${ade_display.variable} ${domaine_display.variable} ${playfair.variable} ${brunizer.variable}`;
 const header_height = '40',
@@ -61,7 +46,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 				)}
 				<title>Zip Pilates Studio | Gdynia</title>
 			</Head>
-			<main className={font_variables}>
+			<div className={font_variables}>
 				<Header
 					background_color='bg'
 					height={header_height}
@@ -69,22 +54,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 					padding_x={header_padding_x}
 					padding_y={header_padding_y}
 				/>
-				<MenuIcon
-					color='black'
-					height={header_height}
-					padding_x={header_padding_x}
-					padding_y={header_padding_y}
-					size={30}
-					weight='md'
-				/>
-				<Menu
-					animation_duration={MENU_ANIMATION_DURATION}
-					bg_color='[#E5BF9F]'
-					links={MENU_LINKS}
-				/>
 				<Component {...pageProps} />
 				<Footer />
-			</main>
+			</div>
 		</>
 	);
 }

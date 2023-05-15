@@ -1,9 +1,10 @@
 import { Button, Container, Link, type LinkProps, Text, Vector } from '@m1tyya/ui-react';
-import { cx } from '@twind/core';
+import { cx, tw } from '@twind/core';
 import { motion, type MotionProps } from 'framer-motion';
 import Facebook from 'public/vectors/facebook.svg';
 import Instagram from 'public/vectors/instagram.svg';
 import Whatsapp from 'public/vectors/whatsapp.svg';
+import { useMediaQuery } from 'usehooks-ts';
 
 import { handle_animation } from '~/components/atoms';
 import { use_app_store } from '~/store';
@@ -20,14 +21,13 @@ export const MENU_STATES = { CLOSED: `CLOSED`, OPEN: `OPEN` } as const;
 export const MENU_ANIMATION_DURATION = 0.5;
 export type MenuStates = (typeof MENU_STATES)[keyof typeof MENU_STATES];
 
-let counter = 0;
-
 const icon_size = `[30px]`,
 	icon_margin = `6`,
 	icon_scale = `[115%]`,
 	button_scale = `[105%]`;
 
 export function Menu({ animation_duration, bg_color, links }: MenuProps): JSX.Element {
+	const is_small_screen = useMediaQuery(`(max-width: ${tw.theme(`screens.md`)})`);
 	const { is_menu_open } = use_app_store(),
 		links_animation: MotionProps = {
 			animate: handle_animation(is_menu_open),
@@ -57,36 +57,34 @@ export function Menu({ animation_duration, bg_color, links }: MenuProps): JSX.El
 			},
 		};
 
-	counter++;
-
 	return (
 		<motion.menu
-			{...menu_animation}
+			{...(is_small_screen && menu_animation)}
 			className={cx(
-				`bg-${bg_color} fixed top-0 right-0 z-[100] h-screen w-full overscroll-y-contain`,
+				`bg-${bg_color} md:bg-transparent fixed md:relative top-0 right-0 z-[100] h-screen md:h-auto w-full overscroll-y-contain`,
 			)}
 			id='menu'>
 			<ul
 				className={cx(
-					`flex flex-col justify-between pt-60 pb-10 flex flex-col h-screen w-full items-center gap-20 text-center`,
+					`flex flex-col md:flex-row justify-between md:justify-end md:pr-4 pt-60 pb-10 md:p-0 flex flex-col h-screen md:h-auto w-full items-center gap-20 text-center`,
 				)}>
-				<Container display='flex' layout='flex-col gap-14' tag='div'>
+				<Container display='flex' layout='flex-col md:flex-row gap-14' tag='div'>
 					{links.map(({ text, url }) => (
-						<motion.li {...links_animation} key={url.toString()}>
+						<motion.li {...(is_small_screen && links_animation)} key={url.toString()}>
 							<Link url={url}>
 								<Text
 									font_family='heading'
-									font_size='fluid-2xl'
-									font_weight='semibold'
-									styles='tracking-[0.2rem] font-heading hover:(text-gray-500 scale-[105%] -rotate-3) duration-[.2s]'
+									font_size='fluid-2xl md:fluid-base'
+									font_weight='semibold md:bold'
+									styles='uppercase md:normal-case tracking-[0.2rem] md:tracking-none font-heading md:font-naibo hover:(text-gray-500 scale-[105%] -rotate-3) duration-[.2s]'
 									tag='p'
-									text={text.toUpperCase()}
+									text={text}
 								/>
 							</Link>
 						</motion.li>
 					))}
 				</Container>
-				<Container display='flex' layout='flex-col gap-6' tag='div'>
+				<Container display='flex md:hidden' layout='flex-col gap-6' tag='div'>
 					<Link url='/contact'>
 						<Button
 							align_items='center'
@@ -106,7 +104,10 @@ export function Menu({ animation_duration, bg_color, links }: MenuProps): JSX.El
 							text='Zarezerwuj zajęcia'
 						/>
 					</Link>
-					<Container display='flex' layout='w-full flex-row justify-center gap-[2vw]' tag='div'>
+					<Container
+						display='flex md:none'
+						layout='w-full flex-row justify-center gap-[2vw]'
+						tag='div'>
 						<Link url='https://www.instagram.com/zip.pilates.studio/'>
 							<Vector
 								dimension='width'
@@ -133,7 +134,6 @@ export function Menu({ animation_duration, bg_color, links }: MenuProps): JSX.El
 						</Link>
 					</Container>
 				</Container>
-				<p>{counter / 2}</p>
 			</ul>
 		</motion.menu>
 	);

@@ -37,7 +37,7 @@ module.exports = defineConfig({
 				],
 				'@typescript-eslint/prefer-optional-chain': `warn`,
 				'@typescript-eslint/quotes': [`warn`, `backtick`],
-				'canonical/sort-keys': [`warn`, `asc`, { natural: true }],
+				'canonical/sort-keys': [`warn`, `asc`, { caseSensitive: false, natural: true }],
 			},
 		},
 	],

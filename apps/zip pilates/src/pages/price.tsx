@@ -6,6 +6,7 @@ import {
 	Text,
 	Vector,
 } from '@m1tyya/ui-react';
+import { apply, tw } from '@twind/core';
 import Divider from 'public/vectors/divider_vertical.svg';
 import Training2 from 'public/vectors/equipment.svg';
 import Training1 from 'public/vectors/stretching.svg';
@@ -14,34 +15,27 @@ import { useState } from 'react';
 
 type BtnProps = Pick<
 	ButtonProps,
-	| 'border_color'
-	| 'border_radius'
-	| 'border_style'
-	| 'border_width'
-	| 'btn_text'
-	| 'position'
-	| 'width'
+	'border_color' | 'border_radius' | 'border_style' | 'border_width' | 'btn_text' | 'position'
 >;
 
-const btn_props: Partial<BtnProps> = {
-	border_color: `[#c5b69a]`,
+const btn_props: BtnProps = {
 	border_radius: `xl`,
 	border_style: `solid`,
 	border_width: 2,
 	btn_text: {
 		font_family: `merri`,
-		font_size: `fluid-xs`,
+		font_size: apply`fluid-xs`,
 		font_weight: `light`,
 		letter_spacing: `wider`,
 	},
-	position: `md:border-[3px] items-center justify-center py-[2vw] px-[4vw] md:(py-[1vw] px-[2vw]) gap-[3vw] shadow-[#402d27] text-[#402d27] shadow-[0_0_10px_-5px_#585149] hover:shadow-[0_0_20px_0px_#585149] duration-300 stroke-[#655049] fill-[#655049] hover:border-[#4E4132] hover:scale-[102%]`,
+	position: apply`md:border-[3px] items-center border-brown_light justify-center py-[2vw] px-[4vw] md:(py-[1vw] px-[2vw]) gap-[3vw] shadow-[#402d27] duration-300 hover:border-[#4E4132]`,
 };
 
 const btn_training_props: BtnProps = {
 	...btn_props,
 	btn_text: {
 		...btn_props.btn_text,
-		styles: `min-[500px]:text-fluid-base md:text-fluid-sm xl:text-fluid-base`,
+		styles: apply`min-[500px]:text-fluid-base md:text-fluid-sm xl:text-fluid-md`,
 	},
 };
 
@@ -60,7 +54,8 @@ const btn_icon_props: Omit<IconProps, 'icon'> & {
 	icon_side: `bottom`,
 };
 
-const btn_selected_styles = `bg-selected text-silver border-selected fill-silver stroke-silver hover:border-selected hover:shadow-none hover:transform-none`;
+const btn_selected_styles = apply`bg-selected text-silver border-selected fill-silver stroke-silver hover:shadow-none hover:transform-none hover:border-selected`;
+const btn_unselected_styles = apply`text-[#402d27] shadow-[0_0_10px_-5px_#585149] hover:shadow-[0_0_20px_0px_#585149] hover:scale-[102%] stroke-[#655049] fill-[#655049] `;
 
 const btns_training: Array<{
 	svg: React.FC<React.SVGProps<SVGSVGElement>>;
@@ -91,15 +86,19 @@ function Price(): JSX.Element {
 		const updated_training = event.currentTarget;
 		const updated_title = updated_training.title;
 
-		if (training_title != updated_title) {
-			const selected_btn = document.getElementById(training_title) as HTMLButtonElement | null;
-
-			if (selected_btn) {
-				selected_btn.classList.remove(...btn_selected_styles.split(` `));
-			}
+		if (training_title == updated_title) {
+			return;
 		}
 
-		updated_training.classList.add(...btn_selected_styles.split(` `));
+		const selected_btn = document.getElementById(training_title) as HTMLButtonElement | null;
+
+		console.log(selected_btn);
+
+		if (selected_btn) {
+			selected_btn.classList.remove(tw(btn_selected_styles));
+		}
+
+		updated_training.classList.add(tw(btn_selected_styles));
 		set_training_title(updated_title);
 	}
 
@@ -107,15 +106,17 @@ function Price(): JSX.Element {
 		const updated_quantity = event.currentTarget;
 		const updated_title = updated_quantity.title;
 
-		if (quantity_title != updated_title) {
-			const selected_btn = document.getElementById(quantity_title) as HTMLButtonElement | null;
-
-			if (selected_btn) {
-				selected_btn.classList.remove(...btn_selected_styles.split(` `));
-			}
+		if (quantity_title == updated_title) {
+			return;
 		}
 
-		updated_quantity.classList.add(...btn_selected_styles.split(` `));
+		const selected_btn = document.getElementById(quantity_title) as HTMLButtonElement | null;
+
+		if (selected_btn) {
+			selected_btn.classList.remove(tw(btn_selected_styles));
+		}
+
+		updated_quantity.classList.add(tw(btn_selected_styles));
 		set_quantity_title(updated_title);
 	}
 
@@ -182,7 +183,7 @@ function Price(): JSX.Element {
 				font_size='fluid-3xl'
 				font_weight='semibold'
 				letter_spacing='[0.15rem]'
-				styles='md:max-w-full col-span-3'
+				styles={`md:max-w-full col-span-3`}
 				tag='h2'
 				text='Wybierz klasę i liczbę zajęć'
 				text_color='[#7B654C]'
@@ -226,7 +227,7 @@ function Price(): JSX.Element {
 				<Container layout='font-merri text-center text-[#7B654C]' tag='div'>
 					<Text font_size='fluid-md' styles='mt-20' tag='h3' text='Cena za zajęcia' />
 					<Text
-						font_size='fluid-5xl'
+						font_size={tw(`fluid-5xl`)}
 						styles={`after:(content-['.'] invisible)`}
 						tag='h3'
 						text={resolve_price() == 0 ? `` : `${resolve_price()} zł`}

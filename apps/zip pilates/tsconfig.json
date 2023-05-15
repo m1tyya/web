@@ -7,7 +7,8 @@
 			"~": ["src"],
 			"~/*": ["src/*"],
 			"public/*": ["public/*"]
-		}
+		},
+		"noEmit": true
 	},
 	"include": ["src", "next-env.d.ts", "reset.d.ts", "twind.config.ts"]
 }

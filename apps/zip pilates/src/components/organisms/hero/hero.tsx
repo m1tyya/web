@@ -17,29 +17,36 @@ export function Hero(): JSX.Element {
 	};
 
 	return (
-		<Container padding={container_padding} tag='main'>
-			<Container layout='py-12' position='relative' tag='div'>
-				<Text
-					font_family='domaine'
-					font_size='fluid-4xl'
-					font_weight='semibold'
-					max_width='[50%]'
-					styles='absolute top-[0%] z-10'
-					tag='h1'
-					text={`Zip Pilates Studio`}
-					text_color='text'
-				/>
-				<Vector dimension='width' dimension_value='[80%]' layout='mx-auto mt-20' Svg={HeroShape} />
-				<Text
-					font_family='text'
-					font_size='fluid-md'
-					font_weight='medium'
-					letter_spacing='[-0.05rem]'
-					max_width='[30%]'
-					styles='absolute bottom-[10%] right-0'
-					tag='h2'
-					text='Niech twoje ciało będzie w harmonii z twoją duszą'
-					text_color='text_darker'
+		<Container padding={container_padding} tag='div'>
+			<Container layout='py-12 md:(flex)' position='relative' tag='div'>
+				<Container position='static' tag='div'>
+					<Text
+						font_family='domaine'
+						font_size='fluid-4xl md:fluid-2xl'
+						font_weight='semibold'
+						max_width='[50%] md:full'
+						styles='absolute md:static top-[0%] z-10'
+						tag='h1'
+						text={`Zip Pilates Studio`}
+						text_color='text'
+					/>
+					<Text
+						font_family='text'
+						font_size='fluid-md md:fluid-base'
+						font_weight='medium'
+						letter_spacing='[-0.05rem]'
+						max_width='[30%] md:full'
+						styles='absolute md:static bottom-[10%] right-0'
+						tag='h2'
+						text='Niech twoje ciało będzie w harmonii z twoją duszą'
+						text_color='text_darker'
+					/>
+				</Container>
+				<Vector
+					dimension='width'
+					dimension_value='[80%] md:[50%]'
+					layout='mx-auto mt-20'
+					Svg={HeroShape}
 				/>
 			</Container>
 			<Text

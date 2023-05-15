@@ -13,5 +13,5 @@ export function Page({
 }: PageProps): JSX.Element {
 	const page_styles = clsx(layout, `bg-${background_color} relative min-h-screen`);
 
-	return <div className={clsx(page_styles)}>{children}</div>;
+	return <main className={clsx(page_styles)}>{children}</main>;
 }

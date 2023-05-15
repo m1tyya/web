@@ -32,12 +32,16 @@ module.exports = defineConfig({
 				],
 
 				'autofix/yoda': `warn`,
+
+				'class-methods-use-this': `warn`,
+
 				'consistent-return': `warn`,
 				curly: [`warn`, `multi-line`],
 				'default-case': `warn`,
 				'default-case-last': `warn`,
 				'linebreak-style': [`warn`, `unix`],
 				'no-case-declarations': `warn`,
+				'no-constructor-return': `warn`,
 				'no-dupe-class-members': `warn`,
 				'no-dupe-keys': `warn`,
 				'no-eval': `warn`,

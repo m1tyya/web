@@ -153,6 +153,7 @@ export default defineConfig({
 		extend: {
 			colors: {
 				bg: `#F0EDE4`,
+				brown_light: `#c5b69a`,
 				light2: `#fefae0`,
 				primary: `#606c38`,
 				'primary-2': `#283618`,

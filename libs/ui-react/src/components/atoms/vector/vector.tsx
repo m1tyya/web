@@ -42,9 +42,11 @@ export const Vector = memo(
 		z_index,
 	}: VectorProps): JSX.Element => {
 		const vector_wrapper_styles = clsx(
-				`h-${dimension === `height` ? dimension_value : `auto`} w-${
-					dimension === `width` ? dimension_value : `auto`
-				}`,
+				dimension == `height` ? `h-(${dimension_value}) w-auto` : undefined,
+				dimension == `width` ? `w-(${dimension_value}) h-auto` : undefined,
+				// `h-${dimension === `height` ? dimension_value : `auto`} w-${
+				// 	dimension === `width` ? dimension_value : `auto`
+				// }`,
 				z_index === undefined ? `` : `z-${z_index}`,
 				layout,
 				position,
