@@ -88,7 +88,7 @@ function resolve_styles({
 		res.concat(`rounded-${border_radius}`);
 	}
 
-	if (display != undefined) {a
+	if (display != undefined) {
 		res.concat(display);
 	}
 
