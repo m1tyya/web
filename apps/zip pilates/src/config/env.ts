@@ -21,7 +21,6 @@ const baseSchema = z
 // Production env schema
 // ----------------------
 const productionEnvSchema = z.object({
-	SENDGRID_API_KEY: z.string(),
 	VERCEL_URL: z.string(),
 });
 
