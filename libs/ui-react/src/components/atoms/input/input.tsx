@@ -1,7 +1,12 @@
 import clsx from 'clsx';
 import { forwardRef } from 'react';
-
-import { type BorderStyle, type Padding, type Styles, type TextProps, type Undefined } from '~';
+import {
+	type BorderStyle,
+	type Padding,
+	type Styles,
+	type TextProps,
+	type Undefined,
+} from 'ui-react';
 
 import { resolve_padding } from '../../../utilities/css';
 
@@ -198,7 +203,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 		<>
 			{label.is_enabled && label.is_before && label_jsx}
 			<input
-			required
 				className={input_styles}
 				id={id}
 				name={name}
@@ -206,6 +210,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 				onChange={onChange}
 				placeholder={placeholder}
 				ref={ref}
+				required
 				type={type}
 			/>
 			{label.is_enabled && !label.is_before && label_jsx}

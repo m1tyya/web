@@ -10,7 +10,7 @@ import {
 	type MediaFeature,
 	type MediaType,
 	type Position,
-} from '~';
+} from 'ui-react';
 
 type MediaQuery = {
 	query: MediaFeature;

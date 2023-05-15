@@ -5,8 +5,8 @@
 		"jsx": "react-jsx",
 		"noEmit": true,
 		"paths": {
-			"~": ["./src/index.ts"],
-			"~/*": ["./src/*"]
+			"ui-react": ["./src/index.ts"],
+			"ui-react/*": ["./src/*"]
 		}
 	},
 	"exclude": ["build", "dist", "node_modules"],
