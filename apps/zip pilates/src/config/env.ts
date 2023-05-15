@@ -1,13 +1,8 @@
 import z from 'zod';
 
-const isProduction = process.env.NODE_ENV === `production`;
-const isDevelopment = process.env.NODE_ENV === `development`;
-const isTest = process.env.NODE_ENV === `test`;
+const is_production = process.env.NODE_ENV == `production`;
 
-// -------------------
-// Base env schema
-// -------------------
-const baseSchema = z
+const base_schema = z
 	.object({
 		APP_ORIGIN: z.string(),
 		development: z.boolean(),
@@ -17,22 +12,10 @@ const baseSchema = z
 	})
 	.nonstrict();
 
-// ----------------------
-// Production env schema
-// ----------------------
-const productionEnvSchema = z.object({
-	VERCEL_URL: z.string(),
-});
+const production_schema = z.object({});
 
-let envSchema;
-envSchema = isProduction
-	? baseSchema.merge(productionEnvSchema)
-	: baseSchema.merge(productionEnvSchema.partial());
+const env_schema = is_production
+	? base_schema.merge(production_schema)
+	: base_schema.merge(production_schema.partial());
 
-export const env = envSchema.parse({
-	...process.env,
-	APP_ORIGIN: isProduction ? process.env[`VERCEL_URL`] : `http://localhost:3000`,
-	development: isDevelopment,
-	production: isProduction,
-	test: isTest,
-});
+export const env = env_schema.parse(process.env);
