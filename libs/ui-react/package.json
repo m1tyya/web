@@ -30,7 +30,7 @@
 		"dist"
 	],
 	"license": "MIT",
-	"main": "./src/index.ts",
+	"main": "./dist/index.es.js",
 	"name": "@m1tyya/ui-react",
 	"scripts": {
 		"build": "tsc && vite build",
@@ -38,6 +38,6 @@
 		"lint": "eslint \"**/*.ts*\""
 	},
 	"type": "module",
-	"types": "./src/index.ts",
+	"types": "./dist/index.d.ts",
 	"version": "0.1.0"
 }

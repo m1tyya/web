@@ -6,7 +6,7 @@ import {
 	type Styles,
 	type TextProps,
 	type Undefined,
-} from 'ui-react';
+} from '~';
 
 import { resolve_padding } from '../../../utilities/css';
 
