@@ -4,7 +4,7 @@ const is_production = process.env.NODE_ENV == `production`;
 
 const base_schema = z
 	.object({
-		GOOGLE_API: z.string(),
+		NEXT_PUBLIC_GOOGLE_API: z.string(),
 	})
 	.nonstrict();
 

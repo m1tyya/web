@@ -195,7 +195,7 @@ function ContactPage(): JSX.Element {
 				className='md:(grow-[1] basis-[40%]) h-[70vh] w-auto w-full shrink'
 				loading='lazy'
 				referrerPolicy='no-referrer-when-downgrade'
-				src={`https://www.google.com/maps/embed/v1/place?q=place_id:ChIJd-9yn82h_UYRy-h9skYgTSg&key=${env.GOOGLE_API}&zoom=18`}></iframe>
+				src={`https://www.google.com/maps/embed/v1/place?q=place_id:ChIJd-9yn82h_UYRy-h9skYgTSg&key=${env.NEXT_PUBLIC_GOOGLE_API}&zoom=18`}></iframe>
 		</div>
 	);
 }
