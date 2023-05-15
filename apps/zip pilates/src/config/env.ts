@@ -4,11 +4,7 @@ const is_production = process.env.NODE_ENV == `production`;
 
 const base_schema = z
 	.object({
-		APP_ORIGIN: z.string(),
-		development: z.boolean(),
 		GOOGLE_API: z.string(),
-		production: z.boolean(),
-		test: z.boolean(),
 	})
 	.nonstrict();
 
