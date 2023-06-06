@@ -44,8 +44,8 @@ export function Header({
 			relative: !is_sticky,
 			'sticky top-0 left-0': is_sticky,
 		},
-		`w-full bg-${background_color}/70 flex items-center justify-between h-${height}`,
-		`z-50 backdrop-blur-md`,
+		`w-full bg-[#CECECE]/10 flex items-center justify-between h-${height}`,
+		`z-50 backdrop-blur-sm`,
 	);
 
 	return (
@@ -55,7 +55,7 @@ export function Header({
 					desc='Some description'
 					dimension='width'
 					dimension_value='full'
-					layout='hover:(scale-[120%] -rotate-[15deg]) duration-[250ms]'
+					layout='hover:(scale-[95%] -rotate-[10deg]) duration-[250ms]'
 					Svg={Logo}
 					title='Home page'
 				/>

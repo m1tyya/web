@@ -50,6 +50,7 @@ export const styles_reset: CSSBase = {
 		'border-style': `solid`,
 		'border-width': `0`,
 		'box-sizing': `border-box`,
+		margin: `0`,
 		position: `relative`,
 	},
 	a: {
@@ -124,7 +125,7 @@ export const styles_reset: CSSBase = {
 };
 
 export default defineConfig({
-	presets: [presetTailwind({ disablePreflight: false })],
+	presets: [presetTailwind({ disablePreflight: true })],
 	rules: [
 		[
 			`truncate-`,
@@ -156,9 +157,9 @@ export default defineConfig({
 				brown_light: `#c5b69a`,
 				light2: `#fefae0`,
 				primary: `#606c38`,
-				'primary-2': `#283618`,
-				secondary: `#dda15e`,
-				'secondary-2': `#bc6c25`,
+				'primary-lighter': `#8B9D51`,
+				secondary: `#bc6c25`,
+				'secondary-2': `#44376C`,
 				selected: `#655049`,
 				silver: `#E0DED6`,
 				test: `oklch(70% 0.144 152.47)`,
@@ -171,11 +172,11 @@ export default defineConfig({
 			fontFamily: {
 				domaine: `var(--font-domaine)`,
 				elegant: `var(--font-brunizer)`,
-				heading: `var(--font-ade-display)`,
+				heading: `var(--font-cormorant)`,
 				heading2: `var(--font-playfair)`,
 				merri: `var(--font-merri)`,
 				naibo: `var(--font-naibo)`,
-				text: `var(--font-syne)`,
+				text: `var(--font-lato)`,
 			},
 			fontSize: {
 				...fluid_typography,
@@ -188,6 +189,9 @@ export default defineConfig({
 				button_y: `.8rem`,
 				page_horizontal: `15px`,
 				page_vertical: `30px`,
+			},
+			spacing: {
+				...fluid_typography,
 			},
 		},
 	},

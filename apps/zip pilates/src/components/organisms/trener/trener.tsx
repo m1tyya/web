@@ -1,81 +1,64 @@
-import { Button, Container, type IconProps, Image, Text, Vector } from '@m1tyya/ui-react';
+import { Button, Container, Text, Vector } from '@m1tyya/ui-react';
 import Wave from 'public/vectors/wave.svg';
-import { HiArrowLongRight } from 'react-icons/hi2';
 
-import { container_padding } from '../hero';
+import { icon_props } from '../hero';
 
 type TrenerProps = {};
 
 export function Trener({}: TrenerProps): JSX.Element {
-	const icon_props: IconProps = {
-		icon: {
-			Svg: HiArrowLongRight,
-			dimension: `width`,
-			dimension_value: `[20px]`,
-			fill: `light2`,
-			layout: `group~button-hover:translate-x-[.5rem] group~button-active:translate-x-[.5rem] duration-[0.5s]`,
-		},
-		icon_side: `right`,
-	};
-
 	return (
 		<>
-			<Vector dimension='width' dimension_value='[100%]' fill='secondary/10' Svg={Wave} />
-			<Container
-				background_color='secondary/10'
-				padding={container_padding}
-				position='relative'
-				tag='div'>
+			<Vector dimension='width' dimension_value='[100%]' fill='primary/5' Svg={Wave} />
+			<div className='bg-primary/5 px-page_horizontal'>
 				<Text
-					font_family='domaine'
-					font_size='fluid-3xl'
-					font_weight='semibold'
+					font_family='heading'
+					font_size='fluid-5xl'
+					styles='mx-6'
 					tag='h2'
 					text={`Trenerzy`}
-					text_align='center'
-					text_color='secondary-2'
 				/>
-				<Container display='flex' layout='mt-10 items-end justify-around' tag='div'>
+				<Container display='flex' layout='mt-10 items-center justify-evenly w-full' tag='div'>
+					<div className='w-[40%]'>
+						<img
+							alt='Trener'
+							className='h-auto w-full'
+							height={1024}
+							loading='lazy'
+							srcSet='/images/trener-test.jpg 768w'
+							width={768}
+						/>
+					</div>
 					<Text
-						font_family='domaine'
-						font_size='fluid-xl'
-						letter_spacing='[0.15rem]'
-						line_height='[2.5]'
-						max_width='[15ch]'
-						styles='mt-8'
+						font_family='heading'
+						font_size='fluid-3xl'
+						font_weight='[500]'
+						letter_spacing='[0.2rem]'
+						line_height='[.8]'
+						styles='mt-8 w-min first-letter:(ml-8)'
 						tag='h3'
 						text={`Tetyana Kantor`}
-						text_color='primary-2'
+						text_color='secondary-2'
 					/>
-					<Image
-						alt='Trener'
-						height={1024}
-						loading='lazy'
-						srcset={[{ descriptor: `768w`, src: `/images/trainer.webp` }]}
-						styles='w-[250px]'
-						width={768}
-					/>
+
+					{/* srcset={[{ descriptor: `768w`, src: `/images/trainer.webp` }]} */}
 				</Container>
 				<Text
 					font_family='text'
 					font_size='fluid-md'
+					font_weight='[300]'
 					line_height='[1.6]'
 					max_width='[90%]'
-					styles='mt-10 mx-auto'
+					styles='mt-10 first-letter:(text-fluid-2xl)'
 					tag='p'
-					text='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget duis at tellus at urna condimentum mattis pellentesque. Sapien et ligula ullamcorper malesuada proin libero nunc. Nulla facilisi etiam dignissim diam. Eu lobortis elementum nibh tellus molestie nunc non. Risus sed vulputate odio ut enim blandit volutpat maecenas volutpat. Id aliquet risus feugiat in ante metus.'
-					text_align='justify'
-					text_color='[#703806]'
+					text='Nazywam się Tatiana Kantor i jestem zalożycielką Zip Pilates Studio w Gdyni (Trójmiasto). Ukończyłam dwuletnie szkolienie Lolita’s Legacy według metody Lolity San Miguel (Floryda, USA), które uprawnia mnie do pracy na pilatesowym sprzęcie na wszystkich poziomach zaawansowania. Lolita San Miguel jest bezpośrednią uczennicą Josepha Pilatesa (First Generation Pilates Master Teacher).Ukończyłam również skolienie Michaela Kinga, założyciela brytyjskiej szkoły MK Pilates, a także brałam udział w warsztatach Alana Herdmana.'
 				/>
-				<Container display='flex' layout='justify-center mt-10' tag='div'>
+				<Container display='flex' layout='justify-center mt-10 pl-8 pr-10' tag='div'>
 					<Button
-						background_color='primary'
 						border_radius='[3rem]'
 						btn_text={{
 							font_family: `text`,
-							font_size: `fluid-md`,
-							font_weight: `medium`,
-							text_color: `light2`,
+							font_size: `fluid-lg`,
+							font_weight: `[500]`,
 						}}
 						gap='10'
 						max_width='100%'
@@ -83,11 +66,11 @@ export function Trener({}: TrenerProps): JSX.Element {
 						padding_y='button_y'
 						width='[80%]'
 						{...icon_props}
-						position={`justify-center mr-8 hover:(border-black) active:(border-black) border-2 border-neutral-60 duration-[.5s]`}
-						text='Dowiedz się więcej'
+						position={`w-full italic justify-center border-black hover:(border-primary) active:border-primary border-1 duration-[.5s]`}
+						text='Biografia'
 					/>
 				</Container>
-			</Container>
+			</div>
 		</>
 	);
 }

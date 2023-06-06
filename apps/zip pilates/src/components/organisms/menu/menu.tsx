@@ -26,7 +26,7 @@ const icon_size = `[30px]`,
 	icon_scale = `[115%]`,
 	button_scale = `[105%]`;
 
-export function Menu({ animation_duration, bg_color, links }: MenuProps): JSX.Element {
+export function Menu({ animation_duration, links }: MenuProps): JSX.Element {
 	const is_small_screen = useMediaQuery(`(max-width: ${tw.theme(`screens.md`)})`);
 	const { is_menu_open } = use_app_store(),
 		links_animation: MotionProps = {
@@ -61,7 +61,7 @@ export function Menu({ animation_duration, bg_color, links }: MenuProps): JSX.El
 		<motion.menu
 			{...(is_small_screen && menu_animation)}
 			className={cx(
-				`bg-${bg_color} md:bg-transparent fixed md:relative top-0 right-0 z-[100] h-screen md:h-auto w-full overscroll-y-contain`,
+				`bg-silver md:bg-transparent fixed md:relative top-0 right-0 z-[100] h-screen md:h-auto w-full overscroll-y-contain`,
 			)}
 			id='menu'>
 			<ul
@@ -75,8 +75,7 @@ export function Menu({ animation_duration, bg_color, links }: MenuProps): JSX.El
 								<Text
 									font_family='heading'
 									font_size='fluid-2xl md:fluid-base'
-									font_weight='semibold md:bold'
-									styles='uppercase md:normal-case tracking-[0.2rem] md:tracking-none font-heading md:font-naibo hover:(text-gray-500 scale-[105%] -rotate-3) duration-[.2s]'
+									styles='uppercase md:normal-case tracking-[0.2rem] md:tracking-none font-heading md:font-naibo active:(scale-[105%]) duration-[.2s]'
 									tag='p'
 									text={text}
 								/>

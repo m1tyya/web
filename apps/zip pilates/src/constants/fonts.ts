@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/quotes */
-import { Alegreya, Lato, Merriweather, Playfair_Display, Syne } from 'next/font/google';
+import { Alegreya, Cormorant, Lato, Merriweather, Playfair_Display, Syne } from 'next/font/google';
 import localFont from 'next/font/local';
+
+export const cormorant = Cormorant({ variable: '--font-comrorant' });
 
 export const naibo = localFont({
 	src: '../../public/fonts/naibo.woff2',

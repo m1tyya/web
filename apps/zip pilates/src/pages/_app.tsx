@@ -3,11 +3,12 @@ import install from '@twind/with-next/app';
 import { type AppProps } from 'next/app';
 import Head from 'next/head';
 
-import { Footer, Header, MenuIcon } from '~';
+import { Footer, Header } from '~';
 import {
 	ade_display,
 	alegreya,
 	brunizer,
+	cormorant,
 	domaine_display,
 	doppelganger,
 	glamour,
@@ -20,7 +21,7 @@ import {
 
 import config, { styles_reset } from '../../twind.config';
 
-const font_variables = `${syne.variable} ${glamour.variable} ${merriweather.variable} ${doppelganger.variable} ${alegreya.variable} ${lato.variable} ${naibo.variable} ${ade_display.variable} ${domaine_display.variable} ${playfair.variable} ${brunizer.variable}`;
+const font_variables = `${syne.variable} ${glamour.variable} ${merriweather.variable} ${doppelganger.variable} ${alegreya.variable} ${lato.variable} ${naibo.variable} ${ade_display.variable} ${domaine_display.variable} ${playfair.variable} ${brunizer.variable} ${cormorant.variable}`;
 const header_height = '40',
 	header_padding_x = '7',
 	header_padding_y = '6';

@@ -5,7 +5,7 @@ import { Hero, Reviews, Trener } from '~';
 export function Home(): JSX.Element {
 	return (
 		<>
-			<Page background_color='bg'>
+			<Page>
 				<Hero />
 				<Trener />
 				<Reviews />
