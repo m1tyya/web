@@ -1,4 +1,3 @@
-import { Container } from '@m1tyya/ui-react';
 import { tw } from '@twind/core';
 import clsx from 'clsx';
 import { AnimatePresence, motion, type MotionProps } from 'framer-motion';
@@ -104,30 +103,24 @@ export function MenuIcon({
 	return (
 		<AnimatePresence>
 			{is_small_screen && (
-				<Container
-					layout={`h-${height} ml-auto top-0 right-0 px-${padding_x} py-${padding_y} w-min flex items-center`}
-					position='fixed'
-					tag='div'
-					z_index='[200]'>
-					<button
-						aria-controls='menu'
-						aria-expanded={is_menu_open}
-						className={clsx(`w-[${size}px] h-[${size}px] cursor-pointer`)}
-						onClick={handle_menu}
-						title='menu'
-						type='button'>
-						<motion.svg
-							animate={handle_animation(is_menu_open)}
-							className={clsx(`z-[200]`)}
-							fill={color}
-							overflow='visible'
-							viewBox={`0 0 ${size} ${size}`}>
-							<motion.path {...top_bar} />
-							<motion.path {...middle_bar} />
-							<motion.path {...bottom_bar} />
-						</motion.svg>
-					</button>
-				</Container>
+				<button
+					aria-controls='menu'
+					aria-expanded={is_menu_open}
+					className={clsx(`z-[200] cursor-pointer p-6 -mr-6 `)}
+					onClick={handle_menu}
+					title='menu'
+					type='button'>
+					<motion.svg
+						animate={handle_animation(is_menu_open)}
+						className={`w-[${size}px] h-[${size}px]`}
+						fill={color}
+						overflow='visible'
+						viewBox={`0 0 ${size} ${size}`}>
+						<motion.path {...top_bar} />
+						<motion.path {...middle_bar} />
+						<motion.path {...bottom_bar} />
+					</motion.svg>
+				</button>
 			)}
 		</AnimatePresence>
 	);

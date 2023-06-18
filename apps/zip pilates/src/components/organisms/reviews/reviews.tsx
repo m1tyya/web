@@ -54,22 +54,16 @@ export function Reviews(): JSX.Element {
 
 	return (
 		<>
-			<Vector
-				background_color='primary/5'
-				dimension='width'
-				dimension_value='[100%]'
-				fill='white'
-				Svg={Wave}
-			/>
 			<Container background_color='white' padding={container_padding} tag='div'>
 				<Text
 					font_family='heading'
-					font_size='fluid-lg'
+					font_size='fluid-xl'
 					font_weight='medium'
 					letter_spacing='[0.1rem]'
 					tag='h2'
 					text='Nasi klienci są bardzo zadowoleni'
 					text_align='center'
+					styles='mx-auto max-w-[80%]'
 				/>
 				<Container display='flex' layout='items-center flex-col mt-20' tag='div'>
 					<div>
@@ -122,7 +116,7 @@ export function Reviews(): JSX.Element {
 						{...review_animation}
 						font_family='heading'
 						font_size='fluid-base'
-						font_weight='normal'
+						font_weight='[700]'
 						styles='mt-5'
 						tag='h3'
 						text={name}

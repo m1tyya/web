@@ -26,7 +26,7 @@ const input_props = {
 	styles: `peer outline-none focus:border-[#0c46da] invalid:border-red-500 duration-[200ms]`,
 };
 
-const placeholder_focus_styles = `text-base top-0 px-2`,
+const placeholder_focus_styles = `text-fluid-xs top-0 px-2`,
 	label_styles = `duration-300 top-[50%] -translate-y-1/2 absolute bg-white transform transition-all left-8 peer-focus:(${placeholder_focus_styles})`;
 
 const VALIDATION_MESSAGES = {
@@ -138,9 +138,9 @@ function ContactPage(): JSX.Element {
 		},
 		error_ref = useRef<Array<HTMLParagraphElement>>([]);
 
-	function handle_change(e: any): void {
-		toggle_label(e.target as HTMLInputElement);
-		hide_error(e.target.id as string);
+	function handle_change(e: React.ChangeEvent<HTMLInputElement>): void {
+		toggle_label(e.target);
+		hide_error(e.target.id);
 	}
 
 	function toggle_label(target: HTMLInputElement): void {
@@ -174,8 +174,9 @@ function ContactPage(): JSX.Element {
 	}
 
 	function toggle_error(error: HTMLParagraphElement): void {
-		error.innerText = errors[error.id.slice(0, -6) as keyof InputData]?.message ?? ``;
-		error.style.opacity = error.innerText.length === 0 ? `0` : `1`;
+		// error.innerText = errors[error.id.slice(0, -6) as keyof InputData]?.message ?? ``;
+		// error.style.opacity = error.innerText.length === 0 ? `0` : `1`;
+		error.style.opacity = `1`;
 	}
 
 	return (
@@ -188,7 +189,7 @@ function ContactPage(): JSX.Element {
 					{inputs.map(({ label, name, options, placeholder, Tag, type }, index) => (
 						<div className='h-max' key={name}>
 							<Tag
-								className={`peer w-full resize-none rounded-3xl border-2 border-solid border-[#e3e3e3] px-8 py-3 outline-none duration-[200ms] focus:border-[#0c46da]`}
+								className={`font-text focus:border-secondary-lighter peer w-full resize-none rounded-3xl border-2 border-solid border-[#e3e3e3] px-8 py-3 outline-none duration-[300ms]`}
 								id={name}
 								placeholder={placeholder}
 								rows='4'
@@ -198,14 +199,14 @@ function ContactPage(): JSX.Element {
 							<label
 								// eslint-disable-next-line tailwindcss/classnames-order
 								className={clsx(
-									`z-10 top-[2rem] -translate-y-1/2 absolute left-8  transform bg-white transition-all duration-300 peer-focus:(text-base top-0 px-2) pointer-events-none`,
+									`z-10 top-[2rem] -translate-y-1/2 absolute left-8  transform bg-white transition-all duration-300 peer-focus:(${placeholder_focus_styles}) pointer-events-none font-text`,
 								)}
 								id={`${name}_label`}>
 								{label}
 							</label>
 							<p
 								className={clsx(
-									`text-fluid-sm ml-3 mt-2 h-[1.5rem] leading-[1rem] text-red-500 opacity-0 duration-[200ms]`,
+									`text-fluid-sm font-text ml-3 mt-2 h-[1.5rem] leading-[1rem] text-rose-500 duration-[200ms]`,
 								)}
 								id={`${name}_error`}
 								ref={(el) => {

@@ -17,6 +17,15 @@ export type MenuProps = {
 	links: Array<MenuLink>;
 };
 
+const st = {
+	menu: {
+		_: `bg-silver md:bg-transparent fixed md:relative top-0 right-0 z-[100] h-screen md:h-auto w-full`,
+		items: {
+			_: `flex flex-col md:flex-row justify-between md:justify-end md:pr-4 pt-60 pb-10 md:p-0 flex flex-col h-screen md:h-auto w-full items-center gap-20 text-center`,
+		},
+	},
+};
+
 export const MENU_STATES = { CLOSED: `CLOSED`, OPEN: `OPEN` } as const;
 export const MENU_ANIMATION_DURATION = 0.5;
 export type MenuStates = (typeof MENU_STATES)[keyof typeof MENU_STATES];
@@ -58,16 +67,8 @@ export function Menu({ animation_duration, links }: MenuProps): JSX.Element {
 		};
 
 	return (
-		<motion.menu
-			{...(is_small_screen && menu_animation)}
-			className={cx(
-				`bg-silver md:bg-transparent fixed md:relative top-0 right-0 z-[100] h-screen md:h-auto w-full overscroll-y-contain`,
-			)}
-			id='menu'>
-			<ul
-				className={cx(
-					`flex flex-col md:flex-row justify-between md:justify-end md:pr-4 pt-60 pb-10 md:p-0 flex flex-col h-screen md:h-auto w-full items-center gap-20 text-center`,
-				)}>
+		<motion.menu {...(is_small_screen && menu_animation)} className={cx(st.menu._)} id='menu'>
+			<ul className={cx(st.menu.items._)}>
 				<Container display='flex' layout='flex-col md:flex-row gap-14' tag='div'>
 					{links.map(({ text, url }) => (
 						<motion.li {...(is_small_screen && links_animation)} key={url.toString()}>
@@ -75,7 +76,7 @@ export function Menu({ animation_duration, links }: MenuProps): JSX.Element {
 								<Text
 									font_family='heading'
 									font_size='fluid-2xl md:fluid-base'
-									styles='uppercase md:normal-case tracking-[0.2rem] md:tracking-none font-heading md:font-naibo active:(scale-[105%]) duration-[.2s]'
+									styles='uppercase tracking-[0.2rem] font-heading md:(font-500) active:(scale-[105%]) hover:(-skew-x-[16deg]) transform-gpu duration-[.2s]'
 									tag='p'
 									text={text}
 								/>

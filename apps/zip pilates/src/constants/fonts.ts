@@ -2,7 +2,7 @@
 import { Alegreya, Cormorant, Lato, Merriweather, Playfair_Display, Syne } from 'next/font/google';
 import localFont from 'next/font/local';
 
-export const cormorant = Cormorant({ variable: '--font-comrorant' });
+export const cormorant = Cormorant({ variable: '--font-cormorant' });
 
 export const naibo = localFont({
 	src: '../../public/fonts/naibo.woff2',
